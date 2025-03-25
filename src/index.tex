@@ -1,0 +1,104 @@
+\documentclass[final]{elteikthesis}[2025/03/25]
+
+\usepackage[newfloat]{minted}
+\removefromtoclist[float]{lol}
+
+\title{Git Chord: Git tárolók meta-állapotainak hatékony kezelése}
+\date{2025}
+
+\author{Horváth Dávid}
+\degree{Programtervező Informatikus BSc}
+
+\supervisor{Dr. Cserép Máté}
+\affiliation{egyetemi adjunktus}
+
+\university{Eötvös Loránd Tudományegyetem}
+\faculty{Informatikai Kar}
+\department{Programozáselmélet és Szoftvertechnológiai\\ Tanszék}
+\city{Budapest}
+\logo{elte_cimer_szines}
+
+\addbibresource{references.bib}
+
+\begin{document}
+
+\documentlang{hungarian}
+
+\listoftodos
+\cleardoublepage
+
+\maketitle
+
+% Topic declaration page (mandatory) - can also be attached instead
+%\includepdf{temabejelento.pdf}
+
+\begin{abstract}
+Hello.
+\end{abstract}
+
+\tableofcontents
+\cleardoublepage
+
+\chapter{Bevezetés}
+\label{ch:intro}
+
+Hello.
+
+\cleardoublepage
+
+\chapter{Felhasználói dokumentáció}
+\label{ch:user}
+
+Hello.
+
+\cleardoublepage
+
+\chapter{Fejlesztői dokumentáció}
+\label{ch:impl}
+
+Hello.
+
+\cleardoublepage
+
+\chapter{Összegzés}
+\label{ch:sum}
+
+Hello.
+
+\cleardoublepage
+
+\appendix
+
+\chapter{Teszteredmények}
+\label{appx:test}
+
+Hello.
+
+\cleardoublepage
+
+\phantomsection
+\addcontentsline{toc}{chapter}{\biblabel}
+\printbibliography[title=\biblabel]
+\cleardoublepage
+
+\phantomsection
+\addcontentsline{toc}{chapter}{\lstfigurelabel}
+\listoffigures
+\cleardoublepage
+
+\phantomsection
+\addcontentsline{toc}{chapter}{\lsttablelabel}
+\listoftables
+\cleardoublepage
+
+\phantomsection
+\addcontentsline{toc}{chapter}{\lstalgorithmlabel}
+\listofalgorithms
+\cleardoublepage
+
+\phantomsection
+\addcontentsline{toc}{chapter}{\lstcodelabel}
+\lstlistoflistings
+\cleardoublepage
+
+\end{document}

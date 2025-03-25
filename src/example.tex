@@ -1,0 +1,484 @@
+\documentclass[
+	%parspace, % Add vertical space between paragraphs
+	%noindent, % No indentation of first lines in each paragraph
+	%nohyp, % No hyphenation of words
+	%twoside, % Double sided format
+	%draft, % Quicker draft compilation without rendering images
+	%final, % Set final to hide todos
+]{elteikthesis}[2024/04/26]
+
+\usepackage[newfloat]{minted}
+\removefromtoclist[float]{lol} % must be after loading minted
+% see: https://github.com/gpoore/minted/issues/390
+
+% Document's metadata
+\title{Dolgozat címe} % title
+\date{2024} % year of defense
+
+% Author's metadata
+\author{Hallgató Hanga}
+\degree{programtervező informatikus BSc}
+
+% Superivsor(s)' metadata
+\supervisor{Témavezető Tamás} % internal supervisor's name
+\affiliation{egyetemi tanársegéd} % internal supervisor's affiliation
+%\extsupervisor{Külső Kornél} % external supervisor's name
+%\extaffiliation{informatikai igazgató} % external supervisor's affiliation
+
+% University's metadata
+\university{Eötvös Loránd Tudományegyetem} % university's name
+\faculty{Informatikai Kar} % faculty's name
+\department{Programozáselmélet és Szoftvertechnológiai\\ Tanszék} % department's name
+\city{Budapest} % city
+\logo{elte_cimer_szines} % logo
+
+% Add bibliography file
+\addbibresource{elteikthesis.bib}
+
+% The document
+\begin{document}
+
+% Set document language
+\documentlang{hungarian}
+%\documentlang{english}
+
+% List of todos (not in the final document)
+%\listoftodos[\todolabel]
+
+% Title page (mandatory)
+\maketitle
+% Topic declaration page (mandatory) - can also be attached instead
+%\includepdf{temabejelento.pdf}
+
+% Table of contents (mandatory)
+\tableofcontents
+\cleardoublepage
+
+% Main content
+\chapter{Bevezetés}
+\label{ch:intro}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eu egestas mauris. Quisque nisl elit, varius in erat eu, dictum commodo lorem. Sed commodo libero et sem laoreet consectetur. Fusce ligula arcu, vestibulum et sodales vel, venenatis at velit \cite{dahl1972structured}. Aliquam erat volutpat. Proin condimentum accumsan velit id hendrerit. Cras egestas arcu quis felis placerat, ut sodales velit malesuada. Maecenas et turpis eu turpis placerat euismod.\footnote{Maecenas a urna viverra, scelerisque nibh ut, malesuada ex.}
+
+Aliquam suscipit dignissim tempor. Praesent tortor libero, feugiat et tellus porttitor, malesuada eleifend felis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus \cite{cormen2009algorithms,krasner1988mvc}. Nullam eleifend imperdiet lorem, sit amet imperdiet metus pellentesque vitae. Donec nec ligula urna. Aliquam bibendum tempor diam, sed lacinia eros dapibus id. Donec sed vehicula turpis. Aliquam hendrerit sed nulla vitae convallis. Etiam libero quam, pharetra ac est nec, sodales placerat augue. \citeauthor{dijkstra1979goto} praesent eu consequat purus \cite{dijkstra1979goto}. 
+
+\cleardoublepage
+
+\chapter{Felhasználói dokumentáció}
+\label{ch:user}
+
+Lorem ipsum dolor sit amet $\mathbb{N}$\nomenclature{$\mathbb{N}$}{Set of natural numbers}, consectetur adipiscing elit. Duis nibh leo, dapibus in elementum nec, aliquet id sem. Suspendisse potenti. Nullam sit amet consectetur nibh. Donec scelerisque varius turpis at tincidunt. Cras a diam in mauris viverra vehicula. Vivamus mi odio, fermentum vel arcu efficitur, lacinia viverra nibh. Aliquam aliquam ante mi, vel pretium arcu dapibus eu. Nulla finibus ante vel arcu tincidunt, ut consectetur ligula finibus. Mauris mollis lectus sed ipsum bibendum, ac ultrices erat dictum. Suspendisse faucibus euismod lacinia $\mathbb{Z}$\nomenclature{$\mathbb{Z}$}{Set of integer numbers}.
+
+
+\section{Felsorolások}
+
+Etiam vel odio ante. Etiam pulvinar nibh quis massa auctor congue. Pellentesque quis odio vitae sapien molestie vestibulum sit amet et quam. Pellentesque vel dui eget enim hendrerit finibus at sit amet libero. Quisque sollicitudin ultrices enim, nec porta magna imperdiet vitae. Cras condimentum nunc dui, eget molestie nunc accumsan vel.
+
+\begin{itemize}
+	\item Fusce in aliquet neque, in pretium sem.
+	\item Donec tincidunt tellus id lectus pretium fringilla.
+	\item Nunc faucibus, erat pretium tempus tempor, tortor mi fringilla neque, ac congue ex dui vitae mauris.
+\end{itemize}
+
+Donec dapibus sodales ante, at scelerisque nunc laoreet sit amet. Mauris porttitor tincidunt neque, vel ullamcorper neque pulvinar et. Integer eu lorem euismod, faucibus lectus sed, accumsan felis. Nunc ornare mi at augue vulputate, eu venenatis magna mollis. Nunc sed posuere dui, et varius nulla. Sed mollis nibh augue, eget scelerisque eros ornare nec.
+
+\begin{enumerate}
+	\item\label{step:first} Donec pretium et quam a cursus. Ut sollicitudin tempus urna et mollis.
+	\item Aliquam et aliquam turpis, sed fermentum mauris. Nulla eget ex diam.
+	\item Donec eget tellus pharetra, semper neque eget, rutrum diam \ref{step:first}.~lépés.
+\end{enumerate}
+
+Praesent porta, metus eget eleifend consequat, eros ligula eleifend ex, a pellentesque mi est vitae urna. Vivamus turpis nunc, iaculis non leo eget, mattis vulputate tellus. Maecenas rutrum eros sem, pharetra interdum nulla porttitor sit amet. In vitae viverra ante. Maecenas sit amet placerat orci, sed tincidunt velit. Vivamus mattis, enim vel suscipit elementum, quam odio venenatis elit\footnote{Phasellus faucibus varius purus, nec tristique enim porta vitae.}, et mollis nulla nunc a risus. Praesent purus magna, tristique sed lacus sit amet, convallis malesuada magna. 
+
+\begin{description}
+	\item[Vestibulum venenatis] malesuada enim, ac auctor erat vestibulum et. Phasellus id purus a leo suscipit accumsan.
+	\item[Orci varius natoque] penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam interdum rhoncus nisl, vel pharetra arcu euismod sagittis. Vestibulum ac turpis auctor, viverra turpis at, tempus tellus.
+	\item[Morbi dignissim] erat ut rutrum aliquet. Nulla eu rutrum urna. Integer non urna at mauris scelerisque rutrum sed non turpis.
+\end{description}
+
+\subsection{Szoros térközű felsorolások}
+
+Phasellus ultricies, sapien sit amet ultricies placerat, velit purus viverra ligula, id consequat ipsum odio imperdiet enim:
+\begin{compactenum}
+	\item Maecenas eget lobortis leo.
+	\item Donec eget libero enim.
+	\item In eu eros a eros lacinia maximus ullamcorper eget augue.
+\end{compactenum}
+
+\bigskip
+
+In quis turpis metus. Proin maximus nibh et massa eleifend, a feugiat augue porta. Sed eget est purus. Duis in placerat leo. Donec pharetra eros nec enim convallis:
+\begin{compactitem}
+	\item Pellentesque odio lacus.
+	\item Maximus ut nisl auctor.
+	\item Sagittis vulputate lorem.
+\end{compactitem}
+
+\bigskip
+
+Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed lorem libero, dignissim vitae gravida a, ornare vitae est.
+\begin{compactdesc}
+	\item[Cras maximus] massa commodo pellentesque viverra.
+	\item[Morbi sit] amet ante risus. Aliquam nec sollicitudin mauris
+	\item[Ut aliquam rhoncus sapien] luctus viverra arcu iaculis posuere
+\end{compactdesc}
+
+
+\section{Képek, ábrák}
+
+Aliquam vehicula luctus mi a pretium. Nulla quam neque, maximus nec velit in, aliquam mollis tortor. Aliquam erat volutpat. Curabitur vitae laoreet turpis. Integer id diam ligula. Nulla sodales purus id mi consequat, eu venenatis odio pharetra. Cras a arcu quam. Suspendisse augue risus, pulvinar a turpis et, commodo aliquet turpis. Nulla aliquam scelerisque mi eget pharetra. Mauris sed posuere elit, ac lobortis metus. Proin lacinia sit amet diam sed auctor. Nam viverra orci id sapien sollicitudin, a aliquam lacus suscipit, \ref{fig:example-1}.~ábra:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth,height=100px]{elte_cimer_szines}
+	\caption{Quisque ac tincidunt leo}
+	\label{fig:example-1}
+\end{figure}
+
+\subsection{Képek szegélyezése}
+
+Ut aliquet nec neque eget fermentum. Cras volutpat tellus sed placerat elementum. Quisque neque dui, consectetur nec finibus eget, blandit id purus. Nam eget ipsum non nunc placerat interdum.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth,height=100px,frame]{elte_cimer_szines}
+	\caption{Quisque ac tincidunt leo}
+\end{figure}
+
+\subsection{Képek csoportosítása}
+
+In non ipsum fermentum urna feugiat rutrum a at odio. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla tincidunt mattis nisl id suscipit. Sed bibendum ac felis sed volutpat. Nam pharetra nisi nec facilisis faucibus. Aenean tristique nec libero non commodo. Nulla egestas laoreet tempus. Nunc eu aliquet nulla, quis vehicula dui. Proin ac risus sodales, gravida nisi vitae, efficitur neque, \ref{fig:example-2}.~ábra:
+
+\begin{figure}[H]
+	\centering
+	\subcaptionbox{Vestibulum quis mattis urna}{
+		\includegraphics[width=0.45\linewidth]{elte_cimer_szines}}
+	\hspace{5pt}
+	\subcaptionbox{Donec hendrerit quis dui sit amet venenatis}{
+		\includegraphics[width=0.45\linewidth]{elte_cimer_szines}}
+	\caption{Aenean porttitor mi volutpat massa gravida}
+	\label{fig:example-2}
+\end{figure}
+
+Nam et nunc eget elit tincidunt sollicitudin. Quisque ligula ipsum, tempor vitae tortor ut, commodo rhoncus diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Phasellus vehicula quam dui, eu convallis metus porta ac.
+
+
+\section{Táblázatok}
+
+Nam magna ex, euismod nec interdum sed, sagittis nec leo. Nam blandit massa bibendum mattis tristique. Phasellus tortor ligula, sodales a consectetur vitae, placerat vitae dolor. Aenean consequat in quam ac mollis. 
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{ | m{0.25\textwidth} | m{0.65\textwidth} | }
+		\hline
+		\textbf{Phasellus tortor} & \textbf{Aenean consequat} \\
+		\hline \hline
+		\emph{Sed malesuada} & Aliquam aliquam velit in convallis ultrices. \\
+		\hline
+		\emph{Purus sagittis} &  Quisque lobortis eros vitae urna lacinia euismod. \\
+		\hline
+		\emph{Pellentesque} & Curabitur ac lacus pellentesque, eleifend sem ut, placerat enim. Ut auctor tempor odio ut dapibus. \\
+		\hline
+	\end{tabular}
+	\caption{Maecenas tincidunt non justo quis accumsan}
+	\label{tab:example-1}
+\end{table}
+
+\subsection{Sorok és oszlopok egyesítése}
+
+Mauris a dapibus lectus. Vestibulum commodo nibh ante, ut maximus magna eleifend vel. Integer vehicula elit non lacus lacinia, vitae porttitor dolor ultrices. Vivamus gravida faucibus efficitur. Ut non erat quis arcu vehicula lacinia. Nulla felis mauris, laoreet sed malesuada in, euismod et lacus. Aenean at finibus ipsum. Pellentesque dignissim elit sit amet lacus congue vulputate.
+
+\begin{table}[htb]
+	\centering
+	\begin{tabular}{ | c | r | r | r | r | r | r | }
+		\hline
+		\multirow{2}{*}{\textbf{Quisque}} & \multicolumn{2}{ c | }{\textbf{Suspendisse}} & \multicolumn{2}{ c | }{\textbf{Aliquam}} & \multicolumn{2}{ c | }{\textbf{Vivamus}} \\
+		\cline{2-7}
+		& Proin & Nunc & Proin & Nunc & Proin & Nunc \\
+		\hline \hline		
+		Leo & 2,80 MB & 100\% & 232 KB & 8,09\% & 248 KB & 8,64\% \\
+		\hline
+		Vel & 9,60 MB & 100\% & 564 KB & 5,74\% & 292 KB & 2,97\% \\
+		\hline
+		Auge & 78,2 MB & 100\% & 52,3 MB & 66,88\% & 3,22 MB & 4,12\% \\
+		\hline 
+	\end{tabular}
+	\caption[Rövid cím a táblázatjegyzékbe]{Vivamus ac arcu fringilla, fermentum neque sed, interdum erat. Mauris bibendum mauris vitae enim mollis, et eleifend turpis aliquet.}
+	\label{tab:example-2}
+\end{table}
+
+\subsection{Több oldalra átnyúló táblázatok}
+
+Nunc porta placerat leo, sit amet porttitor dui porta molestie. Aliquam at fermentum mi. Maecenas vitae lorem at leo tincidunt volutpat at nec tortor. Vivamus semper lacus eu diam laoreet congue. Vivamus in ipsum risus. Nulla ullamcorper finibus mauris non aliquet. Vivamus elementum rhoncus ex ut porttitor.
+
+\begin{center}
+	\begin{longtable}{ | p{0.3\textwidth} | p{0.7\textwidth} | }
+		
+		\hline
+		\multicolumn{2}{|c|}{\textbf{Praesent aliquam mauris enim}}
+		\\ \hline
+		
+		\emph{Suspendisse potenti} & \emph{Lorem ipsum dolor sit amet}
+		\\ \hline \hline
+		\endfirsthead % első oldal fejléce
+		
+		\hline
+		\emph{Suspendisse potenti} & \emph{Lorem ipsum dolor sit amet}
+		\\ \hline \hline
+		\endhead % többi oldal fejléce
+		
+		\hline
+		\endfoot % többi oldal lábléce
+		
+		\endlastfoot % utolsó oldal lábléce
+		
+		\emph{Praesent}
+		& Nulla ultrices et libero sit amet fringilla. Nunc scelerisque ante tempus sapien placerat convallis.
+		\\ \hline
+		
+		\emph{Luctus}
+		& Integer hendrerit erat massa, non hendrerit risus convallis at. Curabitur ultrices, justo in imperdiet condimentum, neque tortor luctus enim, luctus posuere massa erat vitae nibh.
+		\\ \hline
+		
+		\emph{Egestas}
+		& Duis fermentum feugiat augue in blandit. Mauris a tempor felis. Pellentesque ultricies tristique dignissim. Pellentesque aliquam semper tristique. Nam nec egestas dolor. Vestibulum id elit quis enim fringilla tempor eu a mauris. Aliquam vitae lacus tellus. Phasellus mauris lectus, aliquam id leo eget, auctor dapibus magna. Fusce lacinia felis ac elit luctus luctus.
+		\\ \hline
+		
+		\emph{Dignissim}
+		& Praesent aliquam mauris enim, vestibulum posuere massa facilisis in. Suspendisse potenti. Nam quam purus, rutrum eu augue ut, varius vehicula tellus. Fusce dui diam, aliquet sit amet eros at, sollicitudin facilisis quam. Phasellus tempor metus vel augue gravida pretium. Proin aliquam aliquam blandit. Nulla id tempus mi. Fusce in aliquam tortor.
+		\\ \hline
+		
+		\emph{Pellentesque}
+		& Donec felis nibh, imperdiet a arcu non, vehicula gravida nibh. Quisque interdum sapien eu massa commodo, ac elementum felis faucibus.
+		\\ \hline
+		
+		\emph{Molestie}
+		& Cras ullamcorper tellus et auctor ultricies. Maecenas tincidunt euismod lectus nec venenatis. Suspendisse potenti. Pellentesque pretium nunc ut euismod cursus. Nam venenatis condimentum quam. Curabitur suscipit efficitur aliquet. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+		\\ \hline
+		
+		\emph{Vivamus semper}
+		& In purus purus, faucibus eu libero vulputate, tristique sodales nunc. Nulla ut gravida dolor. Fusce vel pellentesque mi, vel efficitur eros. Nunc vitae elit tellus. Sed vestibulum auctor consequat. 
+		\\ \hline
+		
+		\emph{Condimentum}
+		& Nulla scelerisque, leo et facilisis pretium, risus enim cursus turpis, eu suscipit ipsum ipsum in mauris. Praesent eget pulvinar ipsum, suscipit interdum nunc. Nam varius massa ut justo ullamcorper sollicitudin. Vivamus facilisis suscipit neque, eu fermentum risus. Ut at mi mauris.
+		\\ \hline
+		
+		\caption{Praesent ullamcorper consequat tellus ut eleifend}
+		\label{tab:example-3}		
+	\end{longtable}
+\end{center}
+\cleardoublepage
+
+\chapter{Fejlesztői dokumentáció}
+\label{ch:impl}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nibh leo, dapibus in elementum nec, aliquet id sem. Suspendisse potenti. Nullam sit amet consectetur nibh. Donec scelerisque varius turpis at tincidunt.
+
+
+\section{Tételek, definíciók, megjegyzések}
+
+\begin{definition}
+Mauris tristique sollicitudin ultrices. Etiam tristique quam sit amet metus dictum imperdiet. Nunc id lorem sed nisl pulvinar aliquet vitae quis arcu. Morbi iaculis eleifend porttitor.
+\end{definition}
+
+Maecenas rutrum eros sem, pharetra interdum nulla porttitor sit amet. In vitae viverra ante. Maecenas sit amet placerat orci, sed tincidunt velit. Vivamus mattis, enim vel suscipit elementum, quam odio venenatis elit, et mollis nulla nunc a risus. Praesent purus magna, tristique sed lacus sit amet, convallis malesuada magna. Phasellus faucibus varius purus, nec tristique enim porta vitae.
+
+\begin{theorem}
+Nulla finibus ante vel arcu tincidunt, ut consectetur ligula finibus. Mauris mollis lectus sed ipsum bibendum, ac ultrices erat dictum. Suspendisse faucibus euismod lacinia. Etiam vel odio ante.
+\end{theorem}
+\begin{proof}
+Etiam pulvinar nibh quis massa auctor congue. Pellentesque quis odio vitae sapien molestie vestibulum sit amet et quam. Pellentesque vel dui eget enim hendrerit finibus at sit amet libero. Quisque sollicitudin ultrices enim, nec porta magna imperdiet vitae. Cras condimentum nunc dui.
+\end{proof}
+
+Donec dapibus sodales ante, at scelerisque nunc laoreet sit amet. Mauris porttitor tincidunt neque, vel ullamcorper neque pulvinar et. Integer eu lorem euismod, faucibus lectus sed, accumsan felis. 
+
+\begin{remark}
+Nunc ornare mi at augue vulputate, eu venenatis magna mollis. Nunc sed posuere dui, et varius nulla. Sed mollis nibh augue, eget scelerisque eros ornare nec. Praesent porta, metus eget eleifend consequat, eros ligula eleifend ex, a pellentesque mi est vitae urna. Vivamus turpis nunc, iaculis non leo eget, mattis vulputate tellus.
+\end{remark}
+
+Fusce in aliquet neque, in pretium sem. Donec tincidunt tellus id lectus pretium fringilla. Nunc faucibus, erat pretium tempus tempor, tortor mi fringilla neque, ac congue ex dui vitae mauris. Donec pretium et quam a cursus.
+
+\begin{note}
+Aliquam vehicula luctus mi a pretium. Nulla quam neque, maximus nec velit in, aliquam mollis tortor. Aliquam erat volutpat. Curabitur vitae laoreet turpis. Integer id diam ligula.
+\end{note}
+
+Ut sollicitudin tempus urna et mollis. Aliquam et aliquam turpis, sed fermentum mauris. Nulla eget ex diam. Donec eget tellus pharetra, semper neque eget, rutrum diam.
+
+\subsection{Egyenletek, matematika}
+
+Duis suscipit ipsum nec urna blandit, $2 + 2 = 4$ pellentesque vehicula quam fringilla. Vivamus euismod, lectus sit amet euismod viverra, dolor metus consequat sapien, ut hendrerit nisl nulla id nisi. Nam in leo eu quam sollicitudin semper a quis velit.
+
+$$a^2 + b^2 = c^2$$
+
+Phasellus mollis, elit sed convallis feugiat, dolor quam dapibus nibh, suscipit consectetur lacus risus quis sem. Vivamus scelerisque porta odio, vitae euismod dolor accumsan ut.
+
+In mathematica, identitatem Euleri (equation est scriptor vti etiam notum) sit aequalitatem \ref{eq:euler}.~egyenlet:
+\begin{equation}\label{eq:euler}
+e^{i \times \pi} + 1 = 0
+\end{equation}
+
+Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nullam pulvinar purus at pharetra elementum.
+Aequationes adsignans aequationis signum:
+\begin{align}
+	A & = \frac{\pi r^2}{2} \\
+	  & = \frac{1}{2} \pi r^2
+\end{align}
+
+Proin tempor risus a efficitur condimentum. Cras lobortis ligula non sollicitudin euismod. Fusce non pellentesque nibh, non elementum tellus.
+Omissa numeratione aliquarum aequationum:
+\begin{align}
+	f(u) & =\sum_{j=1}^{n} x_jf(u_j) \nonumber \\
+	     & =\sum_{j=1}^{n} x_j \sum_{i=1}^{m} a_{ij}v_i \nonumber \\
+	     & =\sum_{j=1}^{n} \sum_{i=1}^{m} a_{ij}x_jv_i
+\end{align}
+
+\section{Forráskódok}
+
+Nulla sodales purus id mi consequat, eu venenatis odio pharetra. Cras a arcu quam. Suspendisse augue risus, pulvinar a turpis et, commodo aliquet turpis. Nulla aliquam scelerisque mi eget pharetra. Mauris sed posuere elit, ac lobortis metus. Proin lacinia sit amet diam sed auctor. Nam viverra orci id sapien sollicitudin, a aliquam lacus suscipit. Quisque ac tincidunt leo \ref{src:cpp}. és \ref{src:csharp}.~forráskód:
+
+\lstset{caption={Hello World in C++}, label=src:cpp}
+\begin{lstlisting}[language={C++}]
+#include <stdio>
+
+int main() 
+{
+	int c;
+	std::cout << "Hello World!" << std::endl;
+
+	std::cout << "Press any key to exit." << std::endl;
+	std::cin >> c;
+	
+	return 0;
+}
+\end{lstlisting}
+
+\lstset{caption={Hello World in C\#}, label=src:csharp}
+\begin{lstlisting}[language={[Sharp]C}]
+using System;
+namespace HelloWorld
+{
+	class Hello 
+	{
+		static void Main() 
+		{
+			Console.WriteLine("Hello World!");
+			
+			Console.WriteLine("Press any key to exit.");
+			Console.ReadKey();
+		}
+	}
+}
+\end{lstlisting}
+
+\section{Forráskódok (minted)}
+
+\begin{listing}[H]
+\begin{minted}{cpp}
+#include <stdio>
+
+int main() 
+{
+	int c;
+	std::cout << "Hello World!" << std::endl;
+
+	std::cout << "Press any key to exit." << std::endl;
+	std::cin >> c;
+	
+	return 0;
+}
+\end{minted}
+\caption{Hello World in C++}
+\end{listing}
+
+\subsection{Algoritmusok}
+
+Az \ref{alg:ibb}.~algoritmus egy általános elágazás és korlátozás algoritmust (\emph{Branch and Bound algorithm}) mutat be. A \ref{step:selrule}.~lépésben egy megfelelő kiválasztási szabályt kell alkalmazni.
+Példa forrása: \href{https://www.inf.u-szeged.hu/actacybernetica/}{Acta Cybernetica (ez egy hiperlink)}.
+
+\begin{algorithm}[H]
+\caption{A general interval B\&B algorithm}
+\label{alg:ibb}
+\textbf{\underline{Funct}} IBB($S,f$)
+\begin{algorithmic}[1] % sorszámok megjelenítése minden n. sor előtt, most n = 1
+\State Set the working list ${\cal L}_W$ := $\{S\}$ and the final list ${\cal L}_Q$ := $\{\}$
+\While{( ${\cal L}_W \neq \emptyset$ )} \label{alg:igoend}
+	\State Select an interval $X$ from ${\cal L}_W$ \label{step:selrule}\Comment{Selection rule}
+	\State Compute $lbf(X)$ \Comment{Bounding rule}
+	\If{$X$ cannot be eliminated} \Comment{Elimination rule}
+		\State Divide $X$ into $X^j,\ j=1,\dots, p$, subintervals   \Comment{Division rule}
+		\For{$j=1,\ldots,p$}
+			\If{$X^j$ satisfies the termination criterion} \Comment{Termination rule}
+				\State Store $X^j$ in ${\cal L}_W$
+			\Else
+				\State Store $X^j$ in ${\cal L}_W$
+			\EndIf
+		\EndFor
+	\EndIf
+\EndWhile
+\State \textbf{return} ${\cal L}_Q$
+\end{algorithmic}
+\end{algorithm}
+
+\cleardoublepage
+
+\chapter{Összegzés}
+\label{ch:sum}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eu egestas mauris. Quisque nisl elit, varius in erat eu, dictum commodo lorem. Sed commodo libero et sem laoreet consectetur. Fusce ligula arcu, vestibulum et sodales vel, venenatis at velit. Aliquam erat volutpat. Proin condimentum accumsan velit id hendrerit. Cras egestas arcu quis felis placerat, ut sodales velit malesuada. Maecenas et turpis eu turpis placerat euismod. Maecenas a urna viverra, scelerisque nibh ut, malesuada ex.
+
+Aliquam suscipit dignissim tempor. Praesent tortor libero, feugiat et tellus porttitor, malesuada eleifend felis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam eleifend imperdiet lorem, sit amet imperdiet metus pellentesque vitae. Donec nec ligula urna. Aliquam bibendum tempor diam, sed lacinia eros dapibus id. Donec sed vehicula turpis. Aliquam hendrerit sed nulla vitae convallis. Etiam libero quam, pharetra ac est nec, sodales placerat augue. Praesent eu consequat purus.
+
+\cleardoublepage
+
+% Acknowledgements (optional) - in case your thesis received funding or would like to express special thanks to someone
+\chapter*{\acklabel}
+\addcontentsline{toc}{chapter}{\acklabel}
+Amennyiben a szakdolgozati / diplomamunka projekted pénzügyi támogatást kapott egy projektből vagy az egyetemtől, jellemzően kötelező feltüntetni a dolgozatban is. A dolgozat elkészítéséhez segítséget nyújtó oktatók, hallgatótársak, kollégák felé is nyilvánítható külön köszönet.
+
+% Appendices (optional) - useful for detailed information in long tables, many and/or large figures, etc.
+\appendix
+\chapter{Szimulációs eredmények}
+\label{appx:simulation}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque facilisis in nibh auctor molestie. Donec porta tortor mauris. Cras in lacus in purus ultricies blandit. Proin dolor erat, pulvinar posuere orci ac, eleifend ultrices libero. Donec elementum et elit a ullamcorper. Nunc tincidunt, lorem et consectetur tincidunt, ante sapien scelerisque neque, eu bibendum felis augue non est. Maecenas nibh arcu, ultrices et libero id, egestas tempus mauris. Etiam iaculis dui nec augue venenatis, fermentum posuere justo congue. Nullam sit amet porttitor sem, at porttitor augue. Proin bibendum justo at ornare efficitur. Donec tempor turpis ligula, vitae viverra felis finibus eu. Curabitur sed libero ac urna condimentum gravida. Donec tincidunt neque sit amet neque luctus auctor vel eget tortor. Integer dignissim, urna ut lobortis volutpat, justo nunc convallis diam, sit amet vulputate erat eros eu velit. Mauris porttitor dictum ante, commodo facilisis ex suscipit sed.
+
+Sed egestas dapibus nisl, vitae fringilla justo. Donec eget condimentum lectus, molestie mattis nunc. Nulla ac faucibus dui. Nullam a congue erat. Ut accumsan sed sapien quis porttitor. Ut pellentesque, est ac posuere pulvinar, tortor mauris fermentum nulla, sit amet fringilla sapien sapien quis velit. Integer accumsan placerat lorem, eu aliquam urna consectetur eget. In ligula orci, dignissim sed consequat ac, porta at metus. Phasellus ipsum tellus, molestie ut lacus tempus, rutrum convallis elit. Suspendisse arcu orci, luctus vitae ultricies quis, bibendum sed elit. Vivamus at sem maximus leo placerat gravida semper vel mi. Etiam hendrerit sed massa ut lacinia. Morbi varius libero odio, sit amet auctor nunc interdum sit amet.
+
+Aenean non mauris accumsan, rutrum nisi non, porttitor enim. Maecenas vel tortor ex. Proin vulputate tellus luctus egestas fermentum. In nec lobortis risus, sit amet tincidunt purus. Nam id turpis venenatis, vehicula nisl sed, ultricies nibh. Suspendisse in libero nec nisi tempor vestibulum. Integer eu dui congue enim venenatis lobortis. Donec sed elementum nunc. Nulla facilisi. Maecenas cursus id lorem et finibus. Sed fermentum molestie erat, nec tempor lorem facilisis cursus. In vel nulla id orci fringilla facilisis. Cras non bibendum odio, ac vestibulum ex. Donec turpis urna, tincidunt ut mi eu, finibus facilisis lorem. Praesent posuere nisl nec dui accumsan, sed interdum odio malesuada.
+\cleardoublepage
+
+% Bibliography (mandatory)
+\phantomsection
+\addcontentsline{toc}{chapter}{\biblabel}
+\printbibliography[title=\biblabel]
+\cleardoublepage
+
+% List of figures (optional) - useful over 3-5 figures
+\phantomsection
+\addcontentsline{toc}{chapter}{\lstfigurelabel}
+\listoffigures
+\cleardoublepage
+
+% List of tables (optional) - useful over 3-5 tables
+\phantomsection
+\addcontentsline{toc}{chapter}{\lsttablelabel}
+\listoftables
+\cleardoublepage
+
+% List of algorithms (optional) - useful over 3-5 algorithms
+\phantomsection
+\addcontentsline{toc}{chapter}{\lstalgorithmlabel}
+\listofalgorithms
+\cleardoublepage
+
+% List of codes (optional) - useful over 3-5 code samples
+\phantomsection
+\addcontentsline{toc}{chapter}{\lstcodelabel}
+\lstlistoflistings
+\cleardoublepage
+
+% List of symbols (optional)
+%\printnomenclature
+
+\end{document}

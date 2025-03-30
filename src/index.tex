@@ -1,5 +1,6 @@
 \documentclass[final]{elteikthesis}[2025/03/25]
 
+\usepackage{abstract}
 \usepackage[newfloat]{minted}
 \removefromtoclist[float]{lol}
 
@@ -29,39 +30,83 @@
 
 \maketitle
 
-% Topic declaration page (mandatory) - can also be attached instead
-%\includepdf{temabejelento.pdf}
+\renewcommand{\abstractname}{Témabejelentő}
 
 \begin{abstract}
-Hello.
+Szakdolgozatomban bemutatom a Git Chord programot és az ahhoz készített néhány további segédeszközt.
+A Git Chord egy POSIX shellben írt kiterjesztés a Git
+verziókezelő rendszerhez, amely konfigurálható módon lehetővé teszi egy helyi tároló elemeinek
+(branchek, tagek, stb.)
+aktuális állapotából összeálló konstelláció mentését és visszaállítását,
+illetve ezeknek a mentett meta-állapotoknak a böngészését, törlését, migrálását, másokkal való megosztását.
+
+A Git Chord kényelmesebb megoldást kínál a korábbi meta-állapotok visszaállítására,
+mint a Git által beépítetten támogatott reflog.
+A reflog továbbá csak a helyi tárolón használható,
+míg a Git Chord mentett meta-állapotai könnyen megoszthatók,
+például migráció, deployment, archiválás vagy akár segítségkérés céljából.
+
+A mentett meta-állapotok technikailag a tárolón belüli
+speciális brancheken elhelyezett, teljesen reguláris commitok,
+melyek többedik parent commitokként is hivatkoznak a meta-állapot által rögzített, hordozandó commitokra.
+Így minden szükséges függőség garantáltan szállításra kerül a meta-állapot commitjával együtt,
+ugyanakkor a mentések pehelysúlyúak, valójában nem történik költséges duplikáció.
+
+A parancssori program mellett a szakdolgozati munka része egy webes GUI,
+valamint az előbbire épülő kiegészítők néhány elterjedt
+általános asztali integrált fejlesztői környezethez (például VS Code, Eclipse).
+Az egyes kiegészítők a közös főképernyő mellett
+az adott IDE sajátosságaihoz igazított egyedi működéseket is tartalmaznak (context menük, akciók, stb.).
+A programnak a szakdolgozati védés keretében történő bemutatása során
+nagy részben a webes felületre támaszkodom majd.
+
+A fejlesztői-üzemeltetői hétköznapok során történő felhasználási eseteken túl
+kitérek a programnak a verziókezelő rendszerek oktatásában való lehetséges alkalmazására.
+Ennek alapgondolata, hogy a hallgatók által
+a saját helyi tárolójukon végzett lokális módosítások eredménye
+az értékelő oktatóval könnyen megosztható a Git Chord által mentett meta-állapotként.
 \end{abstract}
 
 \tableofcontents
 \cleardoublepage
 
 \chapter{Bevezetés}
-\label{ch:intro}
 
-Hello.
+Egy \textit{verziókezelő rendszer} feladata, hogy valamilyen adott tartalom (például programkód)
+folyamatos fejlesztését megkönnyítse, annak evolúcióját technikai keretként támogassa.
+A verziókezelt tartalom újabb és újabb verziói egy időbeli sorba rendeződnek,
+a verziók és a köztük lévő különbségek visszakövethetők,
+az egyes állapotok szükség esetén visszaállíthatók.
+Emellett, a fejlesztés el is ágazhat,
+mely esetben az újabb verziók párhuzamosan futó \textit{branch}eken kerülnek tárolásra.
+Az intenzíven elágazó fejlesztési történet lineáris történet helyett tipikusan egy aciklikus gráf.
+
+A modern elosztott verziókezelőkben a branchek kezelésére igen szofisztikált eszköztár áll rendelkezésre;
+az olyan műveletek, mint új branchek létrehozása, meglévők egyesítése,
+váltás a branchek között,
+vagy akár a történet visszamenőleges manipulációja
+egyszerű parancsok végrehajtásával elvégezhetők.
+[TODO]
+
+[git státusza, működése]
+
+[meta-verziókezelés, bár egy elágazó gráf, mindig van egy pillanatnyi meta-állapot]
 
 \cleardoublepage
 
 \chapter{Felhasználói dokumentáció}
-\label{ch:user}
 
 Hello.
 
 \cleardoublepage
 
 \chapter{Fejlesztői dokumentáció}
-\label{ch:impl}
 
 Hello.
 
 \cleardoublepage
 
-\chapter{Összegzés}
-\label{ch:sum}
+\chapter{Összegzés és alkalmazások}
 
 Hello.
 
@@ -70,7 +115,6 @@ Hello.
 \appendix
 
 \chapter{Teszteredmények}
-\label{appx:test}
 
 Hello.
 

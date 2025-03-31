@@ -72,24 +72,56 @@ az értékelő oktatóval könnyen megosztható a Git Chord által mentett meta-
 
 \chapter{Bevezetés}
 
-Egy \textit{verziókezelő rendszer} feladata, hogy egy adott tartalom (például programkód)
-folyamatos fejlesztését megkönnyítse, annak evolúcióját technikai keretként támogassa.
+Egy \textit{verziókezelő rendszer feladata, hogy valamilyen adott tartalom (például programkód)
+folyamatos fejlesztését megkönnyítse, annak evolúcióját támogató technikai keretet biztosítson.
 A verziókezelt tartalom újabb és újabb verziói egy időbeli sorba rendeződnek,
 a verziók és a köztük lévő különbségek visszakövethetők,
 az egyes állapotok szükség esetén visszaállíthatók.
-Emellett, a fejlesztés el is ágazhat,
-mely esetben az újabb verziók párhuzamosan futó \textit{branch}eken kerülnek tárolásra.
-Az intenzíven elágazó fejlesztési történet lineáris történet helyett tipikusan egy aciklikus gráf.
-
+Emellett a fejlesztés el is ágazhat,
+ekkor az újabb verziók párhuzamosan futó \textit{branch}eken kerülnek tárolásra
+(persze már akkor is létezik egy magányos branch, mielőtt bármilyen elágazás történne,
+ennek neve általában \texttt{main} vagy \texttt{master}).
+Az elágazó fejlesztési történet lineáris láncolat helyett tehát egy aciklikus gráf. 
 A modern elosztott verziókezelőkben a branchek kezelésére igen szofisztikált eszköztár áll rendelkezésre;
 az olyan műveletek, mint új branchek létrehozása, meglévők egyesítése,
 váltás a branchek között,
 vagy akár a történet visszamenőleges manipulációja
-egyszerű parancsok végrehajtásával elvégezhetők.
-[TODO]
+általában egyszerű parancsok végrehajtásával elvégezhetők.
 
-[git státusza, működése]
+Jelenleg a legelterjedtebb verziókezelő a nyílt forráskódú \textit{Git}.
+Filozófiájához hozzátartozik,
+hogy a teljes verziókezelési folyamatot a helyi gépen kell elvégezni,
+ezt lehet majd szinkronizálni más gépekre, például egy központi szerverre.
+Mind a Git szervert, mind a lokális másolatot tárolónak (repository),
+vagy röviden \textit{repó}nak nevezzük.
+A Git elosztott rendszer,
+használatához nincs feltétlenül szükség központi tárolóra.
 
+Egy módosításcsomag publikálása két lépésből áll.
+Elsőként a \textit{commit} művelettel létrehozzuk az új tárolt állapotot (snapshot);
+a bevett terminológia szerint ezt is commitnak nevezik.
+[TODO: a commit tartalma]
+Alapértelmezetten az aktuális branch mentett állapota egyúttal az újonnan létrejött commitra ugrik.
+Második lépésben a \textit{push} művelettel publikálhatjuk az adott branch (vagy branchek) állapotát egy szerverre.
+A két lépés egymástól független,
+és gyakran számos több commit létrehozása is megtörténik lokálisan,
+mire sor kerülne a push műveletre.
+
+A brancheken kívül \textit{tag}ek is létrehozhatók,
+ezek hasonlóak a branchekhez,
+a fő különbség, hogy véglegesek:
+ha egyszer létrehoztunk egy adott commitra mutató taget,
+az a továbbiakban immutábilisen erre a commitra fog mutatni
+(ha mégis mozgatni szeretnénk, törölni kell, majd újra létrehozni).
+Valójában kétféle tag létezik,
+[TODO: a kétféle tag]
+
+Általában (bár ez megkerülhető) a fejlesztők a saját gépükön
+egyszerre tárolják a teljes verziótörténetet,
+beleértve a számukra érdekes brancheket, gyakran az összeset.
+Amikor a \textit{clone} művelettel lemásolunk, leklónozunk egy repót,
+alapértelmezetten az összes branch és tag letöltésre kerül a teljes történettel együtt.
+[vagyis sok van, itt jön be a nehézség; kezdők...]
 [meta-verziókezelés, bár egy elágazó gráf, mindig van egy pillanatnyi meta-állapot]
 
 \cleardoublepage

@@ -78,9 +78,7 @@ A verziókezelt tartalom újabb és újabb verziói egy időbeli sorba rendeződ
 a verziók és a köztük lévő különbségek visszakövethetők,
 az egyes állapotok szükség esetén visszaállíthatók.
 Emellett a fejlesztés el is ágazhat,
-ekkor az újabb verziók párhuzamosan futó \textit{branch}eken kerülnek tárolásra
-(persze már akkor is létezik egy magányos branch, mielőtt bármilyen elágazás történne,
-ennek neve általában \texttt{main} vagy \texttt{master}).
+ekkor az újabb verziók párhuzamosan futó \textit{branch}eken kerülnek tárolásra.
 Az elágazó fejlesztési történet lineáris láncolat helyett tehát egy aciklikus gráf. 
 A modern elosztott verziókezelőkben a branchek kezelésére igen szofisztikált eszköztár áll rendelkezésre;
 az olyan műveletek, mint új branchek létrehozása, meglévők egyesítése,
@@ -96,7 +94,6 @@ Mind a Git szervert, mind a lokális másolatot tárolónak (repository),
 vagy röviden \textit{repó}nak nevezzük.
 A Git elosztott rendszer,
 használatához nincs feltétlenül szükség központi tárolóra.
-
 Egy módosításcsomag publikálása két lépésből áll.
 Elsőként a \textit{commit} művelettel létrehozzuk az új tárolt állapotot (snapshot);
 a bevett terminológia szerint ezt is commitnak nevezik.
@@ -106,7 +103,6 @@ Második lépésben a \textit{push} művelettel publikálhatjuk az adott branch 
 A két lépés egymástól független,
 és gyakran számos több commit létrehozása is megtörténik lokálisan,
 mire sor kerülne a push műveletre.
-
 A brancheken kívül \textit{tag}ek is létrehozhatók,
 ezek hasonlóak a branchekhez,
 a fő különbség, hogy véglegesek:
@@ -115,7 +111,6 @@ az a továbbiakban immutábilisen erre a commitra fog mutatni
 (ha mégis mozgatni szeretnénk, törölni kell, majd újra létrehozni).
 Valójában kétféle tag létezik,
 [TODO: a kétféle tag]
-
 Általában (bár ez megkerülhető) a fejlesztők a saját gépükön
 egyszerre tárolják a teljes verziótörténetet,
 beleértve a számukra érdekes brancheket, gyakran az összeset.

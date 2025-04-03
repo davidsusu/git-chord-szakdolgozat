@@ -72,6 +72,30 @@ az értékelő oktatóval könnyen megosztható a Git Chord által mentett meta-
 
 \chapter{Bevezetés}
 
+A verziókezelő kezelő rendszerek fő feladata,
+hogy egy folyamatosan változó tartalomegyüttesnek (például egy szoftver forráskódjának)
+az evolucióját megkönnyítsék, annak technikai keretet adjanak.
+E tekintetben a legfontosabb ellátandó feladat, amelyet egy ilyen rendszernek biztosítania kell,
+minden bizonnyal az, hogy képes legyen eltárolni a tartalomegyüttes bizonyos jóváhagyott állapotainak sorát
+Ez a régi rendszereken még fájlonként történt,
+a modern rendszerekben azonban már a teljes tartalomegyüttes
+egy-egy pillanatképe, snapshotja jelenti az atomi egységet.
+Egy további alapvető feladat, amit egy verziókezelőtől elvárunk, a konkurens fejlesztés támogatása.
+A régi rendszerekben még egy-egy fájl központilag történő lockolása volt hivatott biztosítani azt,
+hogy több fejlesztő ne írja fölül egymás munkáját.
+A modern rendszerekben a konkurens fejlesztés külön ágakon, azaz brancheken párhuzamosan történik.
+
+Jelenleg a legelterjedtebb verziókezelő a nyílt forráskódú Git.
+
+[a git mentális modelljéről és adattárolásáról]
+
+-------------------
+
+párhuzamos fejlesztés támogatása,
+azaz annak menedzselése, hogy a forráskód különböző részein is dolgozni lehessen anélkül,
+hogy egymásra kellene várni.
+
+
 Egy \textit{verziókezelő rendszer} feladata, hogy valamilyen adott tartalom (például programkód)
 folyamatos fejlesztését megkönnyítse, annak evolúcióját támogató technikai keretet biztosítson.
 A verziókezelt tartalom újabb és újabb verziói egy időbeli sorba rendeződnek,

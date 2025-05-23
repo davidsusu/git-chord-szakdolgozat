@@ -2,6 +2,8 @@
 
 \usepackage{abstract}
 \usepackage[newfloat]{minted}
+\usepackage{dirtree}
+
 \removefromtoclist[float]{lol}
 
 \title{Git Chord: Git tárolók meta-állapotainak hatékony kezelése}
@@ -72,7 +74,7 @@ az értékelő oktatóval könnyen megosztható a Git Chord által mentett meta-
 
 \chapter{Bevezetés}
 
-A verziókezelő kezelő rendszerek fő feladata,
+A verziókezelő rendszerek fő feladata,
 hogy egy folyamatosan változó tartalomegyüttesnek (például egy szoftver forráskódjának)
 az evolucióját megkönnyítsék, ennek a folyamatnak technikai keretet adjanak.
 E tekintetben a legfontosabb ellátandó feladat minden bizonnyal az,
@@ -147,13 +149,171 @@ alapértelmezetten az összes branch és tag letöltésre kerül a teljes tört�
 
 \chapter{Felhasználói dokumentáció}
 
+\section{A parancssori \texttt{git-chord} program használata}
+
+\subsection{Alapvető információk}
+
+POSIX shell, git, snapshotok, tárolási mód stb. felhasználói szemszögből
+
+\subsection{Telepítés és alapvető kipróbálás}
+
+Hello.
+
+\subsection{Konfiguráció}
+
+Hello.
+
+\subsection{Snapshotok helyi kezelése}
+
+Hello.
+
+\subsection{Snapshotok megosztása}
+
+Hello.
+
+\subsection{Egyéb parancsok}
+
+Hello.
+
+\section{A Git Chord webes felületének használata}
+
 Hello.
 
 \cleardoublepage
 
 \chapter{Fejlesztői dokumentáció}
 
-Hello.
+\section{A parancssori \texttt{git-chord} program felépítése}
+
+Repó felépítése:
+
+\dirtree{%
+.1 git-chord/.
+.2 bin/.
+.3 git-chord.
+.2 completion/.
+.3 git-chord-completion.bashrc.
+.2 install/.
+.3 install-*.sh.
+.2 maintain/.
+.3 *.sh.
+.2 packaging/.
+.3 ,,,.
+.2 test/.
+.3 ,,,.
+.2 LICENSE.
+.2 README.md.
+.2 regen.sh.
+}
+
+POSIX-kompatibilis
+
+Főszkript felépítése:
+
+\begin{itemize}
+    \item header
+    \item definíciók
+    \item segédfüggvények (string manipulation, arguments handling, YAML, file system, miscellaneous)
+    \item beállítások, opciók és paraméterek feldolgozása, alparancs megállapítása
+    \item formázók beállítása a kimenet-beállítások alapján
+    \item az opcióktól is függő függvények
+    \item (teljesen vagy feltételesen) repófüggetlen alparancsok kiszolgálása (help, version, default-kezelés stb.)
+    \item git repó ellenőrzése
+    \item repófüggő alparancsok kiszolgálása
+\end{itemize}
+
+A POSIX nem tartalmazza az \texttt{mktemp} (és így \texttt{mktemp -d}) stb. parancsokat, ezért:
+
+\begin{listing}[H]
+\begin{minted}{shell}
+createTmpDir() (
+    sysTmpDir="$TMPDIR"
+    if [ -z "$sysTmpDir" ]; then
+        sysTmpDir="/tmp"
+    fi
+    pathPrefix="${sysTmpDir}/git-chord.$( date '+%N' )"
+    path="$pathPrefix"
+    i='1'
+    while [ -e "$path" ]; do
+        path="${pathPrefix}."
+        i=$(( i + 1 ))
+    done
+    mkdir -p "$path"
+    printf '%s\n' "$path"
+)
+\end{minted}
+\caption{Átmeneti könyvtár készítése, POSIX-kompatibilis}
+\end{listing}
+
+először:
+
+\begin{listing}[H]
+\begin{minted}{shell}
+tempYamlFile1="$( mktemp )" # FIXME: mktemp is not POSIX
+printf '%s\n' "$stateYaml1" > "$tempYamlFile1"
+tempYamlFile2="$( mktemp )" # FIXME: mktemp is not POSIX
+printf '%s\n' "$stateYaml2" > "$tempYamlFile2"
+if checkTruthy "$configValue_color"; then
+    diff -u -U3 --color "$tempYamlFile1" "$tempYamlFile2"
+else
+    diff -u -U3 "$tempYamlFile1" "$tempYamlFile2"
+fi
+rm "$tempYamlFile1"
+rm "$tempYamlFile2"
+\end{minted}
+\caption{Átmeneti fájlok kezelése előtte}
+\end{listing}
+
+majd:
+
+\begin{listing}[H]
+\begin{minted}{shell}
+tempDir="$( createTmpDir )"
+tempYamlFile1="${tempDir}/state1.yaml"
+printf '%s\n' "$stateYaml1" > "$tempYamlFile1"
+tempYamlFile2="${tempDir}/state2.yaml"
+printf '%s\n' "$stateYaml2" > "$tempYamlFile2"
+if checkTruthy "$configValue_color"; then
+    diff -u -U3 --color "$tempYamlFile1" "$tempYamlFile2"
+else
+    diff -u -U3 "$tempYamlFile1" "$tempYamlFile2"
+fi
+rm -R "$tempDir"
+\end{minted}
+\caption{Átmeneti fájlok kezelése utána}
+\end{listing}
+
+...
+
+\begin{listing}[H]
+\begin{minted}{shell}
+while IFS= read -r configLine; do
+    configValue="$( printf '%s\n' "$configLine" | cut -d ' ' -f 2- )"
+    outVariableName="configValue_$( printf '%s\n' "$configLine" | cut -d ' ' -f 1 | tr '.' '_' )"
+    eval "${outVariableName}='$( escapeValue "$configValue")'"
+done <<EOF
+$( printf '%s\n' "$config" )
+EOF
+\end{minted}
+\caption{Eredeti eval loop}
+\end{listing}
+
+Javított:
+
+\begin{listing}[H]
+\begin{minted}{shell}
+eval "$(
+    printf '%s\n' "$config" | sed -E ':loop; s/^(\w+)\./\1_/; t loop' | while IFS=' ' read -r outVariableName configValue; do
+        printf "configValue_%s='" "$outVariableName"
+        escapeValue "$configValue"
+        printf "'\n"
+    done
+)"
+\end{minted}
+\caption{Optimalizált eval loop}
+\end{listing}
+
+\section{A Git Chord webes felületének felépítése}
 
 \cleardoublepage
 

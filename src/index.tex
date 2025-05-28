@@ -4,6 +4,8 @@
 \usepackage[newfloat]{minted}
 \usepackage{dirtree}
 
+\setminted{fontsize=\footnotesize}
+
 \removefromtoclist[float]{lol}
 
 \title{Git Chord: Git tárolók meta-állapotainak hatékony kezelése}
@@ -74,18 +76,20 @@ az értékelő oktatóval könnyen megosztható a Git Chord által mentett meta-
 
 \chapter{Bevezetés}
 
+\section{A modern verziókezelő rendszerek sajátosságai}
+
 A verziókezelő rendszerek fő feladata,
 hogy egy folyamatosan változó tartalomegyüttesnek (például egy szoftver forráskódjának)
 az evolucióját megkönnyítsék, ennek a folyamatnak technikai keretet adjanak.
-E tekintetben a legfontosabb ellátandó feladat minden bizonnyal az,
-hogy a rendszer képes legyen eltárolni a tartalomegyüttes bizonyos jóváhagyott állapotainak sorát
+E tekintetben a legfontosabb megoldandó feladat minden bizonnyal az,
+hogy a rendszer képes legyen eltárolni a tartalomegyüttes bizonyos jóváhagyott állapotainak sorát.
 Ez a régi rendszereken még fájlonként történt,
-a modern rendszerekben azonban már a teljes tartalomegyüttes
+a modern megközelítésben ezzel szemben a teljes tartalomegyüttes
 egy-egy pillanatképe, snapshotja jelenti az atomi egységet.
-Egy további alapvető feladat, amelyet egy ilyen rendszernek biztosítania kell, a konkurens fejlesztés támogatása.
+További alapvető feladat, amelyet egy ilyen rendszernek biztosítania kell, a párhuzamos fejlesztés támogatása.
 A régi rendszerekben még egy-egy fájl központilag történő lockolása volt hivatott biztosítani azt,
 hogy több fejlesztő ne írja fölül egymás munkáját.
-A modern rendszerekben a konkurens fejlesztés külön ágakon, azaz brancheken párhuzamosan történik.
+A modern rendszerekben a párhuzamos fejlesztés külön ágakon, azaz brancheken párhuzamosan történik.
 
 Jelenleg a legelterjedtebb verziókezelő a nyílt forráskódú Git.
 
@@ -145,39 +149,288 @@ alapértelmezetten az összes branch és tag letöltésre kerül a teljes tört�
 [vagyis sok van, itt jön be a nehézség; kezdők...]
 [meta-verziókezelés, bár egy elágazó gráf, mindig van egy pillanatnyi meta-állapot]
 
+\section{A Git verziókezelő rendszer tárolási modellje}
+
+TODO
+
+\section{Tárolók átfogó állapotának kezelése}
+
+[a subversion stb. még egy nagy (idődimenzióval kiegészített) fájlrendszerben tárolta a brancheket is, valójában nincs beépített branchkezelés, az ágak egyszerűen külön könyvtárakban vannak, az elágaztatási módszertanok működtetését a könyvtárak között alkalmazható merge-elő, összehasonlító stb. eszközök segítik (megjegyzés: ezt a git is tudja)]
+
+TODO
+
+\section{A Git Chord megközelítése}
+
+TODO
+
+\section{Edge Case-ek a Git Chord-ban}
+
+[persze eleve: a Git Chord teljesen a git saját szisztémájába illeszkedik]
+
+submodule, git config módosításai, 
+
+TODO
+
 \cleardoublepage
 
 \chapter{Felhasználói dokumentáció}
 
-\section{A parancssori \texttt{git-chord} program használata}
+\section{A parancssori program használata}
 
-\subsection{Alapvető információk}
+\subsection{Bevezetés}
 
-POSIX shell, git, snapshotok, tárolási mód stb. felhasználói szemszögből
+A Git Chord egy POSIX Shellben írt kiegészítő a Git rendszerhez.
+Egy repository átfogó metaállapotának teljes vagy részleges snapshotjait képes kezelni.
+Ezek a snapshotok speciális (alapértelmezetten \texttt{chord/} prefixű) brancheken kerülnek tárolásra,
+és kizárólag a Git rendszer natív képességeire építenek.
 
-\subsection{Telepítés és alapvető kipróbálás}
+Egy-egy snapshot tárolja alapértelmezetten a branchek és tagek állapotát tárolja.
+Ez a működés konfigurációval felülírható, finomhangolható,
+illetve lehetőség van a staging area és a munkakönyvtár állapotának tárolására is.
+Egyazon repository által kezelt több munkakönyvtár (\texttt{git-worktree}) tárolása jelenleg nem támogatott.
+Lehetőség van a snapshotok létrehozására, böngészésére, törlésére, megosztására és letöltésére is.
 
-Hello.
+\subsection{Telepítés és alapvető használat}
+
+A Git Chord bármilyen POSIX-kompatibilis rendszeren futtatható.
+Ezen felül egyetlen függősége maga a Git rendszer,
+melynek legalább 2.0.0 verziója szükséges a teljeskörű használathoz.
+
+A \texttt{bin} könyvtárban található \texttt{git-chord} szkriptfájl önmagában vagy a \texttt{git} parancs alparancsként is használható.
+Az alparancsként való használathoz elengendő, ha a szkript változatlan névvel a végrehajtható fájlok keresési könyvtárainak egyikében található (POSIX rendszereken ezt a \texttt{PATH} környezeti változó reprezentálja).
+
+Interaktív terminálban Bash héj esetén automatikus parancskiegészítést is használhatunk,
+miután a \texttt{completion} könyvtárban található \texttt{git-chord-completion.bashrc} szkript be lett emelve (a `source` vagy `.` paranccsal).
+Ajánlott ezt a beemelést a \texttt{bashrc} mechanizmusba helyezni,
+hogy már a bejelentkezéskor lefusson.
+
+Mindezek az inicializáló lépések az \texttt{install} könyvtárban található szriptek valamelyikével is elvégezhetők.
+Az itt található \texttt{netinstall-user.sh} szkript a letöltéstől a teljes telepítésig elvégzi a folyamatot.
+Hálózati elérés és a \texttt{curl} eszköz megléte esetén így a teljes telepítés elvégezhető egyetlen paranccsal:
+
+\begin{minted}[breaklines]{shell}
+curl -s https://raw.githubusercontent.com/davidsusu/git-chord/main/install/netinstall-user.sh | sh
+\end{minted}
+
+Sikeres telepítés után a programot önállóan (\texttt{git-chord})
+vagy a \texttt{git} alparancsaként (\texttt{git chord}) is használhatjuk.
+A plusz argumentumok kezelése és a működés a két esetben ugyanaz.
+A továbbiakban mindig az alparancsos stílust fogom használni.
+
+Használatba vétel előtt érdemes lehet ellenőrizni a telepített verziót:
+
+\begin{minted}{shell}
+git chord version
+\end{minted}
+
+Vagy röviden:
+
+\begin{minted}{shell}
+git chord -v
+\end{minted}
+
+Az első esetben a \verb|git-chord| program \texttt{version} alparancsát,
+a második esetben a \verb|-v| POSIX kapcsolót használtuk.
+
+További alapvető alparancs a \verb|help|, mely egy általános leírást ír ki,
+magába foglalva az elérhető alparancsokat, kapcsolókat, paramétereket és egyéb információkat.
+Ugyanerre a \verb|-h| kapcsoló is használható.
+
+Az egyes alparancsokhoz saját leírás is elérhető,
+ha az alparancs után további paraméterként megadjuk a \verb|help| szót
+(vagy a \verb|-h| kapcsolót).
+Például:
+
+\begin{minted}{shell}
+git chord snapshot help
+\end{minted}
+
+Részlet a kimenetből:
+
+\begin{minted}{text}
+git chord snapshot
+
+Usage:
+  git chord snapshot [<name>]
+
+  git chord snapshot - <branch>
+
+Example:
+  git chord snapshot my-snapshots
+
+Description:
+  Creates and saves a snapshot of the entire state of [...]
+\end{minted}
+
+Ha a terminál támogatja az ANSI formázási escape szekvenciákat,
+akkor a kimenet alapértelmezetten formázva jelenik meg.
+Ez letiltható a \verb|--no-color| opció használatával.
+(Általában a logikai paraméterek esetében a \verb|--no-| prefix tiltást,
+a sima \verb|--| prefix pedig ellenkezőleg, kikényszerítést jelent.)
+További kimenet-opció a \verb|--markdown|, mely a Markdown formátumú kimenetet kapcsolja be (illetve a \verb|--no-markdown| letiltja).
+Egyes parancsok esetében lehetőség van bővebb kimenet bekapcsolására a \verb|--verbose|,
+illetve tiltására a \verb|--no-verbose| opció használatával.
+
+A \verb|--defaults| logikai opció bármely parancs esetében használható,
+ekkor a programba beépített alapértelmezett konfigurációs értékek töltődnek be.
+Számos parancsnál használható továbbá az \verb|--all| logikai opció,
+pontos jelentése azonban specifikus
+(a parancs által célzott objektumtípusból az összeset fogja használni).
+
+A műveletet végrehajtó parancsok esetén lehetőség van a várható működés szimulálására
+a művelet tényleges végrehajtása nélkül.
+Ehhez a \verb|--dryrun| kapcsolót kell megadni.
+
+A \texttt{git chord} parancsok háromféle státuszkóddal léphetnek ki:
+
+\begin{quote}
+\begin{description}
+    \item[0:] Normál futtatáskor, siker esetén.
+    \item[1:] A műveletet meghiúsító hiba esetén.
+    \item[2:] Szimulált működés esetén (\verb|--dryrun|), ha nincs hiba.
+\end{description}
+\end{quote}
 
 \subsection{Konfiguráció}
 
-Hello.
+A Git Chord működése konfigurálható értékek megadásával szabható testre.
+Minden ilyen értékhez tartozik egy konfigurációs kulcs.
+A kulcs pontokkal választott szavakból áll, például: \verb|trackers.name| .
+
+A konfiguráció több szinten kezelhető, melyek kulcsonként rendre felülírják egymást.
+A szintek a következők:
+
+\begin{description}
+    \item[Alapértelmezések:]
+        Ezek a programba beépített kezdőértékek.
+        Ha valamely konfigurációs kulcs sehol máshol nincs definiálva, az itt meghatározott érték lesz használva.
+        Példa: \verb|trackers.name main| .
+    \item[Git config:]
+        A Git rendszerben tárolt konfigurációban \verb|chord.| prefixszű kulcsokkal lehet konfigurációs értékeket definiálni a Git Chordhoz.
+        A Git saját konfigurációs mechanizmusa maga is többszintű,
+        az aktuálisan érvényes értékek lesznek használva.
+        Példa: \verb|chord.trackers.name=master| .
+    \item[Parancssori opciók:]
+        A konfiguráció egy-egy parancsnál is megadható.
+        Az opciókat \verb|--| prefix vezeti be, ezt követi a kulcs neve.
+        Az ajánlott konvenció itt a mínuszjelek használata a pont karakter helyett,
+        a normalizáció során ugyanis az előbbi az utóbbira cserélődik.
+        Nem logikai értéket váró kulcs esetén az értéket a név után új argumentumként (vagy pedig egyenlőségjellel választva) kell megadni.
+        A logikai értéket váró kulcsok esetében alapértelmezetten kényszerítés történik,
+        a \verb|--| helyett a \verb|--no-| prefixet használva pedig tiltás.
+        Ismétlődés esetén a későbbi értékadás felülírja a korábbit.
+        Példa: \verb|--trackers-name mybranch| .
+\end{description}
+
+A parancssorban néhány speciális opciót is használhatunk, melyek egyszerre több konfigurációs kulcshoz rendelnek értéket:
+
+\begin{description}
+    \item[\texttt{{-}{-}defaults}:]
+        Nem vár értéket (logikai típusú).
+        Kényszeríti az alapértelmezett értékek használatát.
+        A később következő parancssori opciók viszont felülírják az alapértelmezést.
+    \item[\texttt{{-}{-}fullstore}:]
+        Nem vár értéket (logikai típusú).
+        Az összes támogatott objektum tárolását engedélyezi, azaz teljeskörű mentést állít be.
+    \item[\texttt{{-}{-}fullstore}:]
+        Nem vár értéket (logikai típusú).
+        Az összes támogatott objektum betöltését engedélyezi, azaz teljeskörű visszaállítást állít be.
+    \item[\texttt{{-}{-}profile}:]
+        Értékként egy profil nevét várja.
+        Betölti a profilban definiált konfigurációs beállításokat.
+        Bővebben lásd: \ref{subsec:profiles}.
+\end{description}
+
+Támogatott továbbá a speciális \verb|--| argumentum, mely után opciókat már nem lehet megadni, csak egyszerű argumentumokat (például további alparancs, érték, stb.).
+
+A \verb|git chord config --default| paranccsal kilistázhatjuk az alapértelmezett konfigurációt
+(ez akkor is működik, ha nem egy repository könytára alatt vagyunk).
+A \verb|--default| opció nélkül használt \verb|git chord config| parancsokkal kezelhetjük a Git Chordnak a Git saját mechanizmusával tárolt konfigurációit
+(ez csak a repository könytára alatt működik).
+Ekkor a következő lehetőségek elérhetők:
+
+\begin{description}
+    \item[\texttt{git chord config} (vagy \texttt{git chord config list}):]
+        Listázza az aktuálisan érvényes konfiguráció kulcs-érték párjait.
+    \item[\texttt{git chord config get <key>}:]
+        Kiírja a megadott \verb|<key>| kulcshoz rendelt értéket.
+    \item[\texttt{git chord config set <key> <value>}:]
+        A megadott \verb|<key>| kulcshoz beállítja a megadott \verb|<value>| értéket.
+    \item[\texttt{git chord config reset <key>}:]
+        Törli a \verb|<key>| kulcshoz rendelt értéket (azaz megszünteti a felülírást).
+\end{description}
+
+Vegyük például a következő parancsot:
+
+\begin{minted}{shell}
+git chord config set trackers.name mybranch
+\end{minted}
+
+Ez a \verb|trackers.name| kulcshoz a \verb|mybranch| értéket fogja rendelni az aktuális repositoryban.
+Ehhez a repositoryhoz tartozó Git által kezelt konfigurációban a \verb|chord.trackers.name| kulcsot fogja használni.
+Vagyis a fenti parancs megfelel ennek:
+
+\begin{minted}{shell}
+git config set chord.trackers.name mybranch
+\end{minted}
+
+\subsection{Profilok használata} \label{subsec:profiles}
+
+A profilok konfigurációs felülírások egy halmazát nevesítik.
+Megadásuk úgy történik, hogy az adott kulcsot kiegészítjük a \verb|profile.<name>.|
+(tehát a Git konfigurációjában a \verb|chord.profile.<name>.|) prefixszel,
+ahol a \verb|<name>| helyére kerül a profil neve.
+Példa:
+
+\begin{minted}{shell}
+git chord config set profile.lorem.trackers.prefix lorem/
+git chord config set profile.lorem.trackers.name ipsum
+git chord config set profile.lorem.lightweighttags.store.enabled true
+\end{minted}
+
+Ezzel létrejön a \verb|lorem| nevű profil, mely három felülírást tartalmaz.
+A profil betöltéséhez a \verb|--profile| opciót használhatjuk,
+melynek paramétere a profil neve, ez esetben tehát \verb|lorem|.
+Például:
+
+\begin{minted}{shell}
+git chord snapshot --profile lorem
+\end{minted}{shell}
+
+A profil meghatározása után megadott egyéb opciók a sorrendnek megfelelően
+felülírják a profilban megadott értékeket
+(tehát minden esetben az adott kulcsot érintő legutolsó opció nyer).
+Egy parancson belül akár több profilt is betölthetünk,
+ezek szintén a felsorolás rendjében fogják felülírni egymás (és az egyéb értékadások) hatását.
 
 \subsection{Snapshotok helyi kezelése}
 
-Hello.
+TODO
+
+% snapshot # Creates a snapshot of the repository state
+% apply # Applies a previously saved snapshot to the repository
+% state # Shows the current state based on the configuration
+% show # Shows full data of a previously saved snapshot
+% list # Lists previously saved snapshots
+% diff # Shows diff between a previously saved snapshot and the current state
+% delete # Deletes a previously saved snapshot
 
 \subsection{Snapshotok megosztása}
 
-Hello.
+TODO
+
+% push # Pushes the default chord branch (or using (`--all`): all chord branches)
+% pull # Pulls the default chord branch (or using (`--all`): all chord branches)
 
 \subsection{Egyéb parancsok}
 
-Hello.
+TODO
 
-\section{A Git Chord webes felületének használata}
+% spec commands options # Gets special information mainly for machine processing
 
-Hello.
+\section{A webes felület használata}
+
+TODO
 
 \cleardoublepage
 
@@ -208,6 +461,49 @@ Repó felépítése:
 .2 regen.sh.
 }
 
+Használt alparancsok:
+
+git add
+git branch
+git cat-file
+git checkout
+git commit-tree
+git config
+git for-each-ref
+git hash-object
+git log
+git mktree
+git push
+git read-tree
+git rebase
+git remote
+git reset
+git rev-parse
+git show
+git show-ref
+git stash
+git symbolic-ref
+git tag
+git update-ref
+git write-tree
+
+\begin{table}[H]
+\captionsetup{justification=justified, singlelinecheck=false, margin=0.7cm}
+\begin{center}
+\begin{tabular}{|l||l|l||} 
+ \hline
+ ~ & \multicolumn{1}{c|}{\textbf{XXX}} & \multicolumn{1}{c|}{\textbf{YYY}} \\
+ \hline\hline
+ 
+ \textbf{asdf} & lorem ipsum & lorem ipsum \\
+ \textbf{fdsa} & lorem ipsum & lorem ipsum \\
+ \hline
+
+\end{tabular}
+\end{center}
+\caption{Lorem Ipsum}}
+\end{table}
+
 \subsection{A fő shell szkript felépítése}
 
 POSIX-kompatibilis
@@ -226,7 +522,7 @@ Főszkript felépítése:
     \item repófüggő alparancsok kiszolgálása
 \end{itemize}
 
-A POSIX nem tartalmazza az \texttt{mktemp} (és így \texttt{mktemp -d}) stb. parancsokat, ezért:
+A POSIX nem tartalmazza az \verb|mktemp| (és így \verb|mktemp -d|) stb. parancsokat, ezért:
 
 \begin{listing}[H]
 \begin{minted}{shell}

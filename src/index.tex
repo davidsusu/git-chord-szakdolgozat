@@ -2,7 +2,7 @@
 
 \usepackage{abstract}
 \usepackage[newfloat]{minted}
-\usepackage{dirtree}
+\usepackage{fontawesome5}
 
 \setminted{fontsize=\footnotesize}
 
@@ -416,7 +416,7 @@ git chord snapshot
 \end{minted}
 
 A fenti parancs létrehoz egy snapshotot a repository aktuális metaállapotáról.
-Ehhez a beállított speciális branchre (alapértelmezetten \verb|chord/main|) egy új commitba fog kerülni,
+Ehhez a beállított speciális branchre (alapértelmezetten \verb|chord/main|) egy új commit fog kerülni,
 ebben szerepel majd \verb|state.yaml| néven a snapshot YAML formátumú leírása.
 Egy ilyen leírás például így nézhet ki (egyszerű esetben):
 
@@ -926,28 +926,77 @@ TODO
 
 \subsection{A projekt forrásrepójának szerkezete}
 
-Repó felépítése:
+A forrásrepó főkönyvtárában az alábbiakat találjuk:
 
-\dirtree{%
-.1 git-chord/.
-.2 bin/.
-.3 git-chord.
-.2 completion/.
-.3 git-chord-completion.bashrc.
-.2 install/.
-.3 install-*.sh.
-.2 maintain/.
-.3 *.sh.
-.2 packaging/.
-.3 ,,,.
-.2 test/.
-.3 ,,,.
-.2 LICENSE.
-.2 README.md.
-.2 regen.sh.
-}
+\begin{description}
+    \item[\faFolder~bin] --
+        A fő futtatható állományok könyvtára.
+        Jelenleg egyetlen fájl található itt, a monolitikus \verb|git-chord| POSIX shell szkript.
+    \item[\faFolder~completion] --
+        Az automatikus parancskiegészítéshez kapcsolódó fájlok könyvtára.
+        Jelenleg egyetlen fájl található itt, a \verb|git-chord-completion.bashrc| Bash szkript.
+    \item[\faFolder~install] --
+        A telepítést segítő futtatható fájlokat tartalmazó könyvtár.
+    \item[\faFolder~maintain] --
+        Különféle fejlesztői segédszkripteket tartalmazó könyvtár.
+    \item[\faFolder~packaging] --
+        A csomagkezeléssel, terjesztéssel kapcsolatos fájlok találhatók itt.
+        Jelenleg csak a \verb|.deb| csomag buildelése támogatott.
+    \item[\faFolder~test] --
+        A teszteseteket, a tesztvezérlő szkripteket és a tesztfuttatási könyezeteket
+        tartalmazó könyvtár.
+    \item[\faFile~LICENSE] --
+        A licenszfájl.
+        A repó teljes tartalmára a MIT licensz vonatkozik.
+    \item[\faFile~README.md] --
+        A README fájl, ami a projekt általános leírását tartalmazza.
+        Ez egy generált fájl, nem szabad kézzel módosítani.
+    \item[\faFile~regen.sh] --
+        POSIX shell szkript, mely újrabuildeli a repó generált tartalmait.
+\end{description}
 
-Használt alparancsok:
+A \verb|regen.sh| szkript valójában a \verb|maintain/regenerate-sources.sh| szkriptet hívja meg,
+ami jelenleg egyetlen generálást futtat, mégpedig a \verb|maintain/gen-README.md.sh| fájlt.
+Utóbbi gyártja le a főkönyvtárban lévő \verb|README.md| fájl tartalmát.
+Ehhez a mellette található \verb|gen-doc-part.md.sh| fájlt hívogatja,
+mely egy-egy résztartalom (\verb|general|, \verb|help|, \verb|subcommands| stb.) legyártásáért felel.
+Az ugyyanitt lévő \verb|gen-manpage.sh| szkript szintén a \verb|gen-doc-part.md.sh| fájlt hívogatja,
+az egyes alparancsok saját help kimeneteinek lekéréséhez,
+és egy GROFF formátumú kiemenetet ad.
+Szintén itt a \verb|check-script.sh| forráskód-ellenőrzést futtat a \verb|git-chord| szkriptre
+a ShellCheck segítségével, mely egy statikus ellenőrző program POSIX shell szkriptekhez.
+
+Az \verb|install| könyvtárban néhány telepítőszkript található.
+A \verb|netinstall-user.sh| fő használati esete, ha hálózatról töltjük le;
+a repó többi részét már maga klónozza le,
+és rögtön futtatja az ugyanebben a mappában található
+\verb|install-user-bashrc-path.sh| és
+\verb|install-user-manpage.sh| szkripteket.
+Az előbbi Bash shell esetén a bashrc konvenció használatával végzi el a telepítést,
+a megfelelő helyre elhelyezve a hivatkozást a fő futtatható állományt és az automatikus parancskiegészítést.
+Az utóbbi a manuáloldalt telepíti.
+Ugyanitt található még a \verb|install-global-usrlocalbin.sh| szkript,
+ez az előbbiektől eltérően (ahol felhasználóhoz kötve történt a telepítés)
+rendszerszinten, globálisan telepíti a futtatható állományt,
+bemásolva azt a \verb|/usr/local/bin| könyvtárva;
+futtatásához értelemszerűen rendszergazdai jog szükséges.
+
+A \verb|packaging/build-all.sh| POXIS shell szkript tetszőleges számú csomagépítési mechanizmusra van felkészítve.
+A legyártott csomagok a \verb|packaging/out| könyvtárba kerülnek.
+Maguk a mechanizmusok a \verb|packaging/builders| alkönyvtáraiban foglalnak helyet,
+és egy \verb|build.sh| nevű futtatható állományt kell tartalmazniuk.
+Egyelőre csak a \verb|deb| builder lett implementálva.
+Ez létrehoz egy Debian telepítőcsomagot, melybe elhelyezi a \verb|git-chord| szkriptet,
+illetve a manuáloldalt, melyet helyben generál le a \verb|README.md| fájl alapján.
+
+A tesztesetekkel később részletesebben foglalkozom.
+
+\subsection{A fő shell szkript felépítése}
+
+POSIX-kompatibilis
+
+
+Használt git alparancsok:
 
 git add
 git branch
@@ -973,26 +1022,6 @@ git tag
 git update-ref
 git write-tree
 
-\begin{table}[H]
-\captionsetup{justification=justified, singlelinecheck=false, margin=0.7cm}
-\begin{center}
-\begin{tabular}{|l||l|l||} 
- \hline
- ~ & \multicolumn{1}{c|}{\textbf{XXX}} & \multicolumn{1}{c|}{\textbf{YYY}} \\
- \hline\hline
- 
- \textbf{asdf} & lorem ipsum & lorem ipsum \\
- \textbf{fdsa} & lorem ipsum & lorem ipsum \\
- \hline
-
-\end{tabular}
-\end{center}
-\caption{Lorem Ipsum}}
-\end{table}
-
-\subsection{A fő shell szkript felépítése}
-
-POSIX-kompatibilis
 
 Főszkript felépítése:
 

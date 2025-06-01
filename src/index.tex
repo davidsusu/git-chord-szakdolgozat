@@ -439,6 +439,19 @@ ugyanis egyúttal ez az opció határozza meg,
 hogy a Git Chord mely brancheket tekintse speciálisnak
 (azaz hagyja ki mindenképpen a mentésből).
 
+A \verb|--trackers-name| parancssori opció helyett a nevet egyszerűen plusz argumentumként is megadhatjuk:
+
+\begin{minted}{shell}
+git chord snapshot hello
+\end{minted}
+
+Ha pedig plusz argumentumként egyszerűen egy mínuszjelet írunk,
+egy további paraméterként egy teljes branchnevet adhatjuk meg (csak kivételes esetekben ajánlott):
+
+\begin{minted}{shell}
+git chord snapshot - lorem/ipsum
+\end{minted}
+
 Hogy pontosan mi kerül mentésre, azt a következő konfigurációs értékek befolyásolják közvetlenül:
 
 \begin{table}[H]
@@ -500,14 +513,45 @@ git chord snapshot --fullstore
 Vagy egy külön branchre mentve:
 
 \begin{minted}{shell}
-git chord snapshot --fullstore --trackers-name full
+git chord snapshot --fullstore full
 \end{minted}
 
+A mentett snapshotok visszaállítása az \verb|apply| alparanccsal történik.
+Kiadhatjuk például egyszerűen az alábbi parancsot:
 
+\begin{minted}{shell}
+git chord apply
+\end{minted}
 
+Ekkor szintén a \verb|trackers.prefix| és \verb|trackers.name| kulcsú konfigurációs értékek összefűzésével
+kerül meghatározásra a speciális branch,
+és ennek a branchnek az utolsó snapshot commitja kerül visszaállításra.
+Ha nincs ilyen, akkor a parancs hibával leáll.
 
+A \verb|snapshot| alparancshoz hasonlóan itt is használhatjuk a plusz argumentot a \verb|--trackers-name| helyett.
+Például:
 
+\begin{minted}{shell}
+git chord apply hello
+\end{minted}
 
+Ez alapértelmezetten a \verb|chord/hello| branchen található utolsó snapshotot tölti be.
+Ha nem a legutolsó snapshotot szeretnénk visszaállítani, akár a név megadása után, akár anélkül,
+használhatjuk a sorszám-kapcsolót, azaz egy plusz argumentumot, mely egy mínuszjellel prefixelt nem-negatív egész szám
+(a \verb|-0| jelenti a legutolsót, az \verb|-1| az utolsó előttit, és így tovább).
+Például:
+
+\begin{minted}{shell}
+git chord apply hello -3
+\end{minted}
+
+Itt is használhatjuk a mínuszjeles szintaxist, utána egy tetszőleges karakterlánc megadható,
+melyet a Git rendszer commitként azonosít.
+Az előbbi parancsnak például megfelel a következő (feltéve, hogy a \verb|trackers.prefix| alapértelmezésre van állítva):
+
+\begin{minted}{shell}
+git chord apply - chord:hello~3
+\end{minted}
 
 \begin{table}[H]
 \captionsetup{justification=justified, singlelinecheck=false}
@@ -519,23 +563,23 @@ git chord snapshot --fullstore --trackers-name full
  \multicolumn{1}{|c|}{\textbf{Leírás}} \\
  \hline\hline
  
- \texttt{branches.apply.enabled} & \texttt{true} & xxxxx \\ % Enables applying the saved state of tracked branches
- \texttt{branches.apply.regex} & \texttt{.*} & xxxxx \\ % Sets the regex pattern for applying tracked branches
- \texttt{branches.apply.allowremove} & \texttt{true} & xxxxx \\ % Allows removing branches
- \texttt{branches.apply.allowadd} & \texttt{true} & xxxxx \\ % Allows adding branches
- \texttt{annotatedtags.apply.enabled} & \texttt{true} & xxxxx \\ % Enables applying the saved state of tracked annotated tags
- \texttt{annotatedtags.apply.regex} & \texttt{.*} & xxxxx \\ % Sets the regex pattern for applying tracked annotated tags
- \texttt{annotatedtags.apply.allowremove} & \texttt{true} & xxxxx \\ % Allows removing annotated tags
- \texttt{lightweighttags.apply.enabled} & \texttt{false} & xxxxx \\ % Enables applying the saved state of tracked lightweight tags
- \texttt{lightweighttags.apply.regex} & \texttt{.*} & xxxxx \\ % Sets the regex pattern for applying tracked lightweight tags
- \texttt{lightweighttags.apply.allowremove} & \texttt{false} & xxxxx \\ % Allows removing lightweight tags
- \texttt{head.apply.enabled} & \texttt{true} & xxxxx \\ % Allows moving the HEAD
- \texttt{head.apply.sticktocommit} & \texttt{false} & xxxxx \\ % Sticks to the commit, switches to detached head if necessary
- \texttt{stagingarea.followhead} & \texttt{true} & xxxxx \\ % Make the staging area following HEAD by default
- \texttt{stagingarea.apply.enabled} & \texttt{false} & xxxxx \\ % Enables applying the saved state of the staging area
- \texttt{workingtree.followstagingarea} & \texttt{true} & xxxxx \\ % Make the working tree following the staging area by default
- \texttt{workingtree.apply.enabled} & \texttt{false} & xxxxx \\ % Enables applying the saved state of the working tree
- \texttt{fullapply} & \texttt{false} & xxxxx \\ % Forcefully enables applying all the supported objects
+ \texttt{branches.apply.enabled} & \texttt{true} & Branchek visszaállításának engedélyezése \\
+ \texttt{branches.apply.regex} & \texttt{.*} & Minta a visszaállítandó branchek szűkítéséhez \\
+ \texttt{branches.apply.allowremove} & \texttt{true} & Branchek törlésének engedélyezése \\
+ \texttt{branches.apply.allowadd} & \texttt{true} & Branchek létrehozásának engedélyezése \\
+ \texttt{annotatedtags.apply.enabled} & \texttt{true} & Annotált tagek visszaállításának engedélyezése \\
+ \texttt{annotatedtags.apply.regex} & \texttt{.*} & Minta a visszaállítandó annotált tagek szűkítéséhez \\
+ \texttt{annotatedtags.apply.allowremove} & \texttt{true} & Annotált tagek törlésének engedélyezése \\
+ \texttt{lightweighttags.apply.enabled} & \texttt{false} & Lightweight tagek visszaállításának engedélyezése \\
+ \texttt{lightweighttags.apply.regex} & \texttt{.*} & Minta a visszaállítandó lightweight tagek szűkítéséhez \\
+ \texttt{lightweighttags.apply.allowremove} & \texttt{false} & Lightweight tagek törlésének engedélyezése \\
+ \texttt{head.apply.enabled} & \texttt{true} & HEAD mutató mozgatásának engedélyezése \\
+ \texttt{head.apply.sticktocommit} & \texttt{false} & A HEAD mutató mindenképpen a commithoz ragaszkodjon \\
+ \texttt{stagingarea.followhead} & \texttt{true} & A staging area alapból a HEAD-et kövesse \\
+ \texttt{stagingarea.apply.enabled} & \texttt{false} & A staging area állapotának visszaállításának engedélyezése \\
+ \texttt{workingtree.followstagingarea} & \texttt{true} & A munkakönyvtár állapota alapból a staging area-t kövesse \\
+ \texttt{workingtree.apply.enabled} & \texttt{false} & A munkakönyvtár állapotának visszaállításának engedélyezése \\
+ \texttt{fullapply} & \texttt{false} & Minden objektum visszaállításának kényszerítése \\
 
  \hline
 
@@ -544,6 +588,9 @@ git chord snapshot --fullstore --trackers-name full
 \caption{A tárolást érintő konfigurációs kulcsok}}
 \end{table}
 
+[tagek esetében a mozgatás a törlés és létrehozás együttesét jelenti, tehát igyényli az <...>.allowremove true-ra állítását]
+
+[head.apply.sticktocommit]
 
 ...
 

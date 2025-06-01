@@ -503,6 +503,48 @@ Vagy egy külön branchre mentve:
 git chord snapshot --fullstore --trackers-name full
 \end{minted}
 
+
+
+
+
+
+
+\begin{table}[H]
+\captionsetup{justification=justified, singlelinecheck=false}
+\begin{center}
+\begin{tabular}{|l|l|>{\raggedright\arraybackslash\nohyphenation}p{5cm}|} 
+ \hline
+ \multicolumn{1}{|c}{\textbf{Kulcs}} &
+ \multicolumn{1}{|c}{\textbf{Alapérték}} &
+ \multicolumn{1}{|c|}{\textbf{Leírás}} \\
+ \hline\hline
+ 
+ \texttt{branches.apply.enabled} & \texttt{true} & xxxxx \\ % Enables applying the saved state of tracked branches
+ \texttt{branches.apply.regex} & \texttt{.*} & xxxxx \\ % Sets the regex pattern for applying tracked branches
+ \texttt{branches.apply.allowremove} & \texttt{true} & xxxxx \\ % Allows removing branches
+ \texttt{branches.apply.allowadd} & \texttt{true} & xxxxx \\ % Allows adding branches
+ \texttt{annotatedtags.apply.enabled} & \texttt{true} & xxxxx \\ % Enables applying the saved state of tracked annotated tags
+ \texttt{annotatedtags.apply.regex} & \texttt{.*} & xxxxx \\ % Sets the regex pattern for applying tracked annotated tags
+ \texttt{annotatedtags.apply.allowremove} & \texttt{true} & xxxxx \\ % Allows removing annotated tags
+ \texttt{lightweighttags.apply.enabled} & \texttt{false} & xxxxx \\ % Enables applying the saved state of tracked lightweight tags
+ \texttt{lightweighttags.apply.regex} & \texttt{.*} & xxxxx \\ % Sets the regex pattern for applying tracked lightweight tags
+ \texttt{lightweighttags.apply.allowremove} & \texttt{false} & xxxxx \\ % Allows removing lightweight tags
+ \texttt{head.apply.enabled} & \texttt{true} & xxxxx \\ % Allows moving the HEAD
+ \texttt{head.apply.sticktocommit} & \texttt{false} & xxxxx \\ % Sticks to the commit, switches to detached head if necessary
+ \texttt{stagingarea.followhead} & \texttt{true} & xxxxx \\ % Make the staging area following HEAD by default
+ \texttt{stagingarea.apply.enabled} & \texttt{false} & xxxxx \\ % Enables applying the saved state of the staging area
+ \texttt{workingtree.followstagingarea} & \texttt{true} & xxxxx \\ % Make the working tree following the staging area by default
+ \texttt{workingtree.apply.enabled} & \texttt{false} & xxxxx \\ % Enables applying the saved state of the working tree
+ \texttt{fullapply} & \texttt{false} & xxxxx \\ % Forcefully enables applying all the supported objects
+
+ \hline
+
+\end{tabular}
+\end{center}
+\caption{A tárolást érintő konfigurációs kulcsok}}
+\end{table}
+
+
 ...
 
 % apply # Applies a previously saved snapshot to the repository

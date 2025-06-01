@@ -403,17 +403,118 @@ felülírják a profilban megadott értékeket
 Egy parancson belül akár több profilt is betölthetünk,
 ezek szintén a felsorolás rendjében fogják felülírni egymás (és az egyéb értékadások) hatását.
 
-\subsection{Snapshotok helyi kezelése}
+\subsection{Snapshotok létrehozása, visszaállítása és törlése}
 
-TODO
+A repó metaállapotáról a \verb|git chord snapshot| alparanccsal lehet snapshotot készíteni.
+Például:
 
-% snapshot # Creates a snapshot of the repository state
+\begin{minted}{shell}
+git chord snapshot
+\end{minted}
+
+A fenti parancs létrehoz egy snapshotot a repository aktuális metaállapotáról.
+Ehhez a beállított speciális branchre (alapértelmezetten \verb|chord/main|) egy új commitba fog kerül,
+ebben szerepel majd \verb|state.yaml| néven a snapshot YAML formátumú leírása.
+Egy ilyen leírás például így nézhet ki (egyszerű esetben):
+
+\begin{minted}{yaml}
+timestamp: '2025-06-01T14:14:54Z'
+branches:
+    'main': '233f62b1bfbb0cbc401e1f8e497985c8cd614b7c'
+annotatedTags: {}
+head:
+    pointingTo: 'main'
+    ref: 'main'
+    commitId: '233f62b1bfbb0cbc401e1f8e497985c8cd614b7c'
+\end{minted}
+
+A hivatkozott commitok (valamint a hivatkozott tree objektumokhoz automatikusan létrehozott commitok)
+bekerülnek a snapshot commit szülő-commitjai közé.
+Ez biztosítja (a Git hivatkozási szisztémáján keresztül),
+hogy pusztán ennek a commitnak a hordozásával annak minden függősége is átadódik.
+
+A speciális branch a \verb|trackers.prefix| és \verb|trackers.name| kulcsú konfigurációs értékek összefűzésével kerül meghatározásra.
+A \verb|trackers.prefix| módosítása csak körültekintés mellett ajánlott,
+ugyanis egyúttal ez az opció határozza meg,
+hogy a Git Chord mely brancheket tekintse speciálisnak
+(azaz hagyja ki mindenképpen a mentésből).
+
+Hogy pontosan mi kerül mentésre, azt a következő konfigurációs értékek befolyásolják közvetlenül:
+
+\begin{table}[H]
+\captionsetup{justification=justified, singlelinecheck=false}
+\begin{center}
+\begin{tabular}{|l|l|>{\raggedright\arraybackslash\nohyphenation}p{5cm}|} 
+ \hline
+ \multicolumn{1}{|c}{\textbf{Kulcs}} &
+ \multicolumn{1}{|c}{\textbf{Alapérték}} &
+ \multicolumn{1}{|c|}{\textbf{Leírás}} \\
+ \hline\hline
+ 
+ \texttt{branches.store.enabled} & \texttt{true} & Branchek mentésének engedélyezése \vspace{0.5em} \\
+ \texttt{branches.store.regex} & \texttt{.*} & Minta a mentendő branchek szűkítéséhez \vspace{0.5em} \\
+ \texttt{annotatedtags.store.enabled} & \texttt{true} & Annotált tagek mentésének engedélyezése \vspace{0.5em} \\
+ \texttt{annotatedtags.store.regex} & \texttt{.*} & Minta a mentendő annotált tagek szűkítéséhez \vspace{0.5em} \\
+ \texttt{lightweighttags.store.enabled} & \texttt{false} & Lightweight tagek mentésének engedélyezése \vspace{0.5em} \\
+ \texttt{lightweighttags.store.regex} & \texttt{.*} & Minta a mentendő lightweight tagek szűkítéséhez \vspace{0.5em} \\
+ \texttt{head.store.enabled} & \texttt{true} & HEAD mutató mentésének engedélyezése \vspace{0.5em} \\
+ \texttt{stagingarea.store.enabled} & \texttt{false} & A staging area mentésének engedélyezése \vspace{0.5em} \\
+ \texttt{workingtree.store.enabled} & \texttt{false} & A munkakönyvtár állapota mentésének engedélyezése \vspace{0.5em} \\
+ \texttt{fullstore} & \texttt{false} & Minden objektum mentésének kényszerítése \\
+ 
+ \hline
+
+\end{tabular}
+\end{center}
+\caption{A tárolást érintő konfigurációs kulcsok}}
+\end{table}
+
+Láthatjuk, hogy alapértelmezetten minden branch mentésre kerül,
+és ez finomítható a szűrést megadó reguláris kifejezés módosításával.
+Lényeges, hogy az annotált és lightweight tagek kezelése egymástól független.
+
+A \verb|fullstore| rendesen csak ad hoc parancssori opcióként használatos,
+és felülírja a táblázatban fölötte szereplő összes értéket a már ismertett módon.
+A logikai értékeket mind \verb|true|-ra,
+a \verb|.regex| végződésű kulcsok étékeit pedig \verb|.*|-ra állítja.
+
+A következő parancs például pluszban menteni fogja az \verb|a| betűvel kezdődő lightweight tageket,
+valamint a staging area állapotát:
+
+\begin{minted}{shell}
+git chord snapshot --lightweighttags-store-enabled true --lightweighttags-store-regex 'a.*' --stagingarea-store-enabled
+\end{minted}
+
+(Megjegyzés: az \verb|--all| opció nem helyettesíti a \verb|--fullstore| opciót.
+Az \verb|--all| akkor használható, amikor egyértelmű a parancs által célzott objektumtípus,
+abból összes kerül majd kiválasztásra
+(például listázáskor az összes branch).)
+
+Tehát ha hirtelen egy teljes mentést szeretnénk készíteni a konfigurácó állapotától függetlenül,
+a következő paranccsal egyszerűen megtehetjük:
+
+\begin{minted}{shell}
+git chord snapshot --fullstore
+\end{minted}
+
+Vagy egy külön branchre mentve:
+
+\begin{minted}{shell}
+git chord snapshot --fullstore --trackers-name full
+\end{minted}
+
+...
+
 % apply # Applies a previously saved snapshot to the repository
-% state # Shows the current state based on the configuration
+% delete # Deletes a previously saved snapshot
+
+\subsection{Snapshotok böngészése}
+
 % show # Shows full data of a previously saved snapshot
 % list # Lists previously saved snapshots
 % diff # Shows diff between a previously saved snapshot and the current state
-% delete # Deletes a previously saved snapshot
+
+% state # Shows the current state based on the configuration
 
 \subsection{Snapshotok megosztása}
 

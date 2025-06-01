@@ -829,12 +829,31 @@ mechanizmusain keresztül is viszonylag egyszerűen megoszthatók.
 A teljesség kedvéért a Git Chord maga is támogatást nyújt ezekhez a műveletekhez.
 Kezdő felhasználók számára mindenképpen inkább ezek a használata ajánlott.
 
-A \verb|push| alparanccsal ...
+A remote repository a \verb|trackers.remotes.default| opción keresztül állítható be.
+A \verb|trackers.remotes.allowautoassociate| opció engedélyezi a remote beállítások automatikus
+létrehozását a helyi repositoryban (alapértelmezetten engedélyezve van).
+Ekkor szükség esetén létrejön a megfelelő remote branch a beállított remote repositoryhoz rendelve.
 
-TODO
+A \verb|push| alparanccsal kiküldhetjük a snapshotokat a remote repositoryba:
 
-% push # Pushes the default chord branch (or using (`--all`): all chord branches)
-% pull # Pulls the default chord branch (or using (`--all`): all chord branches)
+\begin{minted}{shell}
+git chord push
+\end{minted}
+
+Ekkor az alapértelmezett speciális branch kerül pusholásra.
+A Git Chord által kezelt összes speciális branch pusholásához
+az \verb|--all| opciót kell megadni:
+
+\begin{minted}{shell}
+git chord push --all
+\end{minted}
+
+[TODO: pull alapinfó]
+
+Pullozáskor csak a snapshotok mentődnek le a helyi repositoryba,
+semmilyen visszaállítás nem történik.
+
+[TODO pull használata]
 
 \subsection{Egyéb parancsok}
 

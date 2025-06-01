@@ -271,6 +271,9 @@ További kimenet-opció a \verb|--markdown|, mely a Markdown formátumú kimenet
 Egyes parancsok esetében lehetőség van bővebb kimenet bekapcsolására a \verb|--verbose|,
 illetve tiltására a \verb|--no-verbose| opció használatával.
 
+A normál kimenetek a standard kimenetre ($1$) kerülnek nyomtatásra,
+míg a hibaüzenetek a hibakimenetre ($2$).
+
 A \verb|--defaults| logikai opció bármely parancs esetében használható,
 ekkor a programba beépített alapértelmezett konfigurációs értékek töltődnek be.
 Számos parancsnál használható továbbá az \verb|--all| logikai opció,
@@ -413,7 +416,7 @@ git chord snapshot
 \end{minted}
 
 A fenti parancs létrehoz egy snapshotot a repository aktuális metaállapotáról.
-Ehhez a beállított speciális branchre (alapértelmezetten \verb|chord/main|) egy új commitba fog kerül,
+Ehhez a beállított speciális branchre (alapértelmezetten \verb|chord/main|) egy új commitba fog kerülni,
 ebben szerepel majd \verb|state.yaml| néven a snapshot YAML formátumú leírása.
 Egy ilyen leírás például így nézhet ki (egyszerű esetben):
 
@@ -428,18 +431,31 @@ head:
     commitId: '233f62b1bfbb0cbc401e1f8e497985c8cd614b7c'
 \end{minted}
 
+A leírásba az a minimális tartalom kerül, ami szükséges az állapot visszaállításához,
+kiegészítve a snapshot létrehozásának dátumával.
+A leírás szabványos YAML, tehát bármilyen ezzel kompatibilis
+külső eszközzel is olvasható, feldolgozható.
+Azonban a Git Chord a YAML formátumnak egy résznyelvét használja,
+és a visszaállításkor is erre a résznyelvre számít.
+Emiatt snapshotok kézzel vagy külső eszközzel történő létrehozása
+a Git Chord belső működésének tanulmányozása nélkül nem ajánlott.
+
 A hivatkozott commitok (valamint a hivatkozott tree objektumokhoz automatikusan létrehozott commitok)
 bekerülnek a snapshot commit szülő-commitjai közé.
 Ez biztosítja (a Git hivatkozási szisztémáján keresztül),
 hogy pusztán ennek a commitnak a hordozásával annak minden függősége is átadódik.
+A snapshot commit first-parent commitja mindig a speciális branchen már meglévő utolsó commit.
 
 A speciális branch a \verb|trackers.prefix| és \verb|trackers.name| kulcsú konfigurációs értékek összefűzésével kerül meghatározásra.
 A \verb|trackers.prefix| módosítása csak körültekintés mellett ajánlott,
 ugyanis egyúttal ez az opció határozza meg,
 hogy a Git Chord mely brancheket tekintse speciálisnak
 (azaz hagyja ki mindenképpen a mentésből).
+Ha a branch még nem létezik, akkor előbb létrehozásra kerül,
+mégpedig egy üres tartalmú inicializáló orphan committal együtt,
+ez lesz a snapshot first-parent commitja.
 
-A \verb|--trackers-name| parancssori opció helyett a nevet egyszerűen plusz argumentumként is megadhatjuk:
+A \verb|--trackers-name| parancssori opció helyett a nevet egyszerűen plusz normál argumentumként is megadhatjuk:
 
 \begin{minted}{shell}
 git chord snapshot hello
@@ -452,34 +468,36 @@ egy további paraméterként egy teljes branchnevet adhatjuk meg (csak kivétele
 git chord snapshot - lorem/ipsum
 \end{minted}
 
-Hogy pontosan mi kerül mentésre, azt a következő konfigurációs értékek befolyásolják közvetlenül:
+Hogy pontosan mi kerül mentésre, azt a \ref{tab:store-config-keys} táblázatban felsorolt
+konfigurációs értékek befolyásolják közvetlenül.
 
-\begin{table}[H]
+\begin{table}[h]
 \captionsetup{justification=justified, singlelinecheck=false}
 \begin{center}
-\begin{tabular}{|l|l|>{\raggedright\arraybackslash\nohyphenation}p{5cm}|} 
+\begin{tabular}{|l|l|p{5cm}|} 
  \hline
  \multicolumn{1}{|c}{\textbf{Kulcs}} &
  \multicolumn{1}{|c}{\textbf{Alapérték}} &
  \multicolumn{1}{|c|}{\textbf{Leírás}} \\
  \hline\hline
  
- \texttt{branches.store.enabled} & \texttt{true} & Branchek mentésének engedélyezése \vspace{0.5em} \\
- \texttt{branches.store.regex} & \texttt{.*} & Minta a mentendő branchek szűkítéséhez \vspace{0.5em} \\
- \texttt{annotatedtags.store.enabled} & \texttt{true} & Annotált tagek mentésének engedélyezése \vspace{0.5em} \\
- \texttt{annotatedtags.store.regex} & \texttt{.*} & Minta a mentendő annotált tagek szűkítéséhez \vspace{0.5em} \\
- \texttt{lightweighttags.store.enabled} & \texttt{false} & Lightweight tagek mentésének engedélyezése \vspace{0.5em} \\
- \texttt{lightweighttags.store.regex} & \texttt{.*} & Minta a mentendő lightweight tagek szűkítéséhez \vspace{0.5em} \\
- \texttt{head.store.enabled} & \texttt{true} & HEAD mutató mentésének engedélyezése \vspace{0.5em} \\
- \texttt{stagingarea.store.enabled} & \texttt{false} & A staging area mentésének engedélyezése \vspace{0.5em} \\
- \texttt{workingtree.store.enabled} & \texttt{false} & A munkakönyvtár állapota mentésének engedélyezése \vspace{0.5em} \\
+ \texttt{branches.store.enabled} & \texttt{true} & Branchek mentésének engedélyezése\vspace{0.5em} \\
+ \texttt{branches.store.regex} & \texttt{.*} & Minta a mentendő branchek szűkítéséhez\vspace{0.5em} \\
+ \texttt{annotatedtags.store.enabled} & \texttt{true} & Annotált tagek mentésének engedélyezése\vspace{0.5em} \\
+ \texttt{annotatedtags.store.regex} & \texttt{.*} & Minta a mentendő annotált tagek szűkítéséhez\vspace{0.5em} \\
+ \texttt{lightweighttags.store.enabled} & \texttt{false} & Lightweight tagek mentésének engedélyezése\vspace{0.5em} \\
+ \texttt{lightweighttags.store.regex} & \texttt{.*} & Minta a mentendő lightweight tagek szűkítéséhez\vspace{0.5em} \\
+ \texttt{head.store.enabled} & \texttt{true} & HEAD mutató mentésének engedélyezése\vspace{0.5em} \\
+ \texttt{stagingarea.store.enabled} & \texttt{false} & A staging area mentésének engedélyezése\vspace{0.5em} \\
+ \texttt{workingtree.store.enabled} & \texttt{false} & A munkakönyvtár állapota mentésének engedélyezése\vspace{0.5em} \\
  \texttt{fullstore} & \texttt{false} & Minden objektum mentésének kényszerítése \\
  
  \hline
 
 \end{tabular}
 \end{center}
-\caption{A tárolást érintő konfigurációs kulcsok}}
+\caption{A tárolást érintő konfigurációs kulcsok}
+\label{tab:store-config-keys}
 \end{table}
 
 Láthatjuk, hogy alapértelmezetten minden branch mentésre kerül,
@@ -528,7 +546,7 @@ kerül meghatározásra a speciális branch,
 és ennek a branchnek az utolsó snapshot commitja kerül visszaállításra.
 Ha nincs ilyen, akkor a parancs hibával leáll.
 
-A \verb|snapshot| alparancshoz hasonlóan itt is használhatjuk a plusz argumentot a \verb|--trackers-name| helyett.
+A \verb|snapshot| alparancshoz hasonlóan itt is használhatjuk plusz normál argumentot a \verb|--trackers-name| helyett.
 Például:
 
 \begin{minted}{shell}
@@ -553,59 +571,265 @@ Az előbbi parancsnak például megfelel a következő (feltéve, hogy a \verb|t
 git chord apply - chord/hello~3
 \end{minted}
 
-\begin{table}[H]
+A \ref{tab:apply-config-keys} táblázat részletezi a visszaállítás tartalmát érintő konfigurációs kulcsokat.
+
+\begin{table}[h]
 \captionsetup{justification=justified, singlelinecheck=false}
 \begin{center}
-\begin{tabular}{|l|l|>{\raggedright\arraybackslash\nohyphenation}p{5cm}|} 
+\begin{tabular}{|l|l|p{5cm}|} 
  \hline
  \multicolumn{1}{|c}{\textbf{Kulcs}} &
  \multicolumn{1}{|c}{\textbf{Alapérték}} &
  \multicolumn{1}{|c|}{\textbf{Leírás}} \\
  \hline\hline
  
- \texttt{branches.apply.enabled} & \texttt{true} & Branchek visszaállításának engedélyezése \vspace{0.5em} \\
- \texttt{branches.apply.regex} & \texttt{.*} & Minta a visszaállítandó branchek szűkítéséhez \vspace{0.5em} \\
- \texttt{branches.apply.allowremove} & \texttt{true} & Branchek törlésének engedélyezése \vspace{0.5em} \\
- \texttt{branches.apply.allowadd} & \texttt{true} & Branchek létrehozásának engedélyezése \vspace{0.5em} \\
- \texttt{annotatedtags.apply.enabled} & \texttt{true} & Annotált tagek visszaállításának engedélyezése \vspace{0.5em} \\
+ \texttt{branches.apply.enabled} & \texttt{true} & Branchek visszaállításának engedélyezése\vspace{0.5em} \\
+ \texttt{branches.apply.regex} & \texttt{.*} & Minta a visszaállítandó branchek szűkítéséhez\vspace{0.5em} \\
+ \texttt{branches.apply.allowremove} & \texttt{true} & Branchek törlésének engedélyezése\vspace{0.5em} \\
+ \texttt{branches.apply.allowadd} & \texttt{true} & Branchek létrehozásának engedélyezése\vspace{0.5em} \\
+ \texttt{annotatedtags.apply.enabled} & \texttt{true} & Annotált tagek visszaállításának engedélyezése\vspace{0.5em} \\
  \texttt{annotatedtags.apply.regex} & \texttt{.*} & Minta a visszaállítandó annotált tagek szűkítéséhez\vspace{0.5em} \\
- \texttt{annotatedtags.apply.allowremove} & \texttt{true} & Annotált tagek törlésének engedélyezése \vspace{0.5em} \\
- \texttt{lightweighttags.apply.enabled} & \texttt{false} & Lightweight tagek visszaállításának engedélyezése \vspace{0.5em} \\
- \texttt{lightweighttags.apply.regex} & \texttt{.*} & Minta a visszaállítandó lightweight tagek szűkítéséhez \vspace{0.5em} \\
- \texttt{lightweighttags.apply.allowremove} & \texttt{false} & Lightweight tagek törlésének engedélyezése \vspace{0.5em} \\
- \texttt{head.apply.enabled} & \texttt{true} & HEAD mutató mozgatásának engedélyezése \vspace{0.5em} \\
- \texttt{head.apply.sticktocommit} & \texttt{false} & A HEAD mutató mindenképpen a commithoz ragaszkodjon \vspace{0.5em} \\
- \texttt{stagingarea.followhead} & \texttt{true} & A staging area alapból a HEAD-et kövesse \vspace{0.5em} \\
- \texttt{stagingarea.apply.enabled} & \texttt{false} & A staging area állapotának visszaállításának engedélyezése \vspace{0.5em} \\
- \texttt{workingtree.followstagingarea} & \texttt{true} & A munkakönyvtár állapota alapból a staging area-t kövesse \vspace{0.5em} \\
- \texttt{workingtree.apply.enabled} & \texttt{false} & A munkakönyvtár állapotának visszaállításának engedélyezése \vspace{0.5em} \\
+ \texttt{annotatedtags.apply.allowremove} & \texttt{true} & Annotált tagek törlésének engedélyezése\vspace{0.5em} \\
+ \texttt{lightweighttags.apply.enabled} & \texttt{false} & Lightweight tagek visszaállításának engedélyezése\vspace{0.5em} \\
+ \texttt{lightweighttags.apply.regex} & \texttt{.*} & Minta a visszaállítandó lightweight tagek szűkítéséhez\vspace{0.5em} \\
+ \texttt{lightweighttags.apply.allowremove} & \texttt{false} & Lightweight tagek törlésének engedélyezése\vspace{0.5em} \\
+ \texttt{head.apply.enabled} & \texttt{true} & HEAD mutató mozgatásának engedélyezése\vspace{0.5em} \\
+ \texttt{head.apply.sticktocommit} & \texttt{false} & A HEAD mutató mindenképpen a commithoz ragaszkodjon\vspace{0.5em} \\
+ \texttt{stagingarea.followhead} & \texttt{true} & A staging area alapból a HEAD-et kövesse\vspace{0.5em} \\
+ \texttt{stagingarea.apply.enabled} & \texttt{false} & A staging area állapotának visszaállításának engedélyezése\vspace{0.5em} \\
+ \texttt{workingtree.followstagingarea} & \texttt{true} & A munkakönyvtár állapota alapból a staging area-t kövesse\vspace{0.5em} \\
+ \texttt{workingtree.apply.enabled} & \texttt{false} & A munkakönyvtár állapotának visszaállításának engedélyezése\vspace{0.5em} \\
  \texttt{fullapply} & \texttt{false} & Minden objektum visszaállításának kényszerítése \\
 
  \hline
 
 \end{tabular}
 \end{center}
-\caption{A tárolást érintő konfigurációs kulcsok}}
+\caption{A tárolást érintő konfigurációs kulcsok}
+\label{tab:apply-config-keys}
 \end{table}
 
-[tagek esetében a mozgatás a törlés és létrehozás együttesét jelenti, tehát igyényli az <...>.allowremove true-ra állítását]
+Az \verb|apply| tokent tartalmazó kulcsokhoz tartozó alapértelmezett értékek
+rendre megegyeznek a fentebb a \verb|store| tokent tartalmazó megfelelő kulcsok alapértelmezéseivel.
+Ez azonban nem szükségszerű.
+Ha a snapshotban szerepelnek olyan objektumok, amelyek visszaállítása nincs engedélyezve,
+azok egyszerűen figyelmen kívül lesznek hagyva.
+Ha azonban a snapshotban bizonyos objektumok nem szerepelnek,
+de a repository aktuális állapotában igen,
+és a visszaállítás vonatkozik rájuk,
+akkor a megfelelő \verb|.allowremove| végződésű beállítás bekapcsolása esetén ezek törölve lesznek.
 
-[head.apply.sticktocommit]
+Ha a snapshotból olyan objektum érkezik, melynek neve egyezik a repository állapotában található más típusú objektummal,
+akkor a Git Chord először megpróbálja törölni az aktuális objektumok,
+feltéve, hogy ez engedélyezve van.
+A Git rendszerben a tagek immutábilis objektumok.
+Ezért a Git Chord ezek módosítását egy törlés és egy létrehozás szekvenciájaként értelmezi,
+vagyis, a branchekkel ellentétben,
+a tagek módosítááshoz a törlés engedélezése is szükséges.
 
-...
+A \verb|head.apply.sticktocommit| beállítás akkor válik érdekessé,
+ha a HEAD mutató szerepel a snapshotban, és egy branchre mutat,
+azonban ez a branch nincs mentve a snapshotva.
+Ilyenkor természetesen könnyen előfordulhat, hogy a branch elmozdult ahhoz az állapothoz képest,
+ahol a snapshot létrehozásakor volt.
+A YAML-fájlban ilyenkor a HEAD-hez a branch és a hozzá tartozó commit azonosítója is szerepel
+(persze detached head is menthető, ekkor a branchnév hiányozni fog).
+A visszaállítás folyamatában ez esetben a következő dilemma lép föl:
+a HEAD mutatót a branchre kell visszaállítani, függetlenül attól, hogy az már elmoudult,
+vagy pedig mindenképp az eredeti commitra kell mutasson?
+Az alapértelmezett működés, hogy a HEAD mutató a branchre lesz állítva.
+A \verb|head.apply.sticktocommit| engedélyezésével azonban más szabály lép érvénybe,
+és a HEAD mutató detached head állapotba kerülve közvetlenül az eredeti commitra fog mutatni.
+Ez az opció jól jönn akkor, ha semmiképp nem akarjuk,
+hogy a HEAD mutató elvándoroljon ahhoz képest, ahogy lementettük.
 
-% apply # Applies a previously saved snapshot to the repository
-% delete # Deletes a previously saved snapshot
+A \verb|stagingarea.followhead| engedélyezése biztosítja,
+hogy a staging area alapértelmezetten kövesse a HEAD-et, akkor is, ha nem szerepel a snapshotban.
+Ez természetes módon igazodik a Git rendszer saját működéséhez,
+ugyanakkor olyasmit is változtat a repository állapotán, ami nem volt mentve a snapshotba.
+Ha a staging are jelenleg nem mozgatható (például nem tiszta),
+akkor a művelet hibával végződik.
+
+A \verb|workingtree.followstagingarea| engedélyezése, az előzőhöz hasonlóan,
+azt biztosítja, hogy a munakönyvtár állapota kövesse a staging area állapotát.
+Ha a munkakönyvtárban indexeletlen módosítások vannak,
+a művelet hibával végződik.
+
+A snapshotokat utólag törölhetjük is, erre szolgál a \verb|delete| alparancs.
+A parancs szitaxisa teljesen megegyezik az \verb|apply| alparancsnál látottakkal,
+ugyanúgy kiadhatjuk például további argumentumok nélkül is:
+
+\begin{minted}{shell}
+git chord delete
+\end{minted}
+
+Ekkor az előre beállított speciális branch utolsó snapshot commitja fog törlődni.
+Illetve ugyanúgy használhatjuk a plusz paramétereket is, például:
+
+\begin{minted}{shell}
+git chord delete hello -4
+\end{minted}
+
+Vagy:
+
+\begin{minted}{shell}
+git chord delete - chord/hello~4
+\end{minted}
+
+Ha a mínusz argumentumot használjuk, tetszőleges commitot megcímezhetünk.
+Ekkor azonba a Git Chord előbb ellenőrzi,
+hogy a megadott commit valóban egy metasnapshot-e,
+ellenkező esetben a törlés hibával meghiúsul.
+
+A törléskor a snapshot commit kifűzésre kerül a commitok láncolatából.
+Ha ez volt az egyetlen commit, akkor a speciális branch törlődik.
+Ha ez volt a legutóbbi commit, akkor a branch mutatója átállításra kerül
+a törlendő commit first-parent commitjára.
+Egyéb esetben a későbbi commitok átírására van szükség,
+ami úgy történik, hogy a másolatokban a first-parent azonosító kerül lecserélésre,
+először a törölt commitéra, majd mindig az előzőleg létrehozott másolatéra;
+végül a speciális branch mutatója az utolsó másolt commitra kerül áthelyezésre.
+Hasonló eredmény egyszerűbb esetekben egy megfelelően paraméterezett \verb|git rebase|
+paranccsal is elérhető,
+de ez nem ajánlott, különös tekintettel a sok szülő-commitra.
+
+A Git rendszer szemszögéből a Git Chord speciális branchei is csak szokványos branchek.
+A törölt állapotok és a speciális branchek régebbi állapotának visszahozása
+még a törlés után is lehetséges a \verb|git reflog| használatával,
+ha nem történt még olyan tisztítás a repository objektumai között,
+ami ezek tartalmait végleg törölte volna.
 
 \subsection{Snapshotok böngészése}
 
-% show # Shows full data of a previously saved snapshot
-% list # Lists previously saved snapshots
-% diff # Shows diff between a previously saved snapshot and the current state
+A mentett snapshotok tartalma megtekinthető a \verb|show| alparanccsal.
+Ennek szintaxisa teljesen egyezik a \verb|apply| és \verb|delete| alaprancsoknál látottal.
+Ha további argumentumok nélkül adjuk ki, akkor az előre beállított speciális branch
+utolsó snapshot commitját fogja megmutatni:
 
-% state # Shows the current state based on the configuration
+\begin{minted}{shell}
+git chord show
+\end{minted}
+
+Vagy további argumentumokkal valamely másik snapshotét:
+
+\begin{minted}{shell}
+git chord show hello -2
+\end{minted}
+
+Ha nem hasznljuk a \verb|--verbose| opciót, akkor egyszerűen a YAML-fájl tartalma íródik ki.
+
+Az eddig mentett összes snapshot listáját megkaphatjuk a \verb|list| alparanccsal:
+
+\begin{minted}{shell}
+git chord list
+\end{minted}
+
+Ennek lehetséges kimenete (egyetlen mentett snapshot esetén):
+
+\begin{minted}{text}
+0ebb7da (chord/main) Chord repository state at 2025-06-01T14:14:54Z
+\end{minted}
+
+A snapshotok időbeli sorrendben listázódnak, a legújabbtól a legrégebbiig.
+
+Használhatjuk (egymástól függetlenül) a névmegadás és a sorszám lehetőségét is:
+
+\begin{minted}{shell}
+git chord list hello -4
+\end{minted}
+
+Ha sorszámot is megadunk, akkor csak az annak megfelelő snapshot és az annál régebbiek listázódnak.
+
+Ha megadjuk az \verb|--all| opciót, akkor egymás után minden speciális branch külön listázásra kerül.
+
+A \verb|state| alparanccsal a repository aktuális állapotát írhatjuk ki:
+
+\begin{minted}{shell}
+git chord state
+\end{minted}
+
+Azt a YAML tartalmat fogja kiírni, ami mentésre kerülne, ha most adnánk ki a \verb|snapshot| alparancsot.
+
+A \verb|diff| alparanccsal két mentett snapshotot hasonlíthatunk össze,
+vagy pedig az aktuális állapotot egy snapshottal.
+Előbbihez két snapshotot, utóbbihoz értelemszerűen csak egyet kell megadni.
+Ha nem adunk meg egyetlen az összehasonlítandó snapshotot sem,
+akkor az aktuális állapotot lesz összehasonlítva a legutóbbi snapshottal.
+
+Az alparancs szintaxisa hasonló, mint amit az \verb|apply|, \verb|delete| és \verb|show|
+esetében láthattunk,
+azzal a különbséggel, hogy egy második snapshot is megadható.
+A \ref{tab:diff-commands} táblázat mutat néhány példát a paraméterek használatára.
+
+\begin{table}[h]
+\captionsetup{justification=justified, singlelinecheck=false}
+\begin{center}
+\begin{tabular}{|l|c|c|} 
+ \hline
+ \multicolumn{1}{|c}{\textbf{Diff parancs}} &
+ \multicolumn{1}{|c}{\textbf{A}} &
+ \multicolumn{1}{|c|}{\textbf{B}} \\
+ \hline\hline
+ 
+ \texttt{git chord diff} & \texttt{chord/main} & \textit{aktuális} \\
+ \texttt{git chord diff -2} & \texttt{chord/main\~{}2} & \textit{aktuális} \\
+ \texttt{git chord diff hello -2} & \texttt{chord/hello~{}2} & \textit{aktuális} \\
+ \texttt{git chord diff hello -2 -3} & \texttt{chord/hello\~{}2} & \texttt{chord/hello\~{}3} \\
+ \texttt{git chord diff lorem ipsum} & \texttt{chord/lorem} & \texttt{chord/ipsum} \\
+ \texttt{git chord diff lorem -2 ipsum} & \texttt{chord/lorem\~{}2} & \texttt{chord/ipsum} \\
+ \texttt{git chord diff lorem -ipsum -3} & \texttt{chord/lorem} & \texttt{chord/ipsum\~{}3} \\
+ \texttt{git chord diff lorem -2 ipsum -3} & \texttt{chord/lorem\~{}2} & \texttt{chord/ipsum\~{}3} \\
+ \texttt{git chord diff - chord/hello\~{}3} & \texttt{chord/hello\~{}3} & \textit{aktuális} \\
+ \texttt{git chord diff - chord/lorem chord/ipsum} & \texttt{chord/lorem} & \texttt{chord/ipsum} \\
+ 
+ \hline
+ 
+\end{tabular}
+\end{center}
+\caption{Snapshotokat összehasonlító parancsok jelentése}
+\label{tab:diff-commands}
+\end{table}
+
+Alapból a Git alapértelmezett \verb|diff| algoritmusának kimenete lesz megjelenítve a két YAML tartalomra:
+
+\begin{minted}{text}
+--- /tmp/git-chord.255120140/state1.yaml	2025-06-01 22:42:42.252497000 +0200
++++ /tmp/git-chord.255120140/state2.yaml	2025-06-01 22:42:42.252497000 +0200
+@@ -1,8 +1,8 @@
+-timestamp: '2025-06-01T14:14:54Z'
++timestamp: '2025-06-01T20:42:42Z'
+ branches:
+-    'main': '233f62b1bfbb0cbc401e1f8e497985c8cd614b7c'
++    'main': 'bb76ba05fd5b141cdfe2706523ccae483d4a4cad'
+ annotatedTags: {}
+ head:
+     pointingTo: 'main'
+     ref: 'main'
+-    commitId: '233f62b1bfbb0cbc401e1f8e497985c8cd614b7c'
++    commitId: 'bb76ba05fd5b141cdfe2706523ccae483d4a4cad'
+\end{minted}
+
+A \verb|--verbose| opció használatával egy szövegesen megmagyarázott kimenetet kapunk, például:
+
+\begin{minted}{text}
+Diff between 'chord/main' and the current state
+
+Branches
+   * Branch changed: main, from 233f62b1bfbb0cbc401e1f8e497985c8cd614b7c to bb76ba05fd5b141cdfe2706523ccae483d4a4cad
+
+HEAD
+   * HEAD changed, from main (233f62b1bfbb0cbc401e1f8e497985c8cd614b7c) to main (bb76ba05fd5b141cdfe2706523ccae483d4a4cad)
+\end{minted}
 
 \subsection{Snapshotok megosztása}
+
+A Git Chord által mentett snapshotok a Git rendszer saját \verb|push| és \verb|fetch|
+mechanizmusain keresztül is viszonylag egyszerűen megoszthatók.
+
+A teljesség kedvéért a Git Chord maga is támogatást nyújt ezekhez a műveletekhez.
+Kezdő felhasználók számára mindenképpen inkább ezek a használata ajánlott.
+
+A \verb|push| alparanccsal ...
 
 TODO
 
@@ -614,9 +838,43 @@ TODO
 
 \subsection{Egyéb parancsok}
 
-TODO
+A parancssori felület egyes funkciói gépi feldolgozásra lettek létrehozva.
+Ezek a funkciók a \verb|spec| alparancson, annak további alparancsain keresztül érhetők el.
+A \verb|commands| alparancs mutatja az elérhető parancsokat:
 
-% spec commands options # Gets special information mainly for machine processing
+\begin{minted}{shell}
+git chord spec commands
+\end{minted}
+
+Ennek kimenete jelenleg:
+
+\begin{minted}{text}
+help
+version
+config list get set reset
+snapshot
+apply
+state
+show
+list
+diff
+delete
+push
+pull
+spec commands options
+\end{minted}
+
+A parancslista kétszintű
+Az elő oszlop a legfelsőbb szintű alparancsokat tartalmazza.
+Egy-egy sorban a további szavak ennek a további alparancsai.
+
+Az \verb|options| alparancs pedig az összes elérhető parancssori opciót listázza:
+
+\begin{minted}{shell}
+git chord spec options
+\end{minted}
+
+Interaktív terminálban ezeket a parancsokat használja az automatikus parancskiegészítés szkriptje is.
 
 \section{A webes felület használata}
 

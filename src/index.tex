@@ -850,10 +850,29 @@ git chord push --all
 
 [TODO: pull alapinfó]
 
+A Git Chord \verb|pull| alparancsa a háttérben a Git rendzser \verb|pull| parancsát hívja meg,
+és annak alapértelmezéseit használja.
+Tehát először egy \verb|fetch| műveletet hajt végre a remote branchre,
+majd alaprtelmezésben egy \verb|rebase| művelettel applikálja azt a Git Chord által kezelt branchre.
+
 Pullozáskor csak a snapshotok mentődnek le a helyi repositoryba,
 semmilyen visszaállítás nem történik.
 
-[TODO pull használata]
+A \verb|pull| alparancs használata hasonló a \verb|push|-éhoz.
+Kiadhatjuk további paraméterek nélköl:
+
+\begin{minted}{shell}
+git chord pull
+\end{minted}
+
+Ekkor a beállított speciális branchre kerülnek letöltésre a remote repository megfelelő snapshotjai.
+Ugyanúgy használhatjuk a \verb|--all| kapcsolót is:
+
+\begin{minted}{shell}
+git chord pull --all
+\end{minted}
+
+Ekkor a letöltés a Git Chord által kezelt minden branchre külön-külön szekvenciálisan megtörténik.
 
 \subsection{Egyéb parancsok}
 

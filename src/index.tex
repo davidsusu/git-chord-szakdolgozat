@@ -848,12 +848,10 @@ az \verb|--all| opciót kell megadni:
 git chord push --all
 \end{minted}
 
-[TODO: pull alapinfó]
-
-A Git Chord \verb|pull| alparancsa a háttérben a Git rendzser \verb|pull| parancsát hívja meg,
+A Git Chord \verb|pull| alparancsa a háttérben a Git rendszer \verb|pull| parancsát hívja meg,
 és annak alapértelmezéseit használja.
 Tehát először egy \verb|fetch| műveletet hajt végre a remote branchre,
-majd alaprtelmezésben egy \verb|rebase| művelettel applikálja azt a Git Chord által kezelt branchre.
+majd alapértelmezésben egy \verb|rebase| művelettel applikálja azt a Git Chord által kezelt branchre.
 
 Pullozáskor csak a snapshotok mentődnek le a helyi repositoryba,
 semmilyen visszaállítás nem történik.
@@ -866,7 +864,7 @@ git chord pull
 \end{minted}
 
 Ekkor a beállított speciális branchre kerülnek letöltésre a remote repository megfelelő snapshotjai.
-Ugyanúgy használhatjuk a \verb|--all| kapcsolót is:
+Ugyanúgy használhatjuk az \verb|--all| kapcsolót is:
 
 \begin{minted}{shell}
 git chord pull --all
@@ -993,42 +991,14 @@ A tesztesetekkel később részletesebben foglalkozom.
 
 \subsection{A fő shell szkript felépítése}
 
-POSIX-kompatibilis
+A \verb|bin/git-chord| egy POSIX-kompatibilis shell szkript.
 
-
-Használt git alparancsok:
-
-git add
-git branch
-git cat-file
-git checkout
-git commit-tree
-git config
-git for-each-ref
-git hash-object
-git log
-git mktree
-git push
-git read-tree
-git rebase
-git remote
-git reset
-git rev-parse
-git show
-git show-ref
-git stash
-git symbolic-ref
-git tag
-git update-ref
-git write-tree
-
-
-Főszkript felépítése:
+Felépítésének váza a következő:
 
 \begin{itemize}
     \item header
     \item definíciók
-    \item segédfüggvények (string manipulation, arguments handling, YAML, file system, miscellaneous)
+    \item segédfüggvények
     \item beállítások, opciók és paraméterek feldolgozása, alparancs megállapítása
     \item formázók beállítása a kimenet-beállítások alapján
     \item az opcióktól is függő függvények
@@ -1037,7 +1007,65 @@ Főszkript felépítése:
     \item repófüggő alparancsok kiszolgálása
 \end{itemize}
 
-A POSIX nem tartalmazza az \verb|mktemp| (és így \verb|mktemp -d|) stb. parancsokat, ezért:
+A header rész a következő két sorból áll:
+
+\begin{minted}{shell}
+#!/bin/sh
+# shellcheck disable=SC2016,SC2086,SC2154
+\end{minted}
+
+Az első sor a shebang komment, ami meghatározza, hogy a fájl közvetlen futtatásához mely interpreter használandó.
+Maga a POSIX szabvány érdekes módon nem nyilatkozik az interpreter fájlrendszerbéli helyéről,
+sőt, arról nyilatkozik, hogy a szkriptet telepítéskor kell meghatározni,
+hogy az adott rendszer interpretere hol található
+(vagyis valójában a POSIX shell szkriptek nem teljesen dhordozhatók).
+A gyakorlatban komoly viták vannak akörül, végülis mit érdemes megadni,
+a fentin kívül egy másik gyakori jelölt \verb|#!/usr/bin/env sh|.
+Mindkét verzió mellett szólnak pro és kontra érvek,
+én minden POSIX shell szkriptben a fenti shebang sort használom.
+
+A második sor ShellChecker eszközt számára némít el egyes hibaüzeneteket
+a hozzájuk tartozó szabályok felsorolásával:
+
+\begin{description}
+    \item[\texttt{SC2016}] --
+        Ez a szabály hivatott kiszűrni azt a hibát, amikor egy dinamikusan megadott sztring köré
+        tévedésből egyszeres idézőjeleket teszünk
+        (például \verb|'Név: ${name}'|).
+        Ezzel azonban hamis riasztást generál például az ilyen helyeken: \verb|'`%s`'|.
+    \item[\texttt{SC2086}] --
+        Ez a szabály kiszűri azokat az eseteket, amikor egy parancs argumentumainak felsorolásakor
+        lehagyjuk az idézőjeleket egy változóval megadott argumentum széleiről.
+        Ez hamis riasztást generál, ha az elhagyás szándékos,
+        vagyis valóban azt akarjuk, hogy a változó tartalma több argumentra eshessen szét.
+    \item[\texttt{SC2154}] --
+        Ez a szabály szól, ha definiálatlan változót akarunk használni (ha az nem csupa nagybetűs).
+        Ez hamis riasztást generál, ha például a változót dinamikusan hoztuk létre.
+\end{description}
+
+A definíciós részben definiált konstansok meghatározzák a program verzióját,
+az elérhető parancsokat és alparacsokat leírásukkal együtt,
+az elérhető konfiguráciüs kulcsokat alapértelmezett értékükkel és leírásukkal,
+illetve egyéb segédadatokat.
+
+Ezután a tiszta, általános jellegű segédfüggvények definíciói következnek,
+például karakterláncok kezeléséhez,
+parancssori argumentumok feldolgozásához,
+a YAML formátum kezeléséhez
+és így tovább.
+
+Például egy parancssori opció konfigurációs kulccsá történő normalizálásához:
+
+\begin{listing}[H]
+\begin{minted}{shell}
+normalizeKey() { # $1: rawKey
+    printf '%s' "$1" | sed -E 's/^\-\-(no\-)?//i' | tr '-' '.' | tr '[:upper:]' '[:lower:]'
+}
+\end{minted}
+\caption{Parancssori opció normalizálása konfigurációs kulccsá}
+\end{listing}
+
+Vagy átmeneti könyvtárak létrehozásához:
 
 \begin{listing}[H]
 \begin{minted}{shell}
@@ -1059,6 +1087,53 @@ createTmpDir() (
 \end{minted}
 \caption{Átmeneti könyvtár készítése, POSIX-kompatibilis}
 \end{listing}
+
+Ezután történik a Git konfigurációjának feldolgozása, és összefésülése az alapértelmezett értékekkel.
+Ha szerepel olyan \verb|chord.| prefixű kulcs, amely nincs definiálva,
+a szkript figyelmeztetést ír ki, de nem áll le.
+
+Ezután következik a parancssori argumentumok feldolgozása.
+Itt három módot különböztetünk meg, az \textit{alap módot}, az \textit{érték módot} és a \textit{nyers módot}.
+
+Alap módban fogadhatunk egy \verb|--| prefixű konfigurációs opciót, normál paramétert (például alparancs, érték), vagy pedig a speciális \verb|--| argumentumot.
+Ha opció érkezett, megjegyezzük a konfigurációs kulcsot, és átkapcsolunk érték módba.
+Ha normál paraméter érkezett, behelyezzük a normál paraméterek tömbjébe.
+Ha a \verb|--| argumentum érkezett, átkapcsolunk nyers módba.
+
+Érték módban beolvassuk a következő argumentumot, és értékül adjuk a megjegyzett konfigurációs kulcshoz.
+Ha nincs több paraméter, végzetes hibát dobunk.
+Ellenkező esetben visszakapcsolunk alap módba, és folytatjuk a feldolgozást.
+
+Nyers módban beolvassuk a következő argumentumot, ha van,
+és behelyezzük a normál paraméterek tömbjébe.
+Továbbra is nyers módban maradunk
+(a nyers mód már nem kapcsolható vissza).
+
+Ha a normál paraméterek tömbje ezután nem üres, akkor az első eleme lesz az alparancs.
+Különben az alapértelmezett \verb|snapshot| alparancs lesz használva.
+
+Ezután beállítjuk a formázó karakterláncokat,
+figyelembe véve, hogy a \verb|color| opció be van-e kapcsolva.
+Utóbbi esetben ANSI formázási szekvenciákat fogunk használni.
+
+Ezután következnek azok a függvények, melyek függnek a konfigurációs értékektől.
+Például:
+
+\begin{listing}[H]
+\begin{minted}{shell}
+getLength() { # $1: string
+    if checkTruthy "$configValue_color"; then
+        printf '%s' "$1" | sed -E 's/\x1b\[[0-9;]*m//g' | wc -m
+    else
+        printf '%s' "$1" | wc -m
+    fi
+}
+\end{minted}
+\caption{Szöveg hosszának lekérése az ANSI formázások feltételes figyelembevételével}
+\end{listing}
+
+
+
 
 először:
 

@@ -1109,14 +1109,58 @@ Nyers módban beolvassuk a következő argumentumot, ha van,
 Továbbra is nyers módban maradunk
 (a nyers mód már nem kapcsolható vissza).
 
-Ha a normál paraméterek tömbje ezután nem üres, akkor az első eleme lesz az alparancs.
+Ha a normál paraméterek tömbje ezután nem üres, akkor az első eleme lesz az alparancs,
+ezt a \verb|$command| változóban eltároljuk.
 Különben az alapértelmezett \verb|snapshot| alparancs lesz használva.
+Ha a tömb legalább két értéket tartalmaz, akkor a másodikat további alparancsként
+megjegyezzük a \verb|$subcommand| változóban.
+
+A könnyebb használat és a jobb teljesítmény érdekében a konviguráció végső effektív értékeit
+dinamikusan létrehozott változókba is kihelyezzük.
+Eredetileg az ezt elvégző kódrészlet így nézett ki:
+
+\begin{listing}[H]
+\begin{minted}{shell}
+while IFS= read -r configLine; do
+    configValue="$( printf '%s\n' "$configLine" | cut -d ' ' -f 2- )"
+    outVariableName="configValue_$( printf '%s\n' "$configLine" | cut -d ' ' -f 1 | tr '.' '_' )"
+    eval "${outVariableName}='$( escapeValue "$configValue")'"
+done <<EOF
+$( printf '%s\n' "$config" )
+EOF
+\end{minted}
+\caption{Eredeti eval loop}
+\end{listing}
+
+A POSIX shell (a Bash nyelvvel ellentétben) nem ad beépített lehetőséget változók dinamikus értékadására,
+így az \verb|eval| használata elkerülhetetlen.
+Javíthatunk a teljesítményen, ha az összes értékadást egyetlen \verb|eval| utasításba tömörítjük.
+Továbbá, mivel nem módosítunk a külső környezeten,
+a ciklus bemenetét adó parancsot is kihelyezhetjük egy \verb@|@ jel elé.
+A javított verzió így néz ki:
+
+\begin{listing}[H]
+\begin{minted}{shell}
+eval "$(
+    printf '%s\n' "$config" | sed -E ':loop; s/^(\w+)\./\1_/; t loop' | while IFS=' ' read -r outVariableName configValue; do
+        printf "configValue_%s='" "$outVariableName"
+        escapeValue "$configValue"
+        printf "'\n"
+    done
+)"
+\end{minted}
+\caption{Optimalizált eval loop}
+\end{listing}
+
+A későbbiekben tehát változókon keresztül is tudunk hivatkozni az effektív konfigurációs értékekre,
+például a \verb|trackers.name| értékére így: \verb|$configValue_trackers_name| .
 
 Ezután beállítjuk a formázó karakterláncokat,
 figyelembe véve, hogy a \verb|color| opció be van-e kapcsolva.
-Utóbbi esetben ANSI formázási szekvenciákat fogunk használni.
+Utóbbi esetben ANSI formázási szekvenciákat fogunk használni,
+különben a formázó sztringek üresek lesznek.
 
-Ezután következnek azok a függvények, melyek függnek a konfigurációs értékektől.
+Ezt követik azok a függvények, melyek függnek a konfigurációs értékektől.
 Például:
 
 \begin{listing}[H]
@@ -1132,7 +1176,33 @@ getLength() { # $1: string
 \caption{Szöveg hosszának lekérése az ANSI formázások feltételes figyelembevételével}
 \end{listing}
 
+Ezt követően ellenőrizzük, hogy a \verb|$subcommand| változóban
+a \verb|help| (vagy \verb|-h|) érték szerepel-e.
+Ez esetben kiírjuk a \verb|$command| változó által meghatározott alparancs help kimenetét és kilépünk.
 
+Különben a futás folytatódik az első alparancs feldolgozásával,
+megengedve, hogy esetleg nem vagyunk Git repositoryban.
+Ilyenkor futnak le azok az esetek, amikor olyan alparancsot futtatunk,
+amely eleve nem igényli a repository meglétét (például \verb|help|),
+vagy például ha a \verb|--defaults| opció be lett állítva.
+
+Egyéb esetben szükség lesz a repository meglétére,
+a következő lépésben ezt ellenőrizzük a következő módon:
+
+\begin{listing}[H]
+\begin{minted}{shell}
+if ! git rev-parse --git-dir > /dev/null 2>&1; then
+    printf '%sERROR: %s%s\n' "$formatError" 'Not a git repository' "$formatErrorEnd" >&2
+    exit 1
+fi
+\end{minted}
+\caption{Git repository meglétének ellenőrzése}
+\end{listing}
+
+Végül az utolsó szakaszban dolgozzuk fel az alparancsot, már a repository meglétét feltételezve.
+Ezt tekinthetjük a főrésznek a szkriptben.
+
+[TODO]
 
 
 először:
@@ -1174,34 +1244,6 @@ rm -R "$tempDir"
 \end{listing}
 
 ...
-
-\begin{listing}[H]
-\begin{minted}{shell}
-while IFS= read -r configLine; do
-    configValue="$( printf '%s\n' "$configLine" | cut -d ' ' -f 2- )"
-    outVariableName="configValue_$( printf '%s\n' "$configLine" | cut -d ' ' -f 1 | tr '.' '_' )"
-    eval "${outVariableName}='$( escapeValue "$configValue")'"
-done <<EOF
-$( printf '%s\n' "$config" )
-EOF
-\end{minted}
-\caption{Eredeti eval loop}
-\end{listing}
-
-Javított:
-
-\begin{listing}[H]
-\begin{minted}{shell}
-eval "$(
-    printf '%s\n' "$config" | sed -E ':loop; s/^(\w+)\./\1_/; t loop' | while IFS=' ' read -r outVariableName configValue; do
-        printf "configValue_%s='" "$outVariableName"
-        escapeValue "$configValue"
-        printf "'\n"
-    done
-)"
-\end{minted}
-\caption{Optimalizált eval loop}
-\end{listing}
 
 \subsection{TODO}
 

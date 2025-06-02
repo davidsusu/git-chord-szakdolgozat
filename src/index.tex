@@ -108,7 +108,9 @@ használatához nincs feltétlenül szükség központi tárolóra.
 Egy módosításcsomag publikálása két lépésből áll.
 Elsőként a \textit{commit} művelettel létrehozzuk az új tárolt állapotot (snapshot);
 a bevett terminológia szerint ezt is commitnak nevezik.
-[TODO: a commit tartalma]
+
+\todoref{git commitok tartalma röviden}
+
 Alapértelmezetten az aktuális branch mentett állapota egyúttal az újonnan létrejött commitra ugrik.
 Második lépésben a \textit{push} művelettel publikálhatjuk az adott branch (vagy branchek) állapotát egy szerverre.
 A két lépés egymástól független,
@@ -136,7 +138,7 @@ alapértelmezetten az összes branch és tag letöltésre kerül a teljes tört�
 
 \section{Tárolók átfogó állapotának kezelése}
 
-\todoref{A git átfogó állapotairól}
+\todoref{a git átfogó állapotairól}
 %a subversion stb. még egy nagy (idődimenzióval kiegészített) fájlrendszerben tárolta a brancheket is,
 %valójában nincs beépített branchkezelés, az ágak egyszerűen külön könyvtárakban vannak,
 %az elágaztatási módszertanok működtetését a könyvtárak között alkalmazható
@@ -896,7 +898,7 @@ Interaktív terminálban ezeket a parancsokat használja az automatikus parancsk
 
 \section{A webes felület használata}
 
-TODO
+\todoref{webes felület felhasználói leírása}
 
 \cleardoublepage
 
@@ -1184,10 +1186,9 @@ fi
 Végül az utolsó szakaszban dolgozzuk fel az alparancsot, már a repository meglétét feltételezve.
 Ezt tekinthetjük a főrésznek a szkriptben.
 
-[TODO]
+\todoref{a szkript főrészét részletezni}
 
-
-először:
+Eredeti megoldás az átmeneti fájlok kezeléséhez:
 
 \begin{listing}[H]
 \begin{minted}{shell}
@@ -1206,7 +1207,7 @@ rm "$tempYamlFile2"
 \caption{Átmeneti fájlok kezelése előtte}
 \end{listing}
 
-majd:
+módosított megoldás, az \verb|mktemp| elhagyásával, a \verb|createTmpDir| függvény használatával:
 
 \begin{listing}[H]
 \begin{minted}{shell}
@@ -1225,15 +1226,13 @@ rm -R "$tempDir"
 \caption{Átmeneti fájlok kezelése utána}
 \end{listing}
 
-...
-
 \subsection{TODO}
 
-TODO
+\todoref{további megjegyzések a repóhoz}
 
 \section{A Git Chord webes felületének felépítése}
 
-TODO
+\todoref{xxx}
 
 \cleardoublepage
 

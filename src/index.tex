@@ -1,8 +1,11 @@
-\documentclass[final]{elteikthesis}[2025/03/25]
+\documentclass[
+    %final,
+]{elteikthesis}[2025/03/25]
 
 \usepackage{abstract}
 \usepackage[newfloat]{minted}
 \usepackage{fontawesome5}
+\usepackage{todonotes}
 
 \setminted{fontsize=\footnotesize}
 
@@ -25,6 +28,8 @@
 
 \addbibresource{references.bib}
 
+\newcommand{\todoref}[1]{\todo[inline, noinlinepar, color=red, textcolor=white, inlinewidth=0.6cm, caption={#1}]{\large \textbf{×}}}
+
 \begin{document}
 
 \documentlang{hungarian}
@@ -33,6 +38,7 @@
 \cleardoublepage
 
 \maketitle
+\cleardoublepage
 
 \renewcommand{\abstractname}{Témabejelentő}
 
@@ -91,31 +97,6 @@ A régi rendszerekben még egy-egy fájl központilag történő lockolása volt
 hogy több fejlesztő ne írja fölül egymás munkáját.
 A modern rendszerekben a párhuzamos fejlesztés külön ágakon, azaz brancheken párhuzamosan történik.
 
-Jelenleg a legelterjedtebb verziókezelő a nyílt forráskódú Git.
-
-[a git mentális modelljéről és adattárolásáról, ez a továbbiakhoz szükséges lesz]
-
--------------------
-
-párhuzamos fejlesztés támogatása,
-azaz annak menedzselése, hogy a forráskód különböző részein is dolgozni lehessen anélkül,
-hogy egymásra kellene várni.
-
-
-Egy \textit{verziókezelő rendszer} feladata, hogy valamilyen adott tartalom (például programkód)
-folyamatos fejlesztését megkönnyítse, annak evolúcióját támogató technikai keretet biztosítson.
-A verziókezelt tartalom újabb és újabb verziói egy időbeli sorba rendeződnek,
-a verziók és a köztük lévő különbségek visszakövethetők,
-az egyes állapotok szükség esetén visszaállíthatók.
-Emellett a fejlesztés el is ágazhat,
-ekkor az újabb verziók párhuzamosan futó \textit{branch}eken kerülnek tárolásra.
-Az elágazó fejlesztési történet lineáris láncolat helyett tehát egy aciklikus gráf. 
-A modern elosztott verziókezelőkben a branchek kezelésére igen szofisztikált eszköztár áll rendelkezésre;
-az olyan műveletek, mint új branchek létrehozása, meglévők egyesítése,
-váltás a branchek között,
-vagy akár a történet visszamenőleges manipulációja
-általában egyszerű parancsok végrehajtásával elvégezhetők.
-
 Jelenleg a legelterjedtebb verziókezelő a nyílt forráskódú \textit{Git}.
 Filozófiájához hozzátartozik,
 hogy a teljes verziókezelési folyamatot a helyi gépen kell elvégezni,
@@ -139,37 +120,38 @@ a fő különbség, hogy véglegesek:
 ha egyszer létrehoztunk egy adott commitra mutató taget,
 az a továbbiakban immutábilisen erre a commitra fog mutatni
 (ha mégis mozgatni szeretnénk, törölni kell, majd újra létrehozni).
-Valójában kétféle tag létezik,
-[TODO: a kétféle tag]
 Általában (bár ez megkerülhető) a fejlesztők a saját gépükön
 egyszerre tárolják a teljes verziótörténetet,
 beleértve a számukra érdekes brancheket, gyakran az összeset.
 Amikor a \textit{clone} művelettel lemásolunk, leklónozunk egy repót,
 alapértelmezetten az összes branch és tag letöltésre kerül a teljes történettel együtt.
-[vagyis sok van, itt jön be a nehézség; kezdők...]
-[meta-verziókezelés, bár egy elágazó gráf, mindig van egy pillanatnyi meta-állapot]
+
+\todoref{általános leírás vége}
+%vagyis sok van, itt jön be a nehézség; kezdők...
+%meta-verziókezelés, bár egy elágazó gráf, mindig van egy pillanatnyi meta-állapot
 
 \section{A Git verziókezelő rendszer tárolási modellje}
 
-TODO
+\todoref{a git tárolási modellje}
 
 \section{Tárolók átfogó állapotának kezelése}
 
-[a subversion stb. még egy nagy (idődimenzióval kiegészített) fájlrendszerben tárolta a brancheket is, valójában nincs beépített branchkezelés, az ágak egyszerűen külön könyvtárakban vannak, az elágaztatási módszertanok működtetését a könyvtárak között alkalmazható merge-elő, összehasonlító stb. eszközök segítik (megjegyzés: ezt a git is tudja)]
-
-TODO
+\todoref{A git átfogó állapotairól}
+%a subversion stb. még egy nagy (idődimenzióval kiegészített) fájlrendszerben tárolta a brancheket is,
+%valójában nincs beépített branchkezelés, az ágak egyszerűen külön könyvtárakban vannak,
+%az elágaztatási módszertanok működtetését a könyvtárak között alkalmazható
+%merge-elő, összehasonlító stb. eszközök segítik (megjegyzés: ezt a git is tudja)
 
 \section{A Git Chord megközelítése}
 
-TODO
+\todoref{a git-chord megközelítéséről}
+% mentális modell
+% a git szisztémájának természetes használata a háttérben
 
-\section{Edge Case-ek a Git Chord-ban}
+\section{Speciális esetek a Git Chord-ban}
 
-[persze eleve: a Git Chord teljesen a git saját szisztémájába illeszkedik]
-
-submodule, git config módosításai, 
-
-TODO
+\todoref{speciális esetek}
+%submodule, git config módosításai stb.
 
 \cleardoublepage
 

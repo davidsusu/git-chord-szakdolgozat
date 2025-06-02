@@ -28,8 +28,6 @@
 
 \addbibresource{references.bib}
 
-\newcommand{\todoref}[1]{\todo[inline, noinlinepar, color=red, textcolor=white, inlinewidth=0.6cm, caption={#1}]{\large \textbf{×}}}
-
 \begin{document}
 
 \documentlang{hungarian}
@@ -109,7 +107,7 @@ Egy módosításcsomag publikálása két lépésből áll.
 Elsőként a \textit{commit} művelettel létrehozzuk az új tárolt állapotot (snapshot);
 a bevett terminológia szerint ezt is commitnak nevezik.
 
-\todoref{git commitok tartalma röviden}
+\todo[inline,color=red,textcolor=white]{git commitok tartalma röviden}
 
 Alapértelmezetten az aktuális branch mentett állapota egyúttal az újonnan létrejött commitra ugrik.
 Második lépésben a \textit{push} művelettel publikálhatjuk az adott branch (vagy branchek) állapotát egy szerverre.
@@ -128,17 +126,53 @@ beleértve a számukra érdekes brancheket, gyakran az összeset.
 Amikor a \textit{clone} művelettel lemásolunk, leklónozunk egy repót,
 alapértelmezetten az összes branch és tag letöltésre kerül a teljes történettel együtt.
 
-\todoref{általános leírás vége}
+\todo[inline,color=red,textcolor=white]{általános leírás vége}
 %vagyis sok van, itt jön be a nehézség; kezdők...
 %meta-verziókezelés, bár egy elágazó gráf, mindig van egy pillanatnyi meta-állapot
 
 \section{A Git verziókezelő rendszer tárolási modellje}
 
-\todoref{a git tárolási modellje}
+\todo[inline,color=red,textcolor=white]{bevezetés a git tárolási modelljéhez}
+
+A Git terminológiáit csak ott fordítom magyarra,
+ahol ez biztosan nem okoz értelmezési nehézséget.
+Itt csak azokkal az objektumokkal foglalkozom,
+amelyek a Git Chord használata szempontjából kifejezetten érdekesek.
+
+\begin{description}
+    \item[\textit{blob}:]
+        Egy önálló tartalmat (például egy fájl tartalmát) nyersen tároló objektum.
+    \item[\textit{tree}:] 
+        Egy hierarchikus szerkezet (könyvtárstruktúra) csomópontja,
+        mely hivatkozza a saját gyermekelemeit, azok alapvető adataival együtt
+        (hash, fájlnév, futtatható-e stb.).
+        A gyermekelemek lehetnek blob-ok vagy további tree objektumok.
+    \item[\textit{commit}:]
+        A verziókezelt tartalom egy állapotát tároló objektum.
+        Lényegében egy tree objektumot lát el metaadatokkal
+        (például üzenet, a létrehozó, illetves szerző neve és e-mailje, létrehozás dátuma stb.),
+        továbbá az előzményekre mutató hivatkozásokkal (szülő-comitok).
+    \item[\textit{branch}:]
+        Egy nevesített mutató, mely rendesen valamely commitra hivatkozik.
+        Új állapot mentésekor az aktív branch mutatója automatikusan továbbugrik az új commitra.
+    \item[\textit{HEAD}:]
+        Speciális mutató, mely rendesen egy branchre (és azon keresztül egy commitra) hivatkozik.
+        Speciális esetben közvetlenül is hivatkozhat egy commitra (detached head).
+    \item[\textit{lightweight tag}:]
+        Nevesített permanens címke, mely egy commitra hivatkozik.
+        Hasonló a branchhez, de immutábilis.
+    \item[\textit{annotált tag}:]
+        Nevesített permanens címke, de metaadatokkal kiegészítve (például leírás).
+        A Git a lightweight tagektől eltérően kezeli.
+\end{description}
+
+\todo[inline,color=red,textcolor=white]{további git terminológiák}
+
+\todo[inline,color=red,textcolor=white]{a git tárolási modelljének részletei}
 
 \section{Tárolók átfogó állapotának kezelése}
 
-\todoref{a git átfogó állapotairól}
+\todo[inline,color=red,textcolor=white]{a git átfogó állapotairól}
 %a subversion stb. még egy nagy (idődimenzióval kiegészített) fájlrendszerben tárolta a brancheket is,
 %valójában nincs beépített branchkezelés, az ágak egyszerűen külön könyvtárakban vannak,
 %az elágaztatási módszertanok működtetését a könyvtárak között alkalmazható
@@ -146,13 +180,13 @@ alapértelmezetten az összes branch és tag letöltésre kerül a teljes tört�
 
 \section{A Git Chord megközelítése}
 
-\todoref{a git-chord megközelítéséről}
+\todo[inline,color=red,textcolor=white]{a git-chord megközelítéséről}
 % mentális modell
 % a git szisztémájának természetes használata a háttérben
 
 \section{Speciális esetek a Git Chord-ban}
 
-\todoref{speciális esetek}
+\todo[inline,color=red,textcolor=white]{speciális esetek}
 %submodule, git config módosításai stb.
 
 \cleardoublepage
@@ -898,7 +932,17 @@ Interaktív terminálban ezeket a parancsokat használja az automatikus parancsk
 
 \section{A webes felület használata}
 
-\todoref{webes felület felhasználói leírása}
+\subsection{A szerver elindítása}
+
+\todo[inline,color=red,textcolor=white]{webes felület szerverének indítása}
+
+\subsection{A felület kezelése}
+
+\todo[inline,color=red,textcolor=white]{webes felület kezelése}
+
+\subsection{Használat IDE kiterjesztésként}
+
+\todo[inline,color=red,textcolor=white]{használat IDE-kben}
 
 \cleardoublepage
 
@@ -1186,7 +1230,7 @@ fi
 Végül az utolsó szakaszban dolgozzuk fel az alparancsot, már a repository meglétét feltételezve.
 Ezt tekinthetjük a főrésznek a szkriptben.
 
-\todoref{a szkript főrészét részletezni}
+\todo[inline,color=red,textcolor=white]{a szkript főrészét részletezni}
 
 Eredeti megoldás az átmeneti fájlok kezeléséhez:
 
@@ -1226,19 +1270,39 @@ rm -R "$tempDir"
 \caption{Átmeneti fájlok kezelése utána}
 \end{listing}
 
-\subsection{TODO}
+\subsection{További megjegyzések}
 
-\todoref{további megjegyzések a repóhoz}
+\todo[inline,color=red,textcolor=white]{további megjegyzések a repóhoz}
 
 \section{A Git Chord webes felületének felépítése}
 
-\todoref{xxx}
+\subsection{A forrásrepó és a brackend felépítése}
+
+\todo[inline,color=red,textcolor=white]{webes forrásrepó és backend}
+
+\subsection{A frontend alkalmazás felépítése}
+
+\todo[inline,color=red,textcolor=white]{frontend}
+
+\subsection{Az IDE kiterjesztések specialitásai}
+
+\todo[inline,color=red,textcolor=white]{IDE extensionök}
 
 \cleardoublepage
 
 \chapter{Összegzés és alkalmazások}
 
-Hello.
+\section{Általános értékelés}
+
+\todo[inline,color=red,textcolor=white]{általános értékelés}
+
+\section{A Git Chord fő használati esetei}
+
+\todo[inline,color=red,textcolor=white]{fő használati esetek}
+
+\section{A Git Chord használata verziókezelő rendszerek oktatásában}
+
+\todo[inline,color=red,textcolor=white]{használat az oktatásban}
 
 \cleardoublepage
 
@@ -1246,7 +1310,7 @@ Hello.
 
 \chapter{Teszteredmények}
 
-Hello.
+\todo[inline,color=red,textcolor=white]{tesztesetek a test könyvtár alapján}
 
 \cleardoublepage
 

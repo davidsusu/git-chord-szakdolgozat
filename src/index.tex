@@ -18,7 +18,7 @@
 \degree{Programtervező Informatikus BSc}
 
 \supervisor{Dr. Cserép Máté}
-\affiliation{egyetemi adjunktus}
+\affiliation{egyetemi docens}
 
 \university{Eötvös Loránd Tudományegyetem}
 \faculty{Informatikai Kar}
@@ -38,7 +38,8 @@
 \maketitle
 \cleardoublepage
 
-\renewcommand{\abstractname}{Témabejelentő}
+% FIXME
+%\renewcommand{\abstractname}{Témabejelentő}
 
 \begin{abstract}
 Szakdolgozatomban bemutatom a Git Chord programot és az ahhoz készített néhány további segédeszközt.
@@ -151,7 +152,7 @@ amelyek a Git Chord használata szempontjából kifejezetten érdekesek.
         A verziókezelt tartalom egy állapotát tároló objektum.
         Lényegében egy tree objektumot lát el metaadatokkal
         (például üzenet, a létrehozó, illetves szerző neve és e-mailje, létrehozás dátuma stb.),
-        továbbá az előzményekre mutató hivatkozásokkal (szülő-comitok).
+        továbbá az előzményekre mutató hivatkozásokkal (szülő-commitok).
     \item[\textit{branch}:]
         Egy nevesített mutató, mely rendesen valamely commitra hivatkozik.
         Új állapot mentésekor az aktív branch mutatója automatikusan továbbugrik az új commitra.
@@ -161,7 +162,7 @@ amelyek a Git Chord használata szempontjából kifejezetten érdekesek.
     \item[\textit{lightweight tag}:]
         Nevesített permanens címke, mely egy commitra hivatkozik.
         Hasonló a branchhez, de immutábilis.
-    \item[\textit{annotált tag}:]
+    \item[\textit{annotated tag}:]
         Nevesített permanens címke, de metaadatokkal kiegészítve (például leírás).
         A Git a lightweight tagektől eltérően kezeli.
 \end{description}
@@ -226,8 +227,9 @@ Mindezek az inicializáló lépések az \texttt{install} könyvtárban találhat
 Az itt található \texttt{netinstall-user.sh} szkript a letöltéstől a teljes telepítésig elvégzi a folyamatot.
 Hálózati elérés és a \texttt{curl} eszköz megléte esetén így a teljes telepítés elvégezhető egyetlen paranccsal:
 
+% FIXME: a szóköz kell a tördeléshez, a breakafter=/ lenne az igazi megoldás, de bugosan viselkedik
 \begin{minted}[breaklines]{shell}
-curl -s https://raw.githubusercontent.com/davidsusu/git-chord/main/install/netinstall-user.sh | sh
+curl -s https://raw.githubusercontent.com/davidsusu/git-chord/main/install/ netinstall-user.sh | sh
 \end{minted}
 
 Sikeres telepítés után a programot önállóan (\texttt{git-chord})
@@ -353,7 +355,7 @@ A parancssorban néhány speciális opciót is használhatunk, melyek egyszerre 
     \item[\texttt{{-}{-}fullstore}:]
         Nem vár értéket (logikai típusú).
         Az összes támogatott objektum tárolását engedélyezi, azaz teljeskörű mentést állít be.
-    \item[\texttt{{-}{-}fullstore}:]
+    \item[\texttt{{-}{-}fullapply}:]
         Nem vár értéket (logikai típusú).
         Az összes támogatott objektum betöltését engedélyezi, azaz teljeskörű visszaállítást állít be.
     \item[\texttt{{-}{-}profile}:]
@@ -501,8 +503,8 @@ konfigurációs értékek befolyásolják közvetlenül.
  
  \texttt{branches.store.enabled} & \texttt{true} & Branchek mentésének engedélyezése\vspace{0.5em} \\
  \texttt{branches.store.regex} & \texttt{.*} & Minta a mentendő branchek szűkítéséhez\vspace{0.5em} \\
- \texttt{annotatedtags.store.enabled} & \texttt{true} & Annotált tagek mentésének engedélyezése\vspace{0.5em} \\
- \texttt{annotatedtags.store.regex} & \texttt{.*} & Minta a mentendő annotált tagek szűkítéséhez\vspace{0.5em} \\
+ \texttt{annotatedtags.store.enabled} & \texttt{true} & Annotated tagek mentésének engedélyezése\vspace{0.5em} \\
+ \texttt{annotatedtags.store.regex} & \texttt{.*} & Minta a mentendő annotated tagek szűkítéséhez\vspace{0.5em} \\
  \texttt{lightweighttags.store.enabled} & \texttt{false} & Lightweight tagek mentésének engedélyezése\vspace{0.5em} \\
  \texttt{lightweighttags.store.regex} & \texttt{.*} & Minta a mentendő lightweight tagek szűkítéséhez\vspace{0.5em} \\
  \texttt{head.store.enabled} & \texttt{true} & HEAD mutató mentésének engedélyezése\vspace{0.5em} \\
@@ -520,7 +522,7 @@ konfigurációs értékek befolyásolják közvetlenül.
 
 Láthatjuk, hogy alapértelmezetten minden branch mentésre kerül,
 és ez finomítható a szűrést megadó reguláris kifejezés módosításával.
-Lényeges, hogy az annotált és lightweight tagek kezelése egymástól független.
+Lényeges, hogy az annotated és lightweight tagek kezelése egymástól független.
 
 A \verb|fullstore| rendesen csak ad hoc parancssori opcióként használatos,
 és felülírja a táblázatban fölötte szereplő összes értéket a már ismertett módon.
@@ -605,9 +607,9 @@ A \ref{tab:apply-config-keys} táblázat részletezi a visszaállítás tartalm�
  \texttt{branches.apply.regex} & \texttt{.*} & Minta a visszaállítandó branchek szűkítéséhez\vspace{0.5em} \\
  \texttt{branches.apply.allowremove} & \texttt{true} & Branchek törlésének engedélyezése\vspace{0.5em} \\
  \texttt{branches.apply.allowadd} & \texttt{true} & Branchek létrehozásának engedélyezése\vspace{0.5em} \\
- \texttt{annotatedtags.apply.enabled} & \texttt{true} & Annotált tagek visszaállításának engedélyezése\vspace{0.5em} \\
- \texttt{annotatedtags.apply.regex} & \texttt{.*} & Minta a visszaállítandó annotált tagek szűkítéséhez\vspace{0.5em} \\
- \texttt{annotatedtags.apply.allowremove} & \texttt{true} & Annotált tagek törlésének engedélyezése\vspace{0.5em} \\
+ \texttt{annotatedtags.apply.enabled} & \texttt{true} & Annotated tagek visszaállításának engedélyezése\vspace{0.5em} \\
+ \texttt{annotatedtags.apply.regex} & \texttt{.*} & Minta a visszaállítandó annotated tagek szűkítéséhez\vspace{0.5em} \\
+ \texttt{annotatedtags.apply.allowremove} & \texttt{true} & Annotated tagek törlésének engedélyezése\vspace{0.5em} \\
  \texttt{lightweighttags.apply.enabled} & \texttt{false} & Lightweight tagek visszaállításának engedélyezése\vspace{0.5em} \\
  \texttt{lightweighttags.apply.regex} & \texttt{.*} & Minta a visszaállítandó lightweight tagek szűkítéséhez\vspace{0.5em} \\
  \texttt{lightweighttags.apply.allowremove} & \texttt{false} & Lightweight tagek törlésének engedélyezése\vspace{0.5em} \\
@@ -841,6 +843,8 @@ HEAD
 
 \subsection{Snapshotok megosztása}
 
+% TODO: force push?
+
 A Git Chord által mentett snapshotok a Git rendszer saját \verb|push| és \verb|fetch|
 mechanizmusain keresztül is viszonylag egyszerűen megoszthatók.
 
@@ -984,9 +988,9 @@ A forrásrepó főkönyvtárában az alábbiakat találjuk:
 A \verb|regen.sh| szkript valójában a \verb|maintain/regenerate-sources.sh| szkriptet hívja meg,
 ami jelenleg egyetlen generálást futtat, mégpedig a \verb|maintain/gen-README.md.sh| fájlt.
 Utóbbi gyártja le a főkönyvtárban lévő \verb|README.md| fájl tartalmát.
-Ehhez a mellette található \verb|gen-doc-part.md.sh| fájlt hívogatja,
+Ehhez a mellette található \verb|gen-doc-part.md.sh| fájlt hívja többszörösen,
 mely egy-egy résztartalom (\verb|general|, \verb|help|, \verb|subcommands| stb.) legyártásáért felel.
-Az ugyyanitt lévő \verb|gen-manpage.sh| szkript szintén a \verb|gen-doc-part.md.sh| fájlt hívogatja,
+Az ugyanitt lévő \verb|gen-manpage.sh| szkript szintén a \verb|gen-doc-part.md.sh| fájlt hívogatja,
 az egyes alparancsok saját help kimeneteinek lekéréséhez,
 és egy GROFF formátumú kiemenetet ad.
 Szintén itt a \verb|check-script.sh| forráskód-ellenőrzést futtat a \verb|git-chord| szkriptre
@@ -1018,6 +1022,8 @@ illetve a manuáloldalt, melyet helyben generál le a \verb|README.md| fájl ala
 A tesztesetekkel később részletesebben foglalkozom.
 
 \subsection{A fő shell szkript felépítése}
+
+% TODO: hívási diagram
 
 A \verb|bin/git-chord| egy POSIX-kompatibilis shell szkript.
 

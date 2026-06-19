@@ -1,0 +1,891 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="120mm"
+   height="180mm"
+   viewBox="0 0 120 180"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.4 (dcaf3e7d9e, 2026-05-05)"
+   sodipodi:docname="git-chord-gui-flow.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:lockguides="false"
+     inkscape:zoom="2.6208863"
+     inkscape:cx="213.4774"
+     inkscape:cy="561.26051"
+     inkscape:window-width="1920"
+     inkscape:window-height="1135"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     showguides="true" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Réteg 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:none;fill-opacity:1;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 26.324565,164.04744 v -4.78048"
+       id="path27-0-9"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 22.095459,136.61158 c 0,0 -0.220936,-1.28392 -0.169168,-2.80732 0.05177,-1.5234 0.339492,-2.21801 1.14379,-3.61595"
+       id="path27-6-0"
+       sodipodi:nodetypes="czc" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 43.484716,123.6553 c 0,0 -0.220936,-1.38488 0.96654,-2.27733 1.187476,-0.89246 2.613061,-0.0872 4.004421,-0.93227 1.39136,-0.84509 1.938409,-1.3521 1.95982,-2.17891"
+       id="path27-6"
+       sodipodi:nodetypes="czzc" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 37.522623,143.89737 c 0,0 5.168888,3.38655 7.638438,4.33656 2.469551,0.95001 4.049033,1.53475 6.924223,1.53475 h 4.111186"
+       id="path28-6"
+       sodipodi:nodetypes="czcc" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 50.714484,130.93151 c 0,0 3.510356,2.21993 5.106417,2.82344 1.596061,0.60351 3.514237,0.76341 5.078303,0.76341 h 6.469199"
+       id="path28"
+       sodipodi:nodetypes="czcc" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 46.322658,157.04566 c 0,0 10.060947,4.8139 13.507073,6.20854 3.446126,1.39464 7.376576,2.37237 10.178294,2.37237 h 2.343776"
+       id="path28-5"
+       sodipodi:nodetypes="czcc" />
+    <path
+       id="rect18-36"
+       style="fill:#f9f9f7;fill-opacity:1;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 11.403875,25.282543 H 104.37285 V 70.318669 H 11.403875 Z"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       id="rect18-2"
+       style="fill:#f0f7f9;fill-opacity:1;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 10.641275,75.766788 h 88.811051 v 4.145667 H 10.641275 Z"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       id="rect18-2-8"
+       style="fill:#f0f7f9;fill-opacity:1;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 10.641275,82.263695 h 88.811051 v 4.145667 H 10.641275 Z"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       id="rect18-2-88"
+       style="fill:#f0f7f9;fill-opacity:1;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 10.641275,88.760603 H 99.452326 V 92.90627 H 10.641275 Z"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       id="rect18-2-3"
+       style="fill:#f0f7f9;fill-opacity:1;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 10.641275,95.25751 h 88.811051 v 4.145668 H 10.641275 Z"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       id="rect18-2-4"
+       style="fill:#f0f7f9;fill-opacity:1;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 10.641275,101.75443 h 88.811047 v 4.14568 H 10.641275 Z"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       id="rect18-2-0"
+       style="fill:#f0f7f9;fill-opacity:1;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 10.641275,108.25135 h 88.81105 v 4.14567 h -88.81105 z"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       id="rect18-2-03"
+       style="fill:#f0f7f9;fill-opacity:1;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 10.641275,114.74826 h 88.811051 v 4.14567 H 10.641275 Z"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       id="rect18-0"
+       style="fill:#f0f7f9;fill-opacity:1;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 24.576496,31.560419 h 76.111054 v 4.145667 H 24.576496 Z"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       id="rect18-0-5"
+       style="fill:#f0f7f9;fill-opacity:1;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 24.576496,38.00865 h 76.111054 v 4.145667 H 24.576496 Z"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       id="rect18-0-3"
+       style="fill:#f0f7f9;fill-opacity:1;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 24.576496,44.456882 h 76.111054 v 4.145667 H 24.576496 Z"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       id="rect18-0-2"
+       style="fill:#f0f7f9;fill-opacity:1;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 24.576496,50.905113 H 100.68755 V 55.05078 H 24.576496 Z"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       id="rect18-0-1"
+       style="fill:#f0f7f9;fill-opacity:1;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 24.576496,57.353345 h 76.111054 v 4.145667 H 24.576496 Z"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       id="rect18-0-4"
+       style="fill:#f0f7f9;fill-opacity:1;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 24.576496,63.801576 h 76.111054 v 4.145667 H 24.576496 Z"
+       sodipodi:nodetypes="ccccc" />
+    <g
+       id="rect25-3"
+       transform="translate(-35.469005,-119.76009)">
+      <path
+         id="rect26-1"
+         style="fill:#edf6e8;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round"
+         d="m 79.427758,123.31658 h 16.606465 c 3.08463,0 8.213767,0.8958 8.213767,3.98043 v 1.02883 c 0,3.08464 -5.129137,3.98044 -8.213767,3.98044 H 79.427758 c -3.084634,0 -8.213765,-0.8958 -8.213765,-3.98044 v -1.02883 c 0,-3.08463 5.129131,-3.98043 8.213765,-3.98043 z"
+         sodipodi:nodetypes="sssssssss" />
+    </g>
+    <g
+       id="rect25-62"
+       transform="translate(-2.9851452,37.815134)">
+      <path
+         id="rect26-9"
+         style="fill:#f8eee9;fill-opacity:1;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round"
+         d="m 84.719425,123.31658 h 1.789798 c 3.08463,0 8.213767,0.8958 8.213767,3.98043 v 1.02883 c 0,3.08464 -5.129137,3.98044 -8.213767,3.98044 h -1.789798 c -3.084634,0 -8.213765,-0.8958 -8.213765,-3.98044 v -1.02883 c 0,-3.08463 5.129131,-3.98043 8.213765,-3.98043 z"
+         sodipodi:nodetypes="sssssssss" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:FontAwesome;-inkscape-font-specification:'FontAwesome, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.15;stroke-linejoin:round"
+         x="73.247635"
+         y="119.36691"
+         id="text49"><tspan
+           sodipodi:role="line"
+           id="tspan49"
+           style="stroke-width:0.15"></tspan></text>
+    </g>
+    <g
+       id="rect25-6"
+       transform="translate(-13.781888,21.939393)">
+      <path
+         id="rect26-2"
+         style="fill:#edf6e8;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round"
+         d="m 79.427758,123.31658 h 40.948132 c 3.08463,0 8.21376,0.8958 8.21376,3.98043 v 1.02883 c 0,3.08464 -5.12913,3.98044 -8.21376,3.98044 H 79.427758 c -3.084634,0 -8.213765,-0.8958 -8.213765,-3.98044 v -1.02883 c 0,-3.08463 5.129131,-3.98043 8.213765,-3.98043 z"
+         sodipodi:nodetypes="sssssssss" />
+    </g>
+    <g
+       id="rect25-6-8"
+       transform="translate(-65.053574,41.858416)">
+      <path
+         id="rect26-2-4"
+         style="fill:#edf6e8;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round"
+         d="m 78.369425,123.31658 h 39.889805 c 3.08463,0 8.21376,0.8958 8.21376,3.98043 v 1.02883 c 0,3.08464 -5.12913,3.98044 -8.21376,3.98044 H 78.369425 c -3.084634,0 -8.213765,-0.8958 -8.213765,-3.98044 v -1.02883 c 0,-3.08463 5.129131,-3.98043 8.213765,-3.98043 z"
+         sodipodi:nodetypes="sssssssss" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.750001;stroke-linejoin:round;stroke-dasharray:0.750001, 0.750001"
+       x="18.10564"
+       y="28.642509"
+       id="text2"><tspan
+         sodipodi:role="line"
+         id="tspan2"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.75"
+         x="18.10564"
+         y="28.642509">általános függvények definiálása</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.750001;stroke-linejoin:round;stroke-dasharray:0.750001, 0.750001"
+       x="33.033897"
+       y="34.267899"
+       id="text3"><tspan
+         sodipodi:role="line"
+         id="tspan3"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.75"
+         x="33.033897"
+         y="34.267899">karakterláncok és primitív értékek függvényei</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.750001;stroke-linejoin:round;stroke-dasharray:0.750001, 0.750001"
+       x="33.009205"
+       y="40.716129"
+       id="text4"><tspan
+         sodipodi:role="line"
+         id="tspan4"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.75"
+         x="33.009205"
+         y="40.716129">listák és szótárak függvényei</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.750001;stroke-linejoin:round;stroke-dasharray:0.750001, 0.750001"
+       x="33.145023"
+       y="47.164364"
+       id="text5"><tspan
+         sodipodi:role="line"
+         id="tspan5"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.75"
+         x="33.145023"
+         y="47.164364">YAML-függvények</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.750001;stroke-linejoin:round;stroke-dasharray:0.750001, 0.750001"
+       x="33.041306"
+       y="53.612595"
+       id="text6"><tspan
+         sodipodi:role="line"
+         id="tspan6"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.75"
+         x="33.041306"
+         y="53.612595">parancssori argumentumokat kezelő függvények</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.750001;stroke-linejoin:round;stroke-dasharray:0.750001, 0.750001"
+       x="33.033897"
+       y="60.060825"
+       id="text7"><tspan
+         sodipodi:role="line"
+         id="tspan7"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.75"
+         x="33.033897"
+         y="60.060825">kimenetet javító függvények</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.750001;stroke-linejoin:round;stroke-dasharray:0.750001, 0.750001"
+       x="33.132679"
+       y="66.509056"
+       id="text8"><tspan
+         sodipodi:role="line"
+         id="tspan8"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.75"
+         x="33.132679"
+         y="66.509056">fájlrendszerrel kapcsolatof függvények</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.750001;stroke-linejoin:round;stroke-dasharray:0.750001, 0.750001"
+       x="20.72275"
+       y="78.474266"
+       id="text9"><tspan
+         sodipodi:role="line"
+         id="tspan9"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.75"
+         x="20.72275"
+         y="78.474266">git config beolvasása és összefésülése az alapértelmezésekkel</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.750001;stroke-linejoin:round;stroke-dasharray:0.750001, 0.750001"
+       x="20.658541"
+       y="84.971176"
+       id="text10"><tspan
+         sodipodi:role="line"
+         id="tspan10"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.75"
+         x="20.658541"
+         y="84.971176">parancssori argumentumok és kért profilok feldolgozása</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.750001;stroke-linejoin:round;stroke-dasharray:0.750001, 0.750001"
+       x="20.690645"
+       y="91.468086"
+       id="text11"><tspan
+         sodipodi:role="line"
+         id="tspan11"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.75"
+         x="20.690645"
+         y="91.468086">a főparancs és alparancs megállapítása</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.750001;stroke-linejoin:round;stroke-dasharray:0.750001, 0.750001"
+       x="20.730158"
+       y="98.211937"
+       id="text12"><tspan
+         sodipodi:role="line"
+         id="tspan12"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.75"
+         x="20.730158"
+         y="98.211937">dedikált változó létrehozása minden beállításhoz</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.750001;stroke-linejoin:round;stroke-dasharray:0.750001, 0.750001"
+       x="20.651133"
+       y="104.46188"
+       id="text13"><tspan
+         sodipodi:role="line"
+         id="tspan13"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.75"
+         x="20.651133"
+         y="104.46188">kimenet formázásának előkészítése a beállítások alapján</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.750001;stroke-linejoin:round;stroke-dasharray:0.750001, 0.750001"
+       x="20.690645"
+       y="110.95882"
+       id="text14"><tspan
+         sodipodi:role="line"
+         id="tspan14"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.75"
+         x="20.690645"
+         y="110.95882">alapvető kimenetkezelő függvények definiálása</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.750001;stroke-linejoin:round;stroke-dasharray:0.750001, 0.750001"
+       x="20.690645"
+       y="117.45573"
+       id="text15"><tspan
+         sodipodi:role="line"
+         id="tspan15"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.75"
+         x="20.690645"
+         y="117.45573">állapotfüggő kimenetkezelő függvények definiálása</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.750001;stroke-linejoin:round;stroke-dasharray:0.750001, 0.750001"
+       x="13.749243"
+       y="170.323"
+       id="text18"><tspan
+         sodipodi:role="line"
+         id="tspan18"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.75"
+         x="13.749243"
+         y="170.323">Git-tárolóhoz kötött parancs kiszolgálása</tspan></text>
+    <path
+       id="rect18"
+       style="fill:#f0f7f9;fill-opacity:1;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 10.641275,16.298748 h 88.811051 v 4.145667 H 10.641275 Z"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       id="rect19"
+       style="fill:#f7f5e4;fill-opacity:1;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 40.050857,123.92111 60.618644,129.14306 40.05086,134.365 19.483075,129.67222 Z"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       id="rect19-0"
+       style="fill:#f7f5e4;fill-opacity:1;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 26.303768,136.51623 20.567787,5.22195 -20.567784,5.22194 -20.5677859,-4.69278 z"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       id="rect19-6"
+       style="fill:#f7f5e4;fill-opacity:1;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 32.927621,150.64389 20.567787,5.22195 -20.567784,5.22194 -20.567785,-4.69278 z"
+       sodipodi:nodetypes="ccccc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.750001;stroke-linejoin:round;stroke-dasharray:0.750001, 0.750001"
+       x="20.690645"
+       y="19.006227"
+       id="text1"><tspan
+         sodipodi:role="line"
+         id="tspan1"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.75"
+         x="20.690645"
+         y="19.006227">alapvető beállítások, konstansdefiníciók</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.3;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       x="48.52409"
+       y="9.1519766"
+       id="text19"><tspan
+         sodipodi:role="line"
+         id="tspan19"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.3"
+         x="48.52409"
+         y="9.1519766">indulás</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.3;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       x="81.885246"
+       y="166.5081"
+       id="text20"><tspan
+         sodipodi:role="line"
+         id="tspan20"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.3"
+         x="81.885246"
+         y="166.5081">hiba</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.3;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       x="40.068142"
+       y="129.78877"
+       id="text21"><tspan
+         sodipodi:role="line"
+         id="tspan21"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.3"
+         x="40.068142"
+         y="129.78877">ez egy help parancs?</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.3;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       x="45.683018"
+       y="146.13147"
+       id="text21-10"><tspan
+         sodipodi:role="line"
+         id="tspan21-3"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.3"
+         x="45.683018"
+         y="146.13147">IGEN</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.3;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       x="22.163021"
+       y="162.19057"
+       id="text21-10-1"><tspan
+         sodipodi:role="line"
+         id="tspan21-3-9"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.3"
+         x="22.163021"
+         y="162.19057">IGEN</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.3;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       x="59.530342"
+       y="133.0658"
+       id="text21-10-5"><tspan
+         sodipodi:role="line"
+         id="tspan21-3-3"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.3"
+         x="59.530342"
+         y="133.0658">IGEN</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.3;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       x="18.440701"
+       y="134.61726"
+       id="text21-10-0"><tspan
+         sodipodi:role="line"
+         id="tspan21-3-4"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.3"
+         x="18.440701"
+         y="134.61726">NEM</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.3;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       x="15.369023"
+       y="149.96689"
+       id="text21-10-0-9"><tspan
+         sodipodi:role="line"
+         id="tspan21-3-4-7"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.3"
+         x="15.369023"
+         y="149.96689">NEM</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.3;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       x="57.158539"
+       y="159.68784"
+       id="text21-10-0-9-9"><tspan
+         sodipodi:role="line"
+         id="tspan21-3-4-7-3"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.3"
+         x="57.158539"
+         y="159.68784">NEM</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.3;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       x="32.963428"
+       y="155.78899"
+       id="text21-1"><tspan
+         sodipodi:role="line"
+         id="tspan21-5"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.3"
+         x="32.963428"
+         y="155.78899">egy Git-tárolóban</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.3"
+         x="32.963428"
+         y="158.25842"
+         id="tspan23">vagyunk?</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.3;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       x="26.348219"
+       y="141.15656"
+       id="text21-7"><tspan
+         sodipodi:role="line"
+         id="tspan21-1"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.3"
+         x="26.348219"
+         y="141.15656">ez egy Git-tárolótól</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.3"
+         x="26.348219"
+         y="143.62599"
+         id="tspan22">független parancs?</tspan></text>
+    <g
+       id="rect25"
+       style="opacity:1"
+       transform="translate(-2.5481216,6.3500003)">
+      <path
+         id="rect26"
+         style="fill:#edf6e8;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round"
+         d="m 79.427758,123.31658 h 21.368962 c 3.08463,0 8.21377,0.8958 8.21377,3.98043 v 1.02883 c 0,3.08464 -5.12914,3.98044 -8.21377,3.98044 H 79.427758 c -3.084634,0 -8.213765,-0.8958 -8.213765,-3.98044 v -1.02883 c 0,-3.08463 5.129131,-3.98043 8.213765,-3.98043 z"
+         sodipodi:nodetypes="sssssssss" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.750001;stroke-linejoin:round;stroke-dasharray:0.750001, 0.750001"
+       x="75.23175"
+       y="134.79231"
+       id="text16"><tspan
+         sodipodi:role="line"
+         id="tspan16"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.75"
+         x="75.23175"
+         y="134.79231">help parancs kiszolgálása</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.750001;stroke-linejoin:round;stroke-dasharray:0.750001, 0.750001"
+       x="64.984421"
+       y="150.40393"
+       id="text17"><tspan
+         sodipodi:role="line"
+         id="tspan17"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.75"
+         x="64.984421"
+         y="150.40393">Git-tárolótól független parancs kiszolgálása</tspan></text>
+    <path
+       id="rect27"
+       style="fill:#ffffff;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round"
+       d="m 61.51079,35.998314 h 2.242466 l -1.121233,1.700961 z"
+       sodipodi:nodetypes="cccc" />
+    <path
+       id="rect27-2"
+       style="fill:#ffffff;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round"
+       d="m 61.51079,42.448601 h 2.242466 l -1.121233,1.700961 z"
+       sodipodi:nodetypes="cccc" />
+    <path
+       id="rect27-5"
+       style="fill:#ffffff;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round"
+       d="m 61.51079,48.898887 h 2.242466 l -1.121233,1.700961 z"
+       sodipodi:nodetypes="cccc" />
+    <path
+       id="rect27-0"
+       style="fill:#ffffff;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round"
+       d="m 61.51079,55.349174 h 2.242466 l -1.121233,1.700961 z"
+       sodipodi:nodetypes="cccc" />
+    <path
+       id="rect27-8"
+       style="fill:#ffffff;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round"
+       d="m 61.51079,61.79946 h 2.242466 l -1.121233,1.700961 z"
+       sodipodi:nodetypes="cccc" />
+    <path
+       id="rect27-8-2"
+       style="fill:#ffffff;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round"
+       d="m 53.925567,80.243749 h 2.242466 L 55.0468,81.94471 Z"
+       sodipodi:nodetypes="cccc" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 62.632023,30.398086 c 0,0 0.605203,-1.11448 -0.336863,-2.647683 -0.942066,-1.533202 -5.465347,-3.207575 -6.729333,-4.558506 -1.263986,-1.350931 -1.499853,-2.566143 -1.499853,-2.566143"
+       id="path27-8"
+       sodipodi:nodetypes="czzc" />
+    <path
+       id="rect27-8-2-8-2"
+       style="fill:#ffffff;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round"
+       d="m 61.51079,29.630657 h 2.242466 l -1.121233,1.700961 z"
+       sodipodi:nodetypes="cccc" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 52.253731,15.157881 V 12.695144"
+       id="path27-0"
+       sodipodi:nodetypes="cc" />
+    <path
+       id="rect27-8-2-8-20"
+       style="fill:#ffffff;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round"
+       d="m 51.139577,14.390452 h 2.242466 l -1.121233,1.700961 z"
+       sodipodi:nodetypes="cccc" />
+    <path
+       id="rect27-8-2-8-20-0"
+       style="fill:#ffffff;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round"
+       d="m 25.210411,163.28001 h 2.242466 l -1.121233,1.70096 z"
+       sodipodi:nodetypes="cccc" />
+    <path
+       id="rect27-8-9"
+       style="fill:#ffffff;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round"
+       d="m 53.925567,112.7875 h 2.242466 l -1.121232,1.70096 z"
+       sodipodi:nodetypes="cccc" />
+    <path
+       id="rect27-8-9-1"
+       style="fill:#ffffff;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round"
+       d="m 66.73679,135.63959 v -2.24247 l 1.70096,1.12124 z"
+       sodipodi:nodetypes="cccc" />
+    <path
+       id="rect27-8-9-1-1"
+       style="fill:#ffffff;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round"
+       d="m 55.530422,150.88991 v -2.24247 l 1.70096,1.12124 z"
+       sodipodi:nodetypes="cccc" />
+    <path
+       id="rect27-8-9-1-1-6"
+       style="fill:#ffffff;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round"
+       d="m 71.625654,166.7478 v -2.24247 l 1.70096,1.12124 z"
+       sodipodi:nodetypes="cccc" />
+    <path
+       id="rect27-8-1"
+       style="fill:#ffffff;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round"
+       d="m 53.925567,106.27875 h 2.242466 l -1.121232,1.70096 z"
+       sodipodi:nodetypes="cccc" />
+    <path
+       id="rect27-8-5"
+       style="fill:#ffffff;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round"
+       d="m 53.925568,99.770001 h 2.242466 l -1.121233,1.700959 z"
+       sodipodi:nodetypes="cccc" />
+    <path
+       id="rect27-8-7"
+       style="fill:#ffffff;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round"
+       d="m 53.925567,93.26125 h 2.242466 l -1.121232,1.700961 z"
+       sodipodi:nodetypes="cccc" />
+    <path
+       id="rect27-8-59"
+       style="fill:#ffffff;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round"
+       d="m 53.925567,86.7525 h 2.242466 L 55.0468,88.453461 Z"
+       sodipodi:nodetypes="cccc" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 55.092763,74.560313 c 0,0 -0.310166,-1.420576 0.663159,-2.598563 0.973325,-1.177987 3.862276,-1.377513 4.557645,-1.812138 0.69537,-0.434625 1.688566,-1.209334 1.709977,-2.03614"
+       id="path27"
+       sodipodi:nodetypes="czzc" />
+    <path
+       id="rect27-8-2-8"
+       style="fill:#ffffff;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round"
+       d="m 53.925567,73.792884 h 2.242466 l -1.121232,1.700961 z"
+       sodipodi:nodetypes="cccc" />
+    <path
+       id="rect27-8-2-8-6"
+       style="fill:#ffffff;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round"
+       d="m 42.31752,122.88787 h 2.242466 l -1.121232,1.70096 z"
+       sodipodi:nodetypes="cccc" />
+    <path
+       id="rect27-8-2-8-6-1"
+       style="fill:#ffffff;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round"
+       d="m 20.928263,135.84415 h 2.242466 l -1.121232,1.70096 z"
+       sodipodi:nodetypes="cccc" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 19.299028,153.28968 c 0,0 -0.29232,-2.58667 -0.240552,-4.11007 0.05177,-1.5234 0.339492,-2.21801 1.14379,-3.61595"
+       id="path27-6-0-6"
+       sodipodi:nodetypes="czc" />
+    <path
+       id="rect27-8-2-8-6-1-4"
+       style="fill:#ffffff;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round"
+       d="m 18.131832,152.52225 h 2.242466 l -1.121232,1.70096 z"
+       sodipodi:nodetypes="cccc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:lr-tb;direction:ltr;white-space:pre;fill:none;fill-opacity:1;stroke:#1a2845;stroke-width:0.15;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       x="52.681198"
+       y="142.05363"
+       id="text28"><tspan
+         sodipodi:role="line"
+         id="tspan28"
+         style="stroke-width:0.15" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:FontAwesome;-inkscape-font-specification:'FontAwesome, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.15;stroke-linejoin:round"
+       x="14.447081"
+       y="19.179802"
+       id="text25"><tspan
+         sodipodi:role="line"
+         id="tspan25"
+         style="stroke-width:0.15"
+         x="14.447081"
+         y="19.179802"></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:FontAwesome;-inkscape-font-specification:'FontAwesome, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.15;stroke-linejoin:round"
+       x="61.176811"
+       y="150.63277"
+       id="text27"><tspan
+         sodipodi:role="line"
+         id="tspan27"
+         style="stroke-width:0.15"
+         x="61.176811"
+         y="150.63277"></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:FontAwesome;-inkscape-font-specification:'FontAwesome, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.15;stroke-linejoin:round"
+       x="28.468103"
+       y="53.557842"
+       id="text29"><tspan
+         sodipodi:role="line"
+         id="tspan29"
+         style="stroke-width:0.15"
+         x="28.468103"
+         y="53.557842"></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:FontAwesome;-inkscape-font-specification:'FontAwesome, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.15;stroke-linejoin:round"
+       x="14.724757"
+       y="85.316765"
+       id="text30"><tspan
+         sodipodi:role="line"
+         id="tspan30"
+         style="stroke-width:0.15"
+         x="14.724757"
+         y="85.316765"></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:FontAwesome;-inkscape-font-specification:'FontAwesome, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.15;stroke-linejoin:round"
+       x="28.472925"
+       y="41.289829"
+       id="text31"><tspan
+         sodipodi:role="line"
+         id="tspan31"
+         style="stroke-width:0.15"
+         x="28.472925"
+         y="41.289829"></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:FontAwesome;-inkscape-font-specification:'FontAwesome, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.15;stroke-linejoin:round"
+       x="14.460173"
+       y="117.70304"
+       id="text32"><tspan
+         sodipodi:role="line"
+         id="tspan32"
+         style="stroke-width:0.15"
+         x="14.460173"
+         y="117.70304"></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:FontAwesome;-inkscape-font-specification:'FontAwesome, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.15;stroke-linejoin:round"
+       x="28.386801"
+       y="47.739407"
+       id="text33"><tspan
+         sodipodi:role="line"
+         id="tspan33"
+         style="stroke-width:0.15"
+         x="28.386801"
+         y="47.739407"></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:FontAwesome;-inkscape-font-specification:'FontAwesome, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.15;stroke-linejoin:round"
+       x="28.474995"
+       y="66.633385"
+       id="text34"><tspan
+         sodipodi:role="line"
+         id="tspan34"
+         style="stroke-width:0.15"
+         x="28.474995"
+         y="66.633385"></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:FontAwesome;-inkscape-font-specification:'FontAwesome, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.15;stroke-linejoin:round"
+       x="13.931354"
+       y="28.670326"
+       id="text36"><tspan
+         sodipodi:role="line"
+         id="tspan36"
+         style="stroke-width:0.15"
+         x="13.931354"
+         y="28.670326"></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:FontAwesome;-inkscape-font-specification:'FontAwesome, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.15;stroke-linejoin:round"
+       x="14.371289"
+       y="104.7138"
+       id="text37"><tspan
+         sodipodi:role="line"
+         id="tspan37"
+         style="stroke-width:0.15"
+         x="14.371289"
+         y="104.7138"></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:FontAwesome;-inkscape-font-specification:'FontAwesome, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.15;stroke-linejoin:round"
+       x="14.283785"
+       y="78.754616"
+       id="text38"><tspan
+         sodipodi:role="line"
+         id="tspan38"
+         style="stroke-width:0.15"
+         x="14.283785"
+         y="78.754616"></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:FontAwesome;-inkscape-font-specification:'FontAwesome, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.15;stroke-linejoin:round"
+       x="15.16573"
+       y="91.72319"
+       id="text39"><tspan
+         sodipodi:role="line"
+         id="tspan39"
+         style="stroke-width:0.15"
+         x="15.16573"
+         y="91.72319"></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:FontAwesome;-inkscape-font-specification:'FontAwesome, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.15;stroke-linejoin:round"
+       x="14.903211"
+       y="98.129616"
+       id="text40"><tspan
+         sodipodi:role="line"
+         id="tspan40"
+         style="stroke-width:0.15"
+         x="14.903211"
+         y="98.129616"></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:FontAwesome;-inkscape-font-specification:'FontAwesome, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.15;stroke-linejoin:round"
+       x="28.388178"
+       y="60.00742"
+       id="text41"><tspan
+         sodipodi:role="line"
+         id="tspan41"
+         style="stroke-width:0.15"
+         x="28.388178"
+         y="60.00742"></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:FontAwesome;-inkscape-font-specification:'FontAwesome, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.15;stroke-linejoin:round"
+       x="14.548367"
+       y="111.12022"
+       id="text42"><tspan
+         sodipodi:role="line"
+         id="tspan42"
+         style="stroke-width:0.15"
+         x="14.548367"
+         y="111.12022"></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:FontAwesome;-inkscape-font-specification:'FontAwesome, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.15;stroke-linejoin:round"
+       x="28.474995"
+       y="34.798912"
+       id="text44"><tspan
+         sodipodi:role="line"
+         id="tspan44"
+         style="stroke-width:0.15"
+         x="28.474995"
+         y="34.798912"></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:FontAwesome;-inkscape-font-specification:'FontAwesome, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.15;stroke-linejoin:round"
+       x="9.6913776"
+       y="170.55179"
+       id="text47"><tspan
+         sodipodi:role="line"
+         id="tspan47"
+         style="stroke-width:0.15"
+         x="9.6913776"
+         y="170.55179"></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:FontAwesome;-inkscape-font-specification:'FontAwesome, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.15;stroke-linejoin:round"
+       x="71.675812"
+       y="135.04338"
+       id="text48"><tspan
+         sodipodi:role="line"
+         id="tspan48"
+         style="stroke-width:0.15"
+         x="71.675812"
+         y="135.04338"></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944px;line-height:1;font-family:FontAwesome;-inkscape-font-specification:'FontAwesome, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.15;stroke-linejoin:round"
+       x="77.732925"
+       y="166.42032"
+       id="text50"><tspan
+         sodipodi:role="line"
+         id="tspan50"
+         style="stroke-width:0.15"
+         x="77.732925"
+         y="166.42032"></tspan></text>
+  </g>
+</svg>

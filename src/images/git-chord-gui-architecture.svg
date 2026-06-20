@@ -24,9 +24,9 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      inkscape:lockguides="false"
-     inkscape:zoom="2.6208863"
-     inkscape:cx="213.4774"
-     inkscape:cy="561.26052"
+     inkscape:zoom="1.2503863"
+     inkscape:cx="259.91967"
+     inkscape:cy="360.68853"
      inkscape:window-width="1920"
      inkscape:window-height="1135"
      inkscape:window-x="0"
@@ -35,9 +35,374 @@
      inkscape:current-layer="layer1"
      showguides="true" />
   <defs
-     id="defs1" />
+     id="defs1">
+    <rect
+       x="53.58344"
+       y="445.46233"
+       width="356.68976"
+       height="63.980227"
+       id="rect3" />
+  </defs>
   <g
      inkscape:label="Réteg 1"
      inkscape:groupmode="layer"
-     id="layer1" />
+     id="layer1">
+    <text
+       xml:space="preserve"
+       style="font-size:2.46944px;line-height:1;font-family:FontAwesome;-inkscape-font-specification:'FontAwesome, Normal';writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;stroke-width:0.15;stroke-linejoin:round"
+       x="8.6943979"
+       y="74.049118"
+       id="text1-3-7-6"><tspan
+         sodipodi:role="line"
+         id="tspan1-5-0-3"
+         style="stroke-width:0.15"
+         x="8.6943979"
+         y="74.049118">Command executor</tspan></text>
+    <path
+       id="rect1-6-9-2"
+       style="fill:none;stroke:#000000;stroke-width:0.15;stroke-linejoin:round"
+       d="M 8.6953809,69.183256 H 33.029527 v 7.404403 H 8.6953809 Z"
+       sodipodi:nodetypes="ccccc" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.46944px;line-height:1;font-family:FontAwesome;-inkscape-font-specification:'FontAwesome, Normal';writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;stroke-width:0.15;stroke-linejoin:round"
+       x="6.3239369"
+       y="68.447083"
+       id="text1-3-7-6-8"><tspan
+         sodipodi:role="line"
+         id="tspan1-5-0-3-8"
+         style="stroke-width:0.15"
+         x="6.3239369"
+         y="68.447083">Backend</tspan></text>
+    <path
+       id="rect1-6-9-2-43"
+       style="fill:none;stroke:#000000;stroke-width:0.15;stroke-linejoin:round"
+       d="M 5.4785161,63.791839 H 35.525896 V 79.342728 H 5.4785161 Z"
+       sodipodi:nodetypes="ccccc" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.46944px;line-height:1;font-family:FontAwesome;-inkscape-font-specification:'FontAwesome, Normal';writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;stroke-width:0.15;stroke-linejoin:round"
+       x="8.6943979"
+       y="55.528286"
+       id="text1-3-7-6-0"><tspan
+         sodipodi:role="line"
+         id="tspan1-5-0-3-6"
+         style="stroke-width:0.15"
+         x="8.6943979"
+         y="55.528286">Command proxy</tspan></text>
+    <path
+       id="rect1-6-9-2-8"
+       style="fill:none;stroke:#000000;stroke-width:0.15;stroke-linejoin:round"
+       d="M 8.6953809,50.662423 H 33.029527 v 7.404403 H 8.6953809 Z"
+       sodipodi:nodetypes="ccccc" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.46944px;line-height:1;font-family:FontAwesome;-inkscape-font-specification:'FontAwesome, Normal';writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;stroke-width:0.15;stroke-linejoin:round"
+       x="6.3239369"
+       y="49.926247"
+       id="text1-3-7-6-8-9"><tspan
+         sodipodi:role="line"
+         id="tspan1-5-0-3-8-2"
+         style="stroke-width:0.15"
+         x="6.3239369"
+         y="49.926247">Frontend</tspan></text>
+    <path
+       id="rect1-6-9-2-43-6"
+       style="fill:none;stroke:#000000;stroke-width:0.15;stroke-linejoin:round"
+       d="M 5.4785161,45.271006 H 35.525896 V 60.821895 H 5.4785161 Z"
+       sodipodi:nodetypes="ccccc" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.46944px;line-height:1;font-family:FontAwesome;-inkscape-font-specification:'FontAwesome, Normal';writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;stroke-width:0.15;stroke-linejoin:round"
+       x="89.238602"
+       y="72.145035"
+       id="text1-3-7-6-7"><tspan
+         sodipodi:role="line"
+         id="tspan1-5-0-3-44"
+         style="stroke-width:0.15"
+         x="89.238602"
+         y="72.145035">Command executor</tspan></text>
+    <path
+       id="rect1-6-9-2-3"
+       style="fill:none;stroke:#000000;stroke-width:0.15;stroke-linejoin:round"
+       d="m 89.239584,67.806699 h 24.334146 v 7.406038 H 89.239584 Z"
+       sodipodi:nodetypes="ccccc" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.46944px;line-height:1;font-family:FontAwesome;-inkscape-font-specification:'FontAwesome, Normal';writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;stroke-width:0.15;stroke-linejoin:round"
+       x="20.525324"
+       y="156.58495"
+       id="text1"><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.15"
+         x="20.525324"
+         y="156.58495"
+         id="tspan2">Git CLI</tspan></text>
+    <path
+       id="rect1"
+       style="fill:none;stroke:#000000;stroke-width:0.15;stroke-linejoin:round"
+       d="m 17.351304,148.54409 h 21.583331 v 12.69607 H 17.351304 Z"
+       sodipodi:nodetypes="ccccc" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.46944px;line-height:1;font-family:FontAwesome;-inkscape-font-specification:'FontAwesome, Normal';writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;stroke-width:0.15;stroke-linejoin:round"
+       x="11.819036"
+       y="40.708336"
+       id="text1-0"><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.15"
+         x="11.819036"
+         y="40.708336"
+         id="tspan2-2">Web application</tspan></text>
+    <path
+       id="rect1-3"
+       style="fill:none;stroke:#000000;stroke-width:0.15;stroke-linejoin:round"
+       d="m 10.761681,32.667481 h 21.583331 l 0,47.398678 H 10.761681 Z"
+       sodipodi:nodetypes="ccccc" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.46944px;line-height:1;font-family:FontAwesome;-inkscape-font-specification:'FontAwesome, Normal';writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;stroke-width:0.15;stroke-linejoin:round"
+       x="64.784431"
+       y="41.295067"
+       id="text1-2"><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.15"
+         x="64.784431"
+         y="41.295067"
+         id="tspan2-8">IntelliJ extension</tspan></text>
+    <path
+       id="rect1-9"
+       style="fill:none;stroke:#000000;stroke-width:0.15;stroke-linejoin:round"
+       d="M 63.727079,33.254211 H 85.31041 l 0,45.91747 H 63.727079 Z"
+       sodipodi:nodetypes="ccccc" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.46944px;line-height:1;font-family:FontAwesome;-inkscape-font-specification:'FontAwesome, Normal';writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;stroke-width:0.15;stroke-linejoin:round"
+       x="92.565681"
+       y="41.559647"
+       id="text1-29"><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.15"
+         x="92.565681"
+         y="41.559647"
+         id="tspan2-3">Eclipse plugin</tspan></text>
+    <path
+       id="rect1-1"
+       style="fill:none;stroke:#000000;stroke-width:0.15;stroke-linejoin:round"
+       d="m 90.449996,33.518791 h 21.583334 l 0,46.129071 H 90.449996 Z"
+       sodipodi:nodetypes="ccccc" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.46944px;line-height:1;font-family:FontAwesome;-inkscape-font-specification:'FontAwesome, Normal';writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;stroke-width:0.15;stroke-linejoin:round"
+       x="38.456257"
+       y="41.136444"
+       id="text1-4"><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.15"
+         x="38.456257"
+         y="41.136444"
+         id="tspan2-5">VSCode extension</tspan></text>
+    <path
+       id="rect1-0"
+       style="fill:none;stroke:#000000;stroke-width:0.15;stroke-linejoin:round"
+       d="m 38.45724,33.095589 h 21.583327 l 0,46.129071 H 38.45724 Z"
+       sodipodi:nodetypes="ccccc" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.46944px;line-height:1;font-family:FontAwesome;-inkscape-font-specification:'FontAwesome, Normal';writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;stroke-width:0.15;stroke-linejoin:round"
+       x="58.013844"
+       y="149.98976"
+       id="text1-3"><tspan
+         sodipodi:role="line"
+         id="tspan1-5"
+         style="stroke-width:0.15"
+         x="58.013844"
+         y="149.98976">Git Chord CLI</tspan></text>
+    <path
+       id="rect1-6"
+       style="fill:none;stroke:#000000;stroke-width:0.15;stroke-linejoin:round"
+       d="m 54.839826,141.9489 h 21.58333 v 12.69607 h -21.58333 z"
+       sodipodi:nodetypes="ccccc" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.46944px;line-height:1;font-family:FontAwesome;-inkscape-font-specification:'FontAwesome, Normal';writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;stroke-width:0.15;stroke-linejoin:round"
+       x="17.644444"
+       y="123.26096"
+       id="text1-3-7"><tspan
+         sodipodi:role="line"
+         id="tspan1-5-0"
+         style="stroke-width:0.15"
+         x="17.644444"
+         y="123.26096">Command interface</tspan></text>
+    <path
+       id="rect1-6-9"
+       style="fill:none;stroke:#000000;stroke-width:0.15;stroke-linejoin:round"
+       d="m 14.470426,115.2201 59.248356,0 v 12.69607 l -59.248356,0 z"
+       sodipodi:nodetypes="ccccc" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.46944px;line-height:1;font-family:FontAwesome;-inkscape-font-specification:'FontAwesome, Normal';writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;stroke-width:0.15;stroke-linejoin:round"
+       x="18.065683"
+       y="107.3866"
+       id="text1-3-7-2"><tspan
+         sodipodi:role="line"
+         id="tspan1-5-0-6"
+         style="stroke-width:0.15"
+         x="18.065683"
+         y="107.3866">React frontend</tspan></text>
+    <path
+       id="rect1-6-9-1"
+       style="fill:none;stroke:#000000;stroke-width:0.15;stroke-linejoin:round"
+       d="m 14.891667,99.345751 53.111919,0 v 12.696069 l -53.111919,0 z"
+       sodipodi:nodetypes="ccccc" />
+    <text
+       xml:space="preserve"
+       transform="scale(0.26458333)"
+       id="text3"
+       style="font-size:9.33332px;line-height:1;font-family:FontAwesome;-inkscape-font-specification:'FontAwesome, Normal';writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect3);display:inline;fill:none;stroke:#000000;stroke-width:0.566929;stroke-linejoin:round;stroke-opacity:1" />
+    <path
+       id="rect4"
+       style="fill:none;stroke:#000000;stroke-width:0.15;stroke-linejoin:round"
+       d="M 7.6176452,88.660934 H 112.36027 l 0,47.187076 H 7.6176452 Z"
+       sodipodi:nodetypes="ccccc" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.46944px;line-height:1;font-family:FontAwesome;-inkscape-font-specification:'FontAwesome, Normal';writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.15;stroke-linejoin:round;stroke-opacity:1"
+       x="13.119279"
+       y="95.432175"
+       id="text4"><tspan
+         sodipodi:role="line"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.15"
+         x="13.119279"
+         y="95.432175"
+         id="tspan5">Shared Git Chord GUI base application</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:2.46944px;line-height:1;font-family:FontAwesome;-inkscape-font-specification:'FontAwesome, Normal';writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;stroke-width:0.15;stroke-linejoin:round"
+       x="91.038887"
+       y="61.66864"
+       id="text1-04-17"><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.15"
+         x="91.038887"
+         y="61.66864"
+         id="tspan2-87-7">Extension extras</tspan></text>
+    <path
+       id="rect1-17-1"
+       style="fill:none;stroke:#000000;stroke-width:0.15;stroke-linejoin:round"
+       d="m 92.098205,55.637502 h 18.620915 v 8.887247 H 92.098205 Z"
+       sodipodi:nodetypes="ccccc" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.46944px;line-height:1;font-family:FontAwesome;-inkscape-font-specification:'FontAwesome, Normal';writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;stroke-width:0.15;stroke-linejoin:round"
+       x="95.536812"
+       y="51.085304"
+       id="text1-04-17-7"><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.15"
+         x="95.536812"
+         y="51.085304"
+         id="tspan2-87-7-6">SWT UI</tspan></text>
+    <path
+       id="rect1-17-1-7"
+       style="fill:none;stroke:#000000;stroke-width:0.15;stroke-linejoin:round"
+       d="m 91.304455,45.054166 h 18.620915 v 8.887247 H 91.304455 Z"
+       sodipodi:nodetypes="ccccc" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.46944px;line-height:1;font-family:FontAwesome;-inkscape-font-specification:'FontAwesome, Normal';writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;stroke-width:0.15;stroke-linejoin:round"
+       x="61.986515"
+       y="72.674202"
+       id="text1-3-7-6-7-3"><tspan
+         sodipodi:role="line"
+         id="tspan1-5-0-3-44-9"
+         style="stroke-width:0.15"
+         x="61.986515"
+         y="72.674202">Command executor</tspan></text>
+    <path
+       id="rect1-6-9-2-3-4"
+       style="fill:none;stroke:#000000;stroke-width:0.15;stroke-linejoin:round"
+       d="m 61.987498,68.335865 h 24.334146 v 7.406038 H 61.987498 Z"
+       sodipodi:nodetypes="ccccc" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.46944px;line-height:1;font-family:FontAwesome;-inkscape-font-specification:'FontAwesome, Normal';writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;stroke-width:0.15;stroke-linejoin:round"
+       x="63.7868"
+       y="62.197807"
+       id="text1-04-17-8"><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.15"
+         x="63.7868"
+         y="62.197807"
+         id="tspan2-87-7-1">Extension extras</tspan></text>
+    <path
+       id="rect1-17-1-2"
+       style="fill:none;stroke:#000000;stroke-width:0.15;stroke-linejoin:round"
+       d="m 64.846119,56.166668 h 18.620915 v 8.887247 H 64.846119 Z"
+       sodipodi:nodetypes="ccccc" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.46944px;line-height:1;font-family:FontAwesome;-inkscape-font-specification:'FontAwesome, Normal';writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;stroke-width:0.15;stroke-linejoin:round"
+       x="68.284729"
+       y="51.614471"
+       id="text1-04-17-7-9"><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.15"
+         x="68.284729"
+         y="51.614471"
+         id="tspan2-87-7-6-3">SCEF UI</tspan></text>
+    <path
+       id="rect1-17-1-7-9"
+       style="fill:none;stroke:#000000;stroke-width:0.15;stroke-linejoin:round"
+       d="m 64.052369,45.583332 h 18.620915 v 8.887247 H 64.052369 Z"
+       sodipodi:nodetypes="ccccc" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.46944px;line-height:1;font-family:FontAwesome;-inkscape-font-specification:'FontAwesome, Normal';writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;stroke-width:0.15;stroke-linejoin:round"
+       x="37.644852"
+       y="73.203369"
+       id="text1-3-7-6-7-0"><tspan
+         sodipodi:role="line"
+         id="tspan1-5-0-3-44-96"
+         style="stroke-width:0.15"
+         x="37.644852"
+         y="73.203369">Command executor</tspan></text>
+    <path
+       id="rect1-6-9-2-3-3"
+       style="fill:none;stroke:#000000;stroke-width:0.15;stroke-linejoin:round"
+       d="M 37.645832,68.865032 H 61.979978 V 76.27107 H 37.645832 Z"
+       sodipodi:nodetypes="ccccc" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.46944px;line-height:1;font-family:FontAwesome;-inkscape-font-specification:'FontAwesome, Normal';writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;stroke-width:0.15;stroke-linejoin:round"
+       x="39.445137"
+       y="62.726974"
+       id="text1-04-17-85"><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.15"
+         x="39.445137"
+         y="62.726974"
+         id="tspan2-87-7-61">Extension extras</tspan></text>
+    <path
+       id="rect1-17-1-1"
+       style="fill:none;stroke:#000000;stroke-width:0.15;stroke-linejoin:round"
+       d="m 40.504453,56.695835 h 18.620915 v 8.887247 H 40.504453 Z"
+       sodipodi:nodetypes="ccccc" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.46944px;line-height:1;font-family:FontAwesome;-inkscape-font-specification:'FontAwesome, Normal';writing-mode:lr-tb;direction:ltr;white-space:pre;fill:#000000;stroke-width:0.15;stroke-linejoin:round"
+       x="40.238892"
+       y="52.143639"
+       id="text1-04-17-7-5"><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.15"
+         x="40.238892"
+         y="52.143639"
+         id="tspan2-87-7-6-9">Webview bundle</tspan></text>
+    <path
+       id="rect1-17-1-7-8"
+       style="fill:none;stroke:#000000;stroke-width:0.15;stroke-linejoin:round"
+       d="m 39.710703,46.112499 h 18.620915 v 8.887247 H 39.710703 Z"
+       sodipodi:nodetypes="ccccc" />
+  </g>
 </svg>

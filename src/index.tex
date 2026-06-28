@@ -4,8 +4,6 @@
 
 \usepackage{abstract}
 \usepackage[newfloat]{minted}
-\usepackage{fontawesome5}
-\usepackage{todonotes}
 
 \setminted{fontsize=\footnotesize}
 
@@ -32,7 +30,6 @@
 
 \documentlang{hungarian}
 
-\listoftodos
 \cleardoublepage
 
 \maketitle
@@ -108,7 +105,7 @@ Egy módosításcsomag publikálása két lépésből áll.
 Elsőként a \textit{commit} művelettel létrehozzuk az új tárolt állapotot (snapshot);
 a bevett terminológia szerint ezt is commitnak nevezik.
 
-\todo[inline,color=red,textcolor=white]{git commitok tartalma röviden}
+TODO: git commitok tartalma röviden
 
 Alapértelmezetten az aktuális branch mentett állapota egyúttal az újonnan létrejött commitra ugrik.
 Második lépésben a \textit{push} művelettel publikálhatjuk az adott branch (vagy branchek) állapotát egy szerverre.
@@ -127,13 +124,13 @@ beleértve a számukra érdekes brancheket, gyakran az összeset.
 Amikor a \textit{clone} művelettel lemásolunk, leklónozunk egy repót,
 alapértelmezetten az összes branch és tag letöltésre kerül a teljes történettel együtt.
 
-\todo[inline,color=red,textcolor=white]{általános leírás vége}
-%vagyis sok van, itt jön be a nehézség; kezdők...
-%meta-verziókezelés, bár egy elágazó gráf, mindig van egy pillanatnyi meta-állapot
+TODO: általános leírás vége
+(vagyis sok van, itt jön be a nehézség; kezdők, 
+meta-verziókezelés, bár egy elágazó gráf, mindig van egy pillanatnyi meta-állapot)
 
-\section{A Git verziókezelő rendszer tárolási modellje}
+\section{A Git tárolási modellje, szakkifejezések}
 
-\todo[inline,color=red,textcolor=white]{bevezetés a git tárolási modelljéhez}
+TODO: bevezetés a git tárolási modelljéhez
 
 A Git terminológiáit csak ott fordítom magyarra,
 ahol ez biztosan nem okoz értelmezési nehézséget.
@@ -167,28 +164,28 @@ amelyek a Git Chord használata szempontjából kifejezetten érdekesek.
         A Git a lightweight tagektől eltérően kezeli.
 \end{description}
 
-\todo[inline,color=red,textcolor=white]{további git terminológiák}
+TODO: további git terminológiák
 
-\todo[inline,color=red,textcolor=white]{a git tárolási modelljének részletei}
+TODO: a git tárolási modelljének részletei
 
 \section{Tárolók átfogó állapotának kezelése}
 
-\todo[inline,color=red,textcolor=white]{a git átfogó állapotairól}
-%a subversion stb. még egy nagy (idődimenzióval kiegészített) fájlrendszerben tárolta a brancheket is,
-%valójában nincs beépített branchkezelés, az ágak egyszerűen külön könyvtárakban vannak,
-%az elágaztatási módszertanok működtetését a könyvtárak között alkalmazható
-%merge-elő, összehasonlító stb. eszközök segítik (megjegyzés: ezt a git is tudja)
+TODO: a git átfogó állapotairól
+(a subversion stb. még egy nagy (idődimenzióval kiegészített) fájlrendszerben tárolta a brancheket is,
+valójában nincs beépített branchkezelés, az ágak egyszerűen külön könyvtárakban vannak,
+az elágaztatási módszertanok működtetését a könyvtárak között alkalmazható;
+merge-elő, összehasonlító stb. eszközök segítik; megjegyzés: ezt a git is tudja))
 
 \section{A Git Chord megközelítése}
 
-\todo[inline,color=red,textcolor=white]{a git-chord megközelítéséről}
-% mentális modell
-% a git szisztémájának természetes használata a háttérben
+TODO: a git-chord megközelítéséről
+(mentális modell;
+a git szisztémájának természetes használata a háttérben)
 
 \section{Speciális esetek a Git Chord-ban}
 
-\todo[inline,color=red,textcolor=white]{speciális esetek}
-%submodule, git config módosításai stb.
+TODO: speciális esetek
+(submodule, git config módosításai stb.)
 
 \cleardoublepage
 
@@ -938,15 +935,15 @@ Interaktív terminálban ezeket a parancsokat használja az automatikus parancsk
 
 \subsection{A szerver elindítása}
 
-\todo[inline,color=red,textcolor=white]{webes felület szerverének indítása}
+TODO: webes felület szerverének indítása
 
 \subsection{A felület kezelése}
 
-\todo[inline,color=red,textcolor=white]{webes felület kezelése}
+TODO: webes felület kezelése
 
 \subsection{Használat IDE kiterjesztésként}
 
-\todo[inline,color=red,textcolor=white]{használat IDE-kben}
+TODO: használat IDE-kben
 
 \cleardoublepage
 
@@ -1236,7 +1233,7 @@ fi
 Végül az utolsó szakaszban dolgozzuk fel az alparancsot, már a repository meglétét feltételezve.
 Ezt tekinthetjük a főrésznek a szkriptben.
 
-\todo[inline,color=red,textcolor=white]{a szkript főrészét részletezni}
+TODO: a szkript főrészét részletezni
 
 Eredeti megoldás az átmeneti fájlok kezeléséhez:
 
@@ -1278,21 +1275,21 @@ rm -R "$tempDir"
 
 \subsection{További megjegyzések}
 
-\todo[inline,color=red,textcolor=white]{további megjegyzések a repóhoz}
+TODO: további megjegyzések a repóhoz
 
 \section{A Git Chord webes felületének felépítése}
 
 \subsection{A forrásrepó és a brackend felépítése}
 
-\todo[inline,color=red,textcolor=white]{webes forrásrepó és backend}
+TODO: webes forrásrepó és backend
 
 \subsection{A frontend alkalmazás felépítése}
 
-\todo[inline,color=red,textcolor=white]{frontend}
+TODO: frontend
 
 \subsection{Az IDE kiterjesztések specialitásai}
 
-\todo[inline,color=red,textcolor=white]{IDE extensionök}
+TODO: IDE extensionök
 
 \cleardoublepage
 
@@ -1300,15 +1297,15 @@ rm -R "$tempDir"
 
 \section{Általános értékelés}
 
-\todo[inline,color=red,textcolor=white]{általános értékelés}
+TODO: általános értékelés
 
 \section{A Git Chord fő használati esetei}
 
-\todo[inline,color=red,textcolor=white]{fő használati esetek}
+TODO: fő használati esetek
 
 \section{A Git Chord használata verziókezelő rendszerek oktatásában}
 
-\todo[inline,color=red,textcolor=white]{használat az oktatásban}
+TODO: használat az oktatásban
 
 \cleardoublepage
 
@@ -1316,7 +1313,7 @@ rm -R "$tempDir"
 
 \chapter{Teszteredmények}
 
-\todo[inline,color=red,textcolor=white]{tesztesetek a test könyvtár alapján}
+TODO: tesztesetek a test könyvtár alapján
 
 \cleardoublepage
 

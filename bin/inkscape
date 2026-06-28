@@ -1,0 +1,22 @@
+#!/bin/sh
+set -e
+
+unset LD_LIBRARY_PATH GI_TYPELIB_PATH GIO_EXTRA_MODULES GTK_PATH
+
+selfDir="$( dirname -- "$( realpath "$0" )" )"
+nativeInkscape="$(
+    PATH="$( printf '%s' "$PATH" | tr ':' '\n' | grep -vx "$selfDir" | paste -sd ':' - )"
+    export PATH
+    command -v inkscape || true
+)"
+
+if [ -n "$nativeInkscape" ]; then
+    exec "$nativeInkscape" "$@"
+fi
+
+if command -v flatpak > /dev/null 2>&1 && flatpak info org.inkscape.Inkscape > /dev/null 2>&1; then
+    exec flatpak run --filesystem="$PWD" org.inkscape.Inkscape "$@"
+fi
+
+printf '%s\n' 'ERROR: No Inkscape installation found.' >&2
+exit 1

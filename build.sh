@@ -1,4 +1,7 @@
 #!/bin/sh
+set -e
+
+unset LD_LIBRARY_PATH GI_TYPELIB_PATH GIO_EXTRA_MODULES GTK_PATH
 
 inputFileName='index.tex'
 outputFileName='dolgozat.pdf'
@@ -9,16 +12,23 @@ selfDir="$( dirname -- "$( realpath "$0" )" )"
 baseName="$( echo "${inputFileName}" | sed 's/\.[^.]*$//' )"
 
 cd "$selfDir"
+PATH="${selfDir}/bin:${PATH}"
+export PATH
+
 mkdir -p build
 rm -Rf build/*
 cp -R ./src/. ./build
 
 cd "${selfDir}/build"
-command="pdflatex --shell-escape -interaction=nonstopmode --synctex=1 '${inputFileName}'"
-eval "${command}"
-bibtex "${baseName}"
-eval "${command}"
-eval "${command}"
+
+pdflatex --shell-escape -interaction=nonstopmode --synctex=1 "$inputFileName"
+if command -v biber > /dev/null 2>&1; then
+    biber "${baseName}"
+else
+    printf '%s\n' 'WARNING: a biber parancs nem elérhető, az irodalomjegyzék feldolgozása kimarad.' >&2
+fi
+pdflatex --shell-escape -interaction=nonstopmode --synctex=1 "$inputFileName"
+pdflatex --shell-escape -interaction=nonstopmode --synctex=1 "$inputFileName"
 
 cd "$selfDir"
 rm -f ./*.out ./*.dvi

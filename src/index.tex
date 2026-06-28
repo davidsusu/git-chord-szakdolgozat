@@ -1,11 +1,26 @@
+\ifdefined\pdfminorversion
+    \pdfminorversion=7
+\fi
+
 \documentclass[
     %final,
 ]{elteikthesis}[2025/03/25]
 
 \usepackage{abstract}
-\usepackage[newfloat]{minted}
+\usepackage{booktabs}
+\usepackage[newfloat,draft]{minted}
+\usepackage{svg}
+\usepackage{tabularx}
 
 \setminted{fontsize=\footnotesize}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\svgsetup{
+    inkscapeversion=1,
+    inkscapelatex=false,
+    inkscapearea=page,
+    inkscapeopt=--export-text-to-path,
+}
 
 \removefromtoclist[float]{lol}
 
@@ -137,36 +152,68 @@ ahol ez biztosan nem okoz értelmezési nehézséget.
 Itt csak azokkal az objektumokkal foglalkozom,
 amelyek a Git Chord használata szempontjából kifejezetten érdekesek.
 
-\begin{description}
-    \item[\textit{blob}:]
-        Egy önálló tartalmat (például egy fájl tartalmát) nyersen tároló objektum.
-    \item[\textit{tree}:] 
-        Egy hierarchikus szerkezet (könyvtárstruktúra) csomópontja,
-        mely hivatkozza a saját gyermekelemeit, azok alapvető adataival együtt
-        (hash, fájlnév, futtatható-e stb.).
-        A gyermekelemek lehetnek blob-ok vagy további tree objektumok.
-    \item[\textit{commit}:]
-        A verziókezelt tartalom egy állapotát tároló objektum.
-        Lényegében egy tree objektumot lát el metaadatokkal
-        (például üzenet, a létrehozó, illetve szerző neve és e-mailje, létrehozás dátuma stb.),
-        továbbá az előzményekre mutató hivatkozásokkal (szülő-commitok).
-    \item[\textit{branch}:]
-        Egy nevesített mutató, mely rendesen valamely commitra hivatkozik.
-        Új állapot mentésekor az aktív branch mutatója automatikusan továbbugrik az új commitra.
-    \item[\textit{HEAD}:]
-        Speciális mutató, mely rendesen egy branchre (és azon keresztül egy commitra) hivatkozik.
-        Speciális esetben közvetlenül is hivatkozhat egy commitra (detached head).
-    \item[\textit{lightweight tag}:]
-        Nevesített permanens címke, mely egy commitra hivatkozik.
-        Hasonló a branchhez, de immutábilis.
-    \item[\textit{annotated tag}:]
-        Nevesített permanens címke, de metaadatokkal kiegészítve (például leírás).
-        A Git a lightweight tagektől eltérően kezeli.
-\end{description}
+\begin{table}[H]
+\captionsetup{justification=justified, singlelinecheck=false}
+\centering
+\setlength{\tabcolsep}{7pt}
+\renewcommand{\arraystretch}{1.08}
+\begin{tabularx}{\textwidth}{L{3.35cm}L{3.05cm}Y}
+\toprule
+\textbf{Magyar név} & \textbf{Angol név} & \textbf{Leírás} \\
+\midrule
+Tartalomobjektum &
+\textit{blob} &
+Egy önálló tartalmat (például egy fájl tartalmát) nyersen tároló objektum. \\
+\addlinespace
+Faobjektum &
+\textit{tree} &
+Egy hierarchikus szerkezet (könyvtárstruktúra) szülő-csomópontja,
+mely hivatkozza a saját gyermekelemeit, azok alapvető adataival együtt
+(hash, fájlnév, futtatható-e stb.).
+A gyermekelemek lehetnek blobok vagy további tree objektumok. \\
+\addlinespace
+Commit &
+\textit{commit} &
+A verziókezelt tartalom egy állapotát tároló objektum.
+Lényegében egy tree objektumot lát el metaadatokkal
+(például üzenet, a létrehozó, illetve szerző neve és e-mailje, létrehozás dátuma stb.),
+továbbá az előzményekre mutató hivatkozásokkal (szülő-commitok). \\
+\addlinespace
+Ág &
+\textit{branch} &
+Egy nevesített mutató, mely rendesen valamely commitra hivatkozik.
+Új állapot mentésekor az aktív branch mutatója automatikusan továbbugrik az új commitra. \\
+\addlinespace
+HEAD &
+\textit{HEAD} &
+Speciális mutató, mely rendesen egy branchre (és azon keresztül egy commitra) hivatkozik.
+Speciális esetben közvetlenül is hivatkozhat egy commitra (detached head). \\
+\addlinespace
+Pehelysúlyú tag &
+\textit{lightweight tag} &
+Nevesített permanens címke, mely egy commitra hivatkozik.
+Hasonló a branchhez, de immutábilis. \\
+\addlinespace
+Annotált tag &
+\textit{annotated tag} &
+Nevesített permanens címke, de metaadatokkal kiegészítve (például leírás).
+A Git a lightweight tagektől eltérően kezeli. \\
+\bottomrule
+\end{tabularx}
+\caption{A Git Chord szempontjából fontos Git szakkifejezések}
+\label{tab:git-terminologia}
+\end{table}
 
 TODO: további git terminológiák
 
 TODO: a git tárolási modelljének részletei
+
+\begin{figure}[h]
+\centering
+\includesvg[width=\textwidth,height=0.65\textheight,keepaspectratio]{images/git-dag}
+\caption{Egy Git tároló objektumai és hivatkozásai}
+\label{fig:git-dag}
+\end{figure}
 
 \section{Tárolók átfogó állapotának kezelése}
 
@@ -181,6 +228,13 @@ merge-elő, összehasonlító stb. eszközök segítik; megjegyzés: ezt a git i
 TODO: a git-chord megközelítéséről
 (mentális modell;
 a git szisztémájának természetes használata a háttérben)
+
+\begin{figure}[h]
+\centering
+\includesvg[width=\textwidth,height=0.65\textheight,keepaspectratio]{images/git-chord-dag}
+\caption{A Git Chord által mentett metaállapot kapcsolata a Git commitgráffal}
+\label{fig:git-chord-dag}
+\end{figure}
 
 \section{Speciális esetek a Git Chord-ban}
 
@@ -287,6 +341,37 @@ a sima \verb|--| prefix pedig ellenkezőleg, kikényszerítést jelent.)
 További kimenet-opció a \verb|--markdown|, mely a Markdown formátumú kimenetet kapcsolja be (illetve a \verb|--no-markdown| letiltja).
 Egyes parancsok esetében lehetőség van bővebb kimenet bekapcsolására a \verb|--verbose|,
 illetve tiltására a \verb|--no-verbose| opció használatával.
+
+\begin{figure}[h]
+\centering
+\begin{subfigure}{0.47\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/cli-output-nocolor}
+    \caption{Formázás nélküli kimenet}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.47\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/cli-output-color}
+    \caption{Formázott kimenet}
+\end{subfigure}
+
+\vspace{1em}
+
+\begin{subfigure}{0.47\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/cli-output-verbose}
+    \caption{Bőbeszédű kimenet}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.47\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/cli-output-markdown}
+    \caption{Markdown kimenet}
+\end{subfigure}
+\caption{A Git Chord parancssori kimenetének főbb változatai}
+\label{fig:cli-output-variants}
+\end{figure}
 
 A normál kimenetek a standard kimenetre ($1$) kerülnek nyomtatásra,
 míg a hibaüzenetek a hibakimenetre ($2$).
@@ -415,7 +500,7 @@ Például:
 
 \begin{minted}{shell}
 git chord snapshot --profile lorem
-\end{minted}{shell}
+\end{minted}
 
 A profil meghatározása után megadott egyéb opciók a sorrendnek megfelelően
 felülírják a profilban megadott értékeket
@@ -956,29 +1041,29 @@ TODO: használat IDE-kben
 A forrásrepó főkönyvtárában az alábbiakat találjuk:
 
 \begin{description}
-    \item[\faFolder~bin] --
+    \item[\texttt{bin}/] --
         A fő futtatható állományok könyvtára.
         Jelenleg egyetlen fájl található itt, a monolitikus \verb|git-chord| POSIX shell szkript.
-    \item[\faFolder~completion] --
+    \item[\texttt{completion}/] --
         Az automatikus parancskiegészítéshez kapcsolódó fájlok könyvtára.
         Jelenleg egyetlen fájl található itt, a \verb|git-chord-completion.bashrc| Bash szkript.
-    \item[\faFolder~install] --
+    \item[\texttt{install}/] --
         A telepítést segítő futtatható fájlokat tartalmazó könyvtár.
-    \item[\faFolder~maintain] --
+    \item[\texttt{maintain}/] --
         Különféle fejlesztői segédszkripteket tartalmazó könyvtár.
-    \item[\faFolder~packaging] --
+    \item[\texttt{packaging}/] --
         A csomagkezeléssel, terjesztéssel kapcsolatos fájlok találhatók itt.
         Jelenleg csak a \verb|.deb| csomag buildelése támogatott.
-    \item[\faFolder~test] --
+    \item[\texttt{test}/] --
         A teszteseteket, a tesztvezérlő szkripteket és a tesztfuttatási környezeteket
         tartalmazó könyvtár.
-    \item[\faFile~LICENSE] --
+    \item[\texttt{LICENSE}] --
         A licenszfájl.
         A repó teljes tartalmára a MIT licensz vonatkozik.
-    \item[\faFile~README.md] --
+    \item[\texttt{README.md}] --
         A README fájl, ami a projekt általános leírását tartalmazza.
         Ez egy generált fájl, nem szabad kézzel módosítani.
-    \item[\faFile~regen.sh] --
+    \item[\texttt{regen.sh}] --
         POSIX shell szkript, mely újrabuildeli a repó generált tartalmait.
 \end{description}
 
@@ -1023,6 +1108,13 @@ A tesztesetekkel később részletesebben foglalkozom.
 % TODO: hívási diagram
 
 A \verb|bin/git-chord| egy POSIX-kompatibilis shell szkript.
+
+\begin{figure}[H]
+\centering
+\includesvg[width=\textwidth,height=0.75\textheight,keepaspectratio]{images/git-chord-flow}
+\caption{A \texttt{git-chord} fő shell szkriptjének magas szintű vezérlési folyamata}
+\label{fig:git-chord-flow}
+\end{figure}
 
 Felépítésének váza a következő:
 
@@ -1278,6 +1370,13 @@ rm -R "$tempDir"
 TODO: további megjegyzések a repóhoz
 
 \section{A Git Chord webes felületének felépítése}
+
+\begin{figure}[H]
+\centering
+\includesvg[width=\textwidth,height=0.75\textheight,keepaspectratio]{images/git-chord-gui-architecture}
+\caption{A Git Chord webes felületének és IDE-kiegészítőinek architektúrája}
+\label{fig:git-chord-gui-architecture}
+\end{figure}
 
 \subsection{A forrásrepó és a brackend felépítése}
 

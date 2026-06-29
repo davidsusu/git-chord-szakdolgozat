@@ -151,7 +151,7 @@ ahol ez biztosan nem okoz értelmezési nehézséget.
 Itt csak azokkal az objektumokkal foglalkozom,
 amelyek a Git Chord használata szempontjából kifejezetten érdekesek.
 
-A kifejezések jegyzékét a \ref{tab:git-terminologia}. táblázat tartalmazza.
+A kifejezések jegyzékét a(z) \ref{tab:git-terminologia}. táblázat tartalmazza.
 
 \begin{table}[h]
 \captionsetup{justification=justified, singlelinecheck=false}
@@ -575,7 +575,7 @@ egy további paraméterként egy teljes ágneveket adhatjuk meg (csak kivételes
 git chord snapshot - lorem/ipsum
 \end{minted}
 
-Hogy pontosan mi kerül mentésre, azt a \ref{tab:store-config-keys} táblázatban felsorolt
+Hogy pontosan mi kerül mentésre, azt a(z) \ref{tab:store-config-keys} táblázatban felsorolt
 konfigurációs értékek befolyásolják közvetlenül.
 
 \begin{table}[h]
@@ -677,7 +677,7 @@ Az előbbi parancsnak például megfelel a következő (feltéve, hogy a \verb|t
 git chord apply - chord/hello~3
 \end{minted}
 
-A \ref{tab:apply-config-keys} táblázat részletezi a visszaállítás tartalmát érintő konfigurációs kulcsokat.
+A(z) \ref{tab:apply-config-keys} táblázat részletezi a visszaállítás tartalmát érintő konfigurációs kulcsokat.
 
 \begin{table}[h]
 \captionsetup{justification=justified, singlelinecheck=false}
@@ -865,7 +865,7 @@ akkor az aktuális állapotot lesz összehasonlítva a legutóbb mentettel.
 Az alparancs szintaxisa hasonló, mint amit az \verb|apply|, \verb|delete| és \verb|show|
 esetében láthattunk,
 azzal a különbséggel, hogy egy második meta-állapotkép is megadható.
-A \ref{tab:diff-commands} táblázat mutat néhány példát a paraméterek használatára.
+A(z) \ref{tab:diff-commands} táblázat mutat néhány példát a paraméterek használatára.
 
 \begin{table}[h]
 \captionsetup{justification=justified, singlelinecheck=false}
@@ -1154,7 +1154,7 @@ A második sor ShellChecker eszközt számára némít el egyes hibaüzeneteket
 a hozzájuk tartozó szabályok felsorolásával:
 
 Ezután következik maga a program,
-melynek vázlatos folyamata a \ref{fig:git-chord-flow} ábrán látható.S
+melynek vázlatos folyamata a(z) \ref{fig:git-chord-flow} ábrán látható.
 
 \begin{description}
     \item[\texttt{SC2016}] --
@@ -1229,7 +1229,18 @@ Ha szerepel olyan \verb|chord.| prefixű kulcs, amely nincs definiálva,
 a szkript figyelmeztetést ír ki, de nem áll le.
 
 Ezt követi a parancssori argumentumok feldolgozása.
-Itt három módot különböztetünk meg, az \textit{alap módot}, az \textit{érték módot} és a \textit{nyers módot}.
+A kompatibilitás érdekében ez a leghordozhatóbb módon,
+a paraméterek egyenkénti feldolgozásával lett megvalósítva.
+A folyamatot a(z) \ref{fig:git-chord-args-flow}. ábra mutatja be.
+
+\begin{figure}[h]
+\centering
+\includesvg[width=\textwidth,height=0.75\textheight,keepaspectratio]{images/git-chord-args-flow}
+\caption{A \texttt{git-chord} parancssori argumentumainak feldolgozása}
+\label{fig:git-chord-args-flow}
+\end{figure}
+
+Három módot különböztetünk meg, az \textit{alap módot}, az \textit{érték módot} és a \textit{nyers módot}.
 
 Alap módban fogadhatunk egy \verb|--| prefixű konfigurációs opciót, normál paramétert (például alparancs, érték), vagy pedig a speciális \verb|--| argumentumot.
 Ha opció érkezett, megjegyezzük a konfigurációs kulcsot, és átkapcsolunk érték módba.

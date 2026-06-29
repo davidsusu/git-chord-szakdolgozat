@@ -1030,6 +1030,25 @@ TODO: webes felület szerverének indítása
 
 TODO: webes felület kezelése
 
+\begin{figure}[h]
+\captionsetup{justification=justified, singlelinecheck=false}
+\centering
+\includegraphics[width=\textwidth,height=0.58\textheight,keepaspectratio]{images/git-chord-gui-layout}
+\caption[A Git Chord webes felületének fő részei]{
+A Git Chord webes felületének fő részei.
+\par A számozott jelölések:
+1. alkalmazásfejléc;
+2. állapotjelző doboz;
+3. tárolófüggetlen funkciók menüje;
+4. tárolóhoz kapcsolódó funkciók menüje;
+5. nyelvválasztó;
+6. kinézetváltó (világos és sötét megjelenés);
+7. oldalcím;
+8. fő tartalmi terület.
+}
+\label{fig:git-chord-gui-layout}
+\end{figure}
+
 \subsection{Használat IDE kiterjesztésként}
 
 TODO: használat IDE-kben
@@ -1113,46 +1132,29 @@ A tesztesetekkel később részletesebben foglalkozom.
 
 A \verb|bin/git-chord| egy POSIX-kompatibilis shell szkript.
 
-\begin{figure}[H]
-\centering
-\includesvg[width=\textwidth,height=0.75\textheight,keepaspectratio]{images/git-chord-flow}
-\caption{A \texttt{git-chord} fő shell szkriptjének magas szintű vezérlési folyamata}
-\label{fig:git-chord-flow}
-\end{figure}
-
-Felépítésének váza a következő:
-
-\begin{itemize}
-    \item header
-    \item definíciók
-    \item segédfüggvények
-    \item beállítások, opciók és paraméterek feldolgozása, alparancs megállapítása
-    \item formázók beállítása a kimenet-beállítások alapján
-    \item az opcióktól is függő függvények
-    \item (teljesen vagy feltételesen) tárolófüggetlen alparancsok kiszolgálása (help, version, default-kezelés stb.)
-    \item Git tároló ellenőrzése
-    \item tárolófüggő alparancsok kiszolgálása
-\end{itemize}
-
-A header rész a következő két sorból áll:
+A fájl elején a következő két sorból álló fejléc található:
 
 \begin{minted}{shell}
 #!/bin/sh
 # shellcheck disable=SC2016,SC2086,SC2154
 \end{minted}
 
-Az első sor a shebang komment, ami meghatározza, hogy a fájl közvetlen futtatásához mely interpreter használandó.
-Maga a POSIX szabvány érdekes módon nem nyilatkozik az interpreter fájlrendszerbéli helyéről.
+Az első sor a futtatáshoz használandó interpretert kijelölő speciális sor (shebang).
+Maga a POSIX szabvány érdekes módon nem nyilatkozik az interpreter fájlrendszerbeli helyéről.
 Sőt, a szabvány szerint elvileg a szkript telepítése során kell dinamikusan meghatározni és beégetni,
 hogy az adott rendszer interpretere hol található
 (vagyis valójában a POSIX shell szkriptek sem teljesen hordozhatók).
-A gyakorlatban komoly viták vannak akörül, végül is mit érdemes megadni,
-a fentin kívül egy másik gyakori jelölt \verb|#!/usr/bin/env sh|.
+A gyakorlatban komoly viták vannak arról,
+hogy végül is mit érdemes megadni egy hordozhatónak szánt szkriptben.
+A fentin kívül egy másik gyakori jelölt \verb|#!/usr/bin/env sh|.
 Mindkét verzió mellett szólnak pro és kontra érvek,
 én minden POSIX shell szkriptben a fenti shebang sort használom.
 
 A második sor ShellChecker eszközt számára némít el egyes hibaüzeneteket
 a hozzájuk tartozó szabályok felsorolásával:
+
+Ez után következik maga a program,
+melynek vázlatos folyamata a \ref{fig:git-chord-flow} ábrán látható.S
 
 \begin{description}
     \item[\texttt{SC2016}] --
@@ -1170,7 +1172,14 @@ a hozzájuk tartozó szabályok felsorolásával:
         Ez hamis riasztást generál, ha például a változót dinamikusan hoztuk létre.
 \end{description}
 
-A definíciós részben definiált konstansok meghatározzák a program verzióját,
+\begin{figure}[H]
+\centering
+\includesvg[width=\textwidth,height=0.75\textheight,keepaspectratio]{images/git-chord-flow}
+\caption{A \texttt{git-chord} fő shell szkriptjének vezérlési folyamata}
+\label{fig:git-chord-flow}
+\end{figure}
+
+A definíciós részben megadott konstansok meghatározzák a program verzióját,
 az elérhető parancsokat és alparacsokat leírásukkal együtt,
 az elérhető konfiguráciüs kulcsokat alapértelmezett értékükkel és leírásukkal,
 illetve egyéb segédadatokat.

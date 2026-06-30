@@ -79,7 +79,7 @@ valamint az előbbire épülő kiegészítők néhány elterjedt
 Az egyes kiegészítők a közös főképernyő mellett
 az adott IDE sajátosságaihoz igazított egyedi működéseket is tartalmaznak (context menük, akciók, stb.).
 A programnak a szakdolgozati védés keretében történő bemutatása során
-nagy részben a webes felületre támaszkodom majd.
+részben a webes felületre támaszkodom majd.
 
 A fejlesztői-üzemeltetői hétköznapok során történő felhasználási eseteken túl
 kitérek a programnak a verziókezelő rendszerek oktatásában való lehetséges alkalmazására.
@@ -93,7 +93,7 @@ az értékelő oktatóval könnyen megosztható a Git Chord által mentett meta-
 
 \chapter{Bevezetés}
 
-\section{A modern verziókezelő rendszerek sajátosságai}
+\section{A Git verziókezelő rendszer}
 
 A verziókezelő rendszerek fő feladata,
 hogy egy folyamatosan változó tartalomegyüttesnek (például egy szoftver forráskódjának)
@@ -102,7 +102,7 @@ E tekintetben a legfontosabb megoldandó feladat minden bizonnyal az,
 hogy a rendszer képes legyen eltárolni a tartalomegyüttes bizonyos jóváhagyott állapotainak sorát.
 Ez a régi rendszereken még fájlonként történt,
 a modern megközelítésben ezzel szemben a teljes tartalomegyüttes
-egy-egy pillanatképe, snapshotja jelenti az atomi egységet.
+egy-egy snapshotja, azazpillanatképe jelenti az atomi egységet.
 További alapvető feladat, amelyet egy ilyen rendszernek biztosítania kell, a párhuzamos fejlesztés támogatása.
 A régi rendszerekben még egy-egy fájl központilag történő lockolása volt hivatott biztosítani azt,
 hogy több fejlesztő ne írja fölül egymás munkáját.
@@ -111,49 +111,13 @@ A modern rendszerekben a párhuzamos fejlesztés külön brancheken, azaz ágako
 Jelenleg a legelterjedtebb verziókezelő a nyílt forráskódú \textit{Git}.
 Filozófiájához hozzátartozik,
 hogy a teljes verziókezelési folyamatot a helyi gépen kell elvégezni,
-ezt lehet majd szinkronizálni más gépekre, például egy központi szerverre.
-Mind a Git szervert, mind a lokális másolatot szokás repositorynak (néha röviden \textit{repó}nak), azaz tárolónak nevezni.
-A Git elosztott rendszer,
-használatához nincs feltétlenül szükség központi tárolóra.
-Egy módosításcsomag publikálása két lépésből áll.
-Elsőként a \textit{commit} művelettel létrehozzuk az új tárolt állapotot;
-a bevett terminológia szerint ezt is commitnak nevezik.
+ezt lehet aztán szinkronizálni más gépekre, például egy központi szerverre.
 
-TODO: git commitok tartalma röviden
-
-Alapértelmezetten az aktuális ág mentett állapota egyúttal az újonnan létrejött commitra ugrik.
-Második lépésben a \textit{push} művelettel publikálhatjuk az adott ág (vagy ágak) állapotát egy szerverre.
-A két lépés egymástól független,
-és gyakran számos több commit létrehozása is megtörténik lokálisan,
-mire sor kerülne a push műveletre.
-Az ágakon kívül tagek, azaz címkék is létrehozhatók,
-ezek hasonlóak az ágakhoz,
-a fő különbség, hogy véglegesek:
-ha egyszer létrehoztunk egy adott commitra mutató címkét,
-az a továbbiakban végérvényesen erre a commitra fog mutatni
-(ha mégis mozgatni szeretnénk, törölni kell, majd újra létrehozni).
-Általában (bár ez megkerülhető) a fejlesztők a saját gépükön
-egyszerre tárolják a teljes verziótörténetet,
-beleértve a számukra érdekes ágakat, gyakran az összeset.
-Amikor a \textit{clone} művelettel lemásolunk, leklónozunk egy tárolót,
-alapértelmezetten az összes ág és címke letöltésre kerül a teljes történettel együtt.
-
-TODO: általános leírás vége
-(vagyis sok van, itt jön be a nehézség; kezdők, 
-meta-verziókezelés, bár egy elágazó gráf, mindig van egy pillanatnyi meta-állapot)
-
-\section{A Git modellje, szakkifejezések}
-
-TODO: bevezetés a git tárolási modelljéhez
-
-A Git terminológiáit csak ott fordítom magyarra,
-ahol ez biztosan nem okoz értelmezési nehézséget.
+A Git modelljéhez tartozó fontosabb kifejezések jegyzékét a(z) \ref{tab:git-terminologia}. táblázat tartalmazza.
 Itt csak azokkal az objektumokkal foglalkozom,
 amelyek a Git Chord használata szempontjából kifejezetten érdekesek.
 
-A kifejezések jegyzékét a(z) \ref{tab:git-terminologia}. táblázat tartalmazza.
-
-\begin{table}[h]
+\begin{table}[p]
 \captionsetup{justification=justified, singlelinecheck=false}
 \centering
 \setlength{\tabcolsep}{7pt}
@@ -185,6 +149,9 @@ továbbá az előzményekre mutató hivatkozásokkal (szülő-commitok). \\
 Egy nevesített mutató, mely rendesen valamely commitra hivatkozik.
 Új állapot mentésekor az aktív ág mutatója automatikusan továbbugrik az új commitra. \\
 \addlinespace
+Első szülő \par(\textit{first-parent}) &
+Egy adott commit kitüntetett, elsőként hivatkozott előzménye. \\
+\addlinespace
 HEAD \par(\textit{HEAD}) &
 Speciális mutató, mely rendesen egy ágra (és azon keresztül egy commitra) hivatkozik.
 Speciális esetben közvetlenül is hivatkozhat egy commitra (detached head). \\
@@ -209,9 +176,65 @@ Egy távoli tároló ágának helyi, automatikusan szinkronizált másolata. \\
 \label{tab:git-terminologia}
 \end{table}
 
-TODO: további git terminológiák
+A Git elosztott rendszer,
+használatához nincs feltétlenül szükség központi tárolóra.
+Mind a Git szervert, mind a lokális másolatot szokás repositorynak (vagy röviden \textit{repó}nak), azaz tárolónak nevezni.
+Egy módosításcsomag publikálása két lépésből áll.
+Elsőként a \textit{commit} művelettel loklisan létrehozzuk az új tárolt állapotot;
+a bevett terminológia szerint ezt is commitnak nevezik.
+A commitok és más objektumok a Gitben tartalom alapján címződnek,
+azaz a tartalmukból képzett hash lesz az azonosítójuk
+(alapértelmezetten SHA-256).
+Ez egyszerre biztosítja a gördülékeny elosztott műdödést és az integritást.
+Mivel a legtöbb objektum hivatkozásokat tartalmaz a függőségeire, azaz más objektumokra,
+az azonosítók valójában nagyobb rekurzív struktúrákat azonosítanak.
 
-TODO: a git tárolási modelljének részletei
+Új commit készítésekor alapértelmezetten az aktuális ág mentett állapota egyúttal az újonnan létrejött commitra ugrik.
+Második lépésben a \textit{push} művelettel publikálhatjuk az adott ág (vagy ágak) állapotát egy szerverre.
+A két lépés egymástól független,
+és gyakran számos több commit létrehozása is megtörténik lokálisan,
+mire sor kerülne a push műveletre.
+Az ágakon kívül tagek, azaz címkék is létrehozhatók,
+ezek hasonlóak az ágakhoz,
+a fő különbség, hogy véglegesek:
+ha egyszer létrehoztunk egy adott commitra mutató címkét,
+az a továbbiakban végérvényesen erre a commitra fog mutatni
+(ha mégis mozgatni szeretnénk, törölni kell, majd újra létrehozni).
+Általában (bár ez megkerülhető) a fejlesztők a saját gépükön
+egyszerre tárolják a teljes verziótörténetet,
+beleértve a számukra érdekes ágakat, gyakran az összeset.
+Amikor a \textit{clone} művelettel klónozunk, azaz egy helyi könyvtárba lemásolunk egy tárolót,
+alapértelmezetten az összes ág és címke letöltésre kerül a teljes történettel együtt.
+
+Maga a commit objektum metaadatokból (megjegyzés, szerző, dátum, stb.),
+a szülő-commitok azonosítóiból (kitüntetetten az első szülővel),
+valamint egy faobjektum azonosítójából áll.
+A szülőkre való hivatkozás miatt a commitok hashei még akkor is változatosak lesznek,
+ha szekvenciálisan, de ugyanazon időpontban ugyanazzal a tartalommal kerülnek mentésre.
+(Párhuzamosan mentett azonos commitok egyszerűen ugyanannak a commitnak fognak látszódni.)
+
+A hivatkozott faobjektum alatti faobjektumokból és tartalomobjektumokból álló
+teljes, rekurzív fa alkotja a commithoz tartozó aktuális állapotot,
+lényegileg a projekt könyvtárának tartalmát a mentés pillanatában
+(a \texttt{.gitignore} fájllal könnyen megadható, mi legyen kihagyva a mentésből).
+Azonos rekurzív tartlmú faobjektumok tartalmilag azonosak,
+így a Git szisztémájában identitásukban is azonosak lesznek.
+Vagyis a változatlan részfák újrafelhasználásra kerülnek a commitok között.
+Azonban egy-egy fájl változása mindig új tartalomobjektumot eredményez,
+akkor is, ha a fájl nagy és csak kis változás történt.
+Ez hagyományosan egy lehetséges forrása annak, hogy egy tároló mérete megnövekedjen.
+A modern Git azonban további tömörítési módszereket is használ
+(bár elsősorban nem a tárhelyfoglalást, hanem a hálózati adatforgalom csökkentését szem előtt tartva),
+amivel a gyakorlatban megszűnnek a méretproblémák.
+(További lehetőség az LFS, azaz Large File Storage kiegészítő használata,
+mely az óriás fájlok leválasztására szolgál.)
+
+A Git tehát pillanatképekben tárolja a történetet, nem különbség-fájlok (diffek) formájában.
+Mégis, a narratív szinten az állapotok közötti különbségek jutnak nagyobb szerephez,
+ezek akár a történet gráfjának nem kapcsolódó helyeire is átvihetők, újraalkalmazhatók
+(\textit{cherry-pick}).
+
+A Git modelljénet vázlatosan mutatja be a(z) \ref{fig:git-dag} ábra.
 
 \begin{figure}[h]
 \centering
@@ -220,15 +243,19 @@ TODO: a git tárolási modelljének részletei
 \label{fig:git-dag}
 \end{figure}
 
-\section{Tárolók átfogó állapotának kezelése}
+A távoli tárolókkal való szinkronizálás segítéséhez a Git a helyi tárolóban
+távoli ágakaz hoz létre, melyek a távoli állapotot tükrözik.
+Szinkronizáló műveletek közben ezek automatikusan frissülnek.
+
+\section{A meta-állapotok problémája és a Git Chord}
+
+ágak közötti kapcsolatok stb.
 
 TODO: a git átfogó állapotairól
 (a subversion stb. még egy nagy (idődimenzióval kiegészített) fájlrendszerben tárolta az ágakat is,
 valójában nincs beépített ágkezelés, az ágak egyszerűen külön könyvtárakban vannak,
 az elágaztatási módszertanok működtetését a könyvtárak között alkalmazható;
 merge-elő, összehasonlító stb. eszközök segítik; megjegyzés: ezt a git is tudja))
-
-\section{A Git Chord megközelítése}
 
 TODO: a git-chord megközelítéséről
 (mentális modell;
@@ -240,8 +267,6 @@ a git szisztémájának természetes használata a háttérben)
 \caption{A Git Chord által mentett metaállapot kapcsolata a Git commitgráffal}
 \label{fig:git-chord-dag}
 \end{figure}
-
-\section{Speciális esetek a Git Chord-ban}
 
 TODO: speciális esetek
 (submodule, git config módosításai stb.)
@@ -679,7 +704,7 @@ git chord apply - chord/hello~3
 
 A(z) \ref{tab:apply-config-keys} táblázat részletezi a visszaállítás tartalmát érintő konfigurációs kulcsokat.
 
-\begin{table}[h]
+\begin{table}[p]
 \captionsetup{justification=justified, singlelinecheck=false}
 \begin{center}
 \begin{tabular}{|l|l|p{4.5cm}|} 
@@ -711,7 +736,7 @@ A(z) \ref{tab:apply-config-keys} táblázat részletezi a visszaállítás tarta
 
 \end{tabular}
 \end{center}
-\caption{A tárolást érintő konfigurációs kulcsok}
+\caption{Az visszaállítást érintő konfigurációs kulcsok}
 \label{tab:apply-config-keys}
 \end{table}
 
@@ -1172,9 +1197,9 @@ melynek vázlatos folyamata a(z) \ref{fig:git-chord-flow} ábrán látható.
         Ez hamis riasztást generál, ha például a változót dinamikusan hoztuk létre.
 \end{description}
 
-\begin{figure}[H]
+\begin{figure}[p]
 \centering
-\includesvg[width=\textwidth,height=0.75\textheight,keepaspectratio]{images/git-chord-flow}
+\includesvg[width=\textwidth,keepaspectratio]{images/git-chord-flow}
 \caption{A \texttt{git-chord} fő shell szkriptjének vezérlési folyamata}
 \label{fig:git-chord-flow}
 \end{figure}
@@ -1233,9 +1258,9 @@ A kompatibilitás érdekében ez a leghordozhatóbb módon,
 a paraméterek egyenkénti feldolgozásával lett megvalósítva.
 A folyamatot a(z) \ref{fig:git-chord-args-flow}. ábra mutatja be.
 
-\begin{figure}[h]
+\begin{figure}[p]
 \centering
-\includesvg[width=\textwidth,height=0.75\textheight,keepaspectratio]{images/git-chord-args-flow}
+\includesvg[width=\textwidth]{images/git-chord-args-flow}
 \caption{A \texttt{git-chord} parancssori argumentumainak feldolgozása}
 \label{fig:git-chord-args-flow}
 \end{figure}

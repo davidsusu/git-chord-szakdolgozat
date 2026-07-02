@@ -95,18 +95,33 @@ az értékelő oktatóval könnyen megosztható a Git Chord által mentett meta-
 
 \section{A Git verziókezelő rendszer}
 
-A verziókezelő rendszerek fő feladata,
-hogy egy folyamatosan változó tartalomegyüttesnek (például egy szoftver forráskódjának)
-az evolúcióját megkönnyítsék, ennek a folyamatnak technikai keretet adjanak.
-E tekintetben a legfontosabb megoldandó feladat minden bizonnyal az,
-hogy a rendszer képes legyen eltárolni a tartalomegyüttes bizonyos jóváhagyott állapotainak sorát.
-Ez a régi rendszereken még fájlonként történt,
-a modern megközelítésben ezzel szemben a teljes tartalomegyüttes
-egy-egy snapshotja, azazpillanatképe jelenti az atomi egységet.
-További alapvető feladat, amelyet egy ilyen rendszernek biztosítania kell, a párhuzamos fejlesztés támogatása.
-A régi rendszerekben még egy-egy fájl központilag történő lockolása volt hivatott biztosítani azt,
-hogy több fejlesztő ne írja fölül egymás munkáját.
-A modern rendszerekben a párhuzamos fejlesztés külön brancheken, azaz ágakon párhuzamosan történik.
+A mai értelemben vett verziókezelő rendszerek története a 70-es évek elején kezdődik.
+Az első ilyen megoldások (például az SCSS és az RCS) egy konkrét szerveren lokálisan
+egy-egy fájl verziótörténetét voltak képesek kezelni,
+megoldva azt az alapvető problémát, hogy a fejlesztők ne írják felül véletlenül egymás munkáját.
+Kezdetben ennek alapja az egyes fájlok központi lockolása, vagyis átmenetileg az adott fájl kizárólagos lefoglalása volt.
+Nem volt lehetőség arra, hogy két felhasználó idiomatikusan párhuzamosan dolgozzon ugyanazon a fájlon,
+sem arra, hogy a különböző fájlok korábbi verzióit közös átfogó állapotként egyben lehessen kezelni.
+
+Ezzel szemben a modern felfogásban egy valamirevaló verziókezelő rendszer fő feladata,
+hogy a folyamatosan változó teljes tartalomegyüttesnek, projektnek (például egy teljes szoftver forráskódjának)
+az evolúcióját megkönnyítse, ennek a folyamatnak holisztikus technikai keretet adjon.
+E tekintetben az egyik legfontosabb megoldandó feladat,
+hogy a rendszer képes legyen átfogóan eltárolni a tartalomegyüttes bizonyos jóváhagyott állapotainak sorát.
+Vagyis a verziótörténet atomi egységei
+a teljes tartalomegyüttes snapshotjai, pillanatképei.
+
+Ugyanilyen alapvető feladat a párhuzamos fejlesztés támogatása.
+A modern rendszerekben semilyen lockolás nem jelenik meg,
+ehelyett a fejlesztés külön brancheken, azaz ágakon párhuzamosan történhet, akár azonos fájlokat is érintve.
+Az esetleges konflikutosk feloldásának terhét így egy későbbi összefésülési folyamatra lehet hárítani,
+és a hatékony összefésülő algoritmusoknak köszönhetően általában ez is teljesen automatikus.
+
+Az egyes rendszerekben a pillanatképek történetének tárolása általában két jelentősen eltérő módszer egyikével valósul meg.
+A hagyományosabb megközelítésben csak néhány kitüntetett állapotot tárolunk el teljességében
+(például a legelsőt vagy a legutóbbit, esetleg időnként egyet-egyet pluszban),
+a történet lépéseit pedig az állapotok közötti külnbségek reprezentálják (diffek, patchek formájában).
+A másik megközelítésben minden egyes pillanatkép közvetlenül hivatkozik a saját tartalmára.
 
 Jelenleg a legelterjedtebb verziókezelő a nyílt forráskódú \textit{Git}.
 Filozófiájához hozzátartozik,
@@ -213,6 +228,12 @@ A szülőkre való hivatkozás miatt a commitok hashei még akkor is változatos
 ha szekvenciálisan, de ugyanazon időpontban ugyanazzal a tartalommal kerülnek mentésre.
 (Párhuzamosan mentett azonos commitok egyszerűen ugyanannak a commitnak fognak látszódni.)
 
+\begin{figure}[bp!]
+\centering
+\includesvg[width=\textwidth,height=0.65\textheight,keepaspectratio]{images/git-dag}
+\caption{Egy Git tároló objektumai és hivatkozásai}
+\label{fig:git-dag}
+\end{figure}
 A hivatkozott faobjektum alatti faobjektumokból és tartalomobjektumokból álló
 teljes, rekurzív fa alkotja a commithoz tartozó aktuális állapotot,
 lényegileg a projekt könyvtárának tartalmát a mentés pillanatában
@@ -229,19 +250,12 @@ amivel a gyakorlatban megszűnnek a méretproblémák.
 (További lehetőség az LFS, azaz Large File Storage kiegészítő használata,
 mely az óriás fájlok leválasztására szolgál.)
 
-A Git tehát pillanatképekben tárolja a történetet, nem különbség-fájlok (diffek) formájában.
+A Git tehát pillanatképekben tárolja a történetet, nem különbségek formájában.
 Mégis, a narratív szinten az állapotok közötti különbségek jutnak nagyobb szerephez,
 ezek akár a történet gráfjának nem kapcsolódó helyeire is átvihetők, újraalkalmazhatók
 (\textit{cherry-pick}).
 
-A Git modelljénet vázlatosan mutatja be a(z) \ref{fig:git-dag} ábra.
-
-\begin{figure}[h]
-\centering
-\includesvg[width=\textwidth,height=0.65\textheight,keepaspectratio]{images/git-dag}
-\caption{Egy Git tároló objektumai és hivatkozásai}
-\label{fig:git-dag}
-\end{figure}
+A Git modelljét vázlatosan mutatja be a(z) \ref{fig:git-dag} ábra.
 
 A távoli tárolókkal való szinkronizálás segítéséhez a Git a helyi tárolóban
 távoli ágakaz hoz létre, melyek a távoli állapotot tükrözik.
@@ -249,27 +263,89 @@ Szinkronizáló műveletek közben ezek automatikusan frissülnek.
 
 \section{A meta-állapotok problémája és a Git Chord}
 
-ágak közötti kapcsolatok stb.
+Ahogy egyre több commit jelenik meg egyre több ágon és címkével a Git által kezelt történetben,
+a tároló történeti gráfja folyamatosan változik.
+Tradícionálisan a legfrisebb állapot az igazán érdekes,
+és minden egyéb (például a legtöbb mellékág) ideiglenesnek tekinthető.
+Ez azonban nincs mindig így,
+sok esetben érdekes lehet, hogy az egyes ágak és címkék egymáshoz képest milyen viszonyban vannak,
+milyen konstellációt alkotnak,
+főleg ha tartósan több ágon folyik a fejlesztés (gyakran például környezeti és fejlesztői ágak is vannak),
+vagy ha szeretnénk visszaállíthatóvá tenni egy korábbi állapotot
+(ezt a Git reflog funkciója részben ellátja, de az korlátozott és csak lokálisan működik).
 
-TODO: a git átfogó állapotairól
-(a subversion stb. még egy nagy (idődimenzióval kiegészített) fájlrendszerben tárolta az ágakat is,
-valójában nincs beépített ágkezelés, az ágak egyszerűen külön könyvtárakban vannak,
-az elágaztatási módszertanok működtetését a könyvtárak között alkalmazható;
-merge-elő, összehasonlító stb. eszközök segítik; megjegyzés: ezt a git is tudja))
+A probléma némileg hasonlít arra, ami az első verziókezelő rendszerekben
+az egyes, külön verziókezelt fájlokkal kapcsolatban merült fel,
+és aminek megoldása a teljes tartalom holisztikus kezelése lett.
 
-TODO: a git-chord megközelítéséről
-(mentális modell;
-a git szisztémájának természetes használata a háttérben)
+A Git Chord az egyes ágak és egyéb objektumok állapotainak átfogó kezelésére,
+azaz a \textit{metaállapotok} menedzselésére ad megoldást:
+a kért időpontokra a meta-állapotokat (és azok minden függőségét) jegyzi meg, állíja vissza, vagy osztja meg másokkal.
+Többféle lehetőség van az egyes állapotok összeshasonlítására is.
 
-\begin{figure}[h]
+Mindezt olyan szisztémában, hogy nem lép ki a Git rendszer natív eszköztárából,
+hanem tulajdonképpen egy konvenciót működtet azon belül.
+
+A Git Chord működtetéséhez tehát nem kell elhagyni a tárolót,
+a meta-állapotképek egy (vagy több) speciális ágra (alapértelmezetten \verb|chord/main|) kerülnek commit formájában,
+mely mindössze a meta-állapotot leíró \verb|state.yaml| fájlt tartalmazza,
+olyan egyszerű YAML subset használatával, ami szkripttel is könnyen feldolgozható.
+Ennek a commitnak sok szülő-commitja lesz, az első mindig az előző met-aállapotkép commit,
+a többedik pedig a szükséges függőségeket hordozó commitok (például ágak és címkék commitjai).
+
+A meta-állapotokat hordozó ágak akár a Git natív \verb|push| és \verb|fetch| műveleteivel is megoszthatók,
+de a Git Chord beépített kényelmi műveleteket is kínál ezekre.
+Mivel a függőségek elérhetői a commit szülőiként vagy azokon keresztül (ezek szállítását maga a Git automatikusan kezeli),
+a másokkal megosztott meta-állapotok konzisztenciája garantált.
+
+\begin{figure}[h!]
 \centering
 \includesvg[width=\textwidth,height=0.65\textheight,keepaspectratio]{images/git-chord-dag}
 \caption{A Git Chord által mentett metaállapot kapcsolata a Git commitgráffal}
 \label{fig:git-chord-dag}
 \end{figure}
 
-TODO: speciális esetek
-(submodule, git config módosításai stb.)
+A \ref{fig:git-chord-dag} ábra mutatja, hogyan viszonyul a meta-állapotokat szállító
+speciális ág a többi ághoz és gites objektumhoz.
+
+A Git Chord működése részletesen konfigurálható a Git beépített konfigurációs mechanizmusával,
+a lentebb ismeretett \verb|chord.| prefixű konfigurációs kulcsokkal.
+Az alapértelmezett beállítások a legvalószínűbb használati esetekhez lettek igazítva,
+és egy pehelysúlyú alrendszert adnak, hiszen csak néhány metaadat kerül mentésre.
+Lehetőség van viszont olyan konfigurációk beállítására is,
+ahol pluasz adatok mentődnek, értelemszerűen plusz tárolással
+(például a teljes lokális másolat mentése).
+
+A snapshotba konkrétan a következő adatok kerülhetnek
+(az időbélyegen kívül mindegyik opcionális és konfigurációval filterezhető):
+
+\begin{itemize}
+    \item időbélyeg
+    \item branchek: name -> commitId
+    \item annotált tagek: name -> tagId, commitId, message
+    \item lightweight tagek (alapból disabled): name -> commitId
+    \item HEAD: pointingTo, ref, commitId
+    \item staging area (alapból disabled): treeId
+    \item working tree (alapból disabled): treeId
+\end{itemize}
+ 
+Ahol csak a faobjektum azonosítója (\verb|treeId|) szerepel,
+a háttérben mindenképpen létrejön egy commit is (ha szükséges),
+és annak azonosítója bekerül a szülők listájába,
+így biztosítva a hordozást.
+
+
+\section{A Git Chord fő használati esetei}
+
+TODO
+
+%Szcenárió 1: egy junior fejlesztő nem igazán tudta mit csinál, és elkavarta a helyi repója állapotát, most már azt sem találja, amin dolgozott. A senior kolléga azt kéri tőle, hogy készítsen és pusholjon egy git chord snapshotot a repójáról, majd ő lepullozza magának, és kiigazítja. Ez a git infrastruktúrán belül oldja meg a szituációt, és több szempontból maximálisan hatékony.
+%Szcenárió 2: ugyanez a junior fejlesztő később már jobban tudja mit csinál, de még mindig fél, hogy valamit elront, ugyanakkor mégiscsak szeretné alkalmazni a bonyolultabb git műveleteket, amiket nemrég tanult. A reflog működése homályos és túl komplikáltnak tűnik a számára (érthető módon). Ezért minden bonyolultabb műveletkedés előtt készít egy git chord snapshotot, és ha valami balul sül el, visszaáll erre a snapshotra.
+%Szcenárió 3: egy projektmenedzser a verziókezelővel szeretné rögzíteni és később visszanézni, hogy mely környezetre mikor mely verziók lettek telepítésre kijelölve. Minden környezet forráskódja (és konfigurációja) egy-egy dedikált branchen tárolódik. Egy-egy sikeres release után a környezeti branchek konstellációját lementik egy git chord snapshotba, ezek aztán könnyen visszanézhetők, összehasonlíthatók, gépileg feldolgozhatók (a CI/CD infrastruktúrára való bármiféle hagyatkozás nélkül, ami idő közben akár le is cserélődhet).
+%Szcenárió 4: egy git repóként megvalósított tutorial git műveleteket mutat be valamilyen célból. Az egyes műveletek utáni helyzetek git chord snapshotokként elérhetők.
+%Szcenárió 5: egy git repót bizonyos szűrőkkel tükrözni vagy migrálni kell egy másik szerverre. Bár ez a hagyományos eszközökkel is kivitelezhető, az üzemeltetők úgy döntenek, hogy a git chordot használják a szűrt állapot szállítására annak rugalmassága és felhaszálóbarátsága miatt. Így ráadásul transzformációkat is könnyen tudnak végezni a repón (például branchek átnevezése), ehhez csak a state.yaml fájlt kell manipulálni.
+%Szcenárió 6: egy verziókezelésről szóló kurzuson a hallgatók könnyen meg tudják osztani az értékelő oktatóval a teljes repót (tehát nem a tartalmat, hanem a branchek, tagek, HEAD stb. lokális állapotát).
+
 
 \cleardoublepage
 
@@ -1045,15 +1121,117 @@ git chord spec options
 
 Interaktív terminálban ezeket a parancsokat használja az automatikus parancskiegészítés szkriptje is.
 
+
 \section{A webes felület használata}
 
-\subsection{A szerver elindítása}
+\subsection{Telepítés és futtatás}
 
-TODO: webes felület szerverének indítása
+A Git Chord GUI egy webes alapú grafikus felület a Git Chord parancssori eszközhöz.
+Több változatban is elérhető, ezek közül a legalapvetőbb a webszerveres futtatás,
+mely esetben a funkciókhoz egy tetszőleges böngészőn keresztül férhetünk hozzá.
 
-\subsection{A felület kezelése}
+A futtatáshoz a következő követelmények biztosítása szükséges:
 
-TODO: webes felület kezelése
+\begin{itemize}
+    \item Node.js (legalább 18.17.0)
+    \item npm/npx
+    \item Git (legalább 2.0.0)
+    \item Git Chord (szavbányos git extensionként, vagy pedig a \verb|GIT_CHORD_COMMAND_PATH| környezeti változóban megadott helyen)
+\end{itemize}
+
+A szerver indítható közvetlenül a forráskód tárolójából,
+illetve, megfelelő telepítés után, az npx futtatón keresztül vagy önálló parancsként.
+A telepítés elvégezhető a forráskód tárolójából a következő két paranccsal:
+
+\begin{minted}{shell}
+npm run build:npx
+npm install -g --prefix "$HOME/.local" package-dist/git-chord-gui-0.1.0-SNAPSHOT.tgz
+\end{minted}
+
+Ez után az aktuális felhasználó számárar elérhetővé válik
+a \verb|git-chord-gui| önálló parancs,
+mely elindítja a szervert.
+Alapértelmezésben az aktuális munkakönyvtárat használja kontextusként.
+Más könyvtár megadásához egy pozícionális argumentumot kell pluszban megadni, például:
+
+\begin{minted}{shell}
+git-chord-gui /home/user/projects/helloworld
+\end{minted}
+
+A parancs különféle opciókat is támogat.
+A \verb|-b| vagy \verb|--launch-browser| kapcsoló használatával a webes felület
+automatikusan megnyitásra kerül a helyi rendszer alapértelmezett böngészőjében.
+A \verb|-p| kapcsoló után megadott értékkel felülírható az alapértelmezett port
+(3333, vagy a következő elérhető, ha az foglalt).
+A \verb|--help| opcióval pedig egy rövid leírást kapunk a program használatáról.
+
+Ha webes felület a háttérben a git-chord és git parancsokat hívja,
+a funkcionalitás nagy részét ezekre alapozza.
+Előbbi elérési útvonala felülírható a \verb|GIT_CHORD_COMMAND_PATH| környezeti változóval:
+
+\begin{minted}{shell}
+GIT_CHORD_COMMAND_PATH=/opt/custom-git-chord git-chord-gui /home/user/projects/helloworld
+\end{minted}
+
+
+\subsection{A webes felület felépítése és funkciói}
+
+A felület bal oldali oldalsávból és jobb oldali tartalmi részből áll,
+valamint egy minimális fejlécből, ahol a világos/sötét mód állítható.
+Az oldalisáv tetején a tároló alapvető információi láthatók.
+Alatta egy általános, tárolótól független menüsor található.
+Ha a szerver Git tárolót érzékel a megadott kontextusban,
+megjelenít egy második, tároló-specifikus menüt is.
+
+Az oldalsáv alján található nyelvválasztóval válthatunk az angol és a magyar nyelv között.
+Az alapértelmezett beállítást a böngésző nyelvi beállításai döntik el.
+Nyelvváltáskor a teljes felület azonnal átáll a másik nyelvre,
+eközben a felület állapota (például egy még félig kitöltött űrlap) teljesen megőrződik.
+
+A jobb felső sarokkal lehet váltani a világos és sötét mód között.
+Kezdetben ez is a böngészőben beállított preferált módot veszi fel.
+
+A \textit{Névjegy} oldal a Git Chord GUI alapadatait mutatja,
+mint például az aktuális verzió, szerző és hivatkozás GitHub-oldalra.
+
+A \textit{CLI súgó} oldal egyszerűen a git \verb|chord help --markdown| parancs kimenetét
+jeleníti meg formázva, ez mindig angol nyelvű.
+
+Az \textit{Aktuális állapot} oldal fő tartalmi doboza a tároló pillanatnyi meta-állapotát mutatja.
+A mutatott állapot paraméterezhető az oldal tetején lévő összecsukható űrlappal.
+A legördülő menüből választva parancssori opciókat és létező profilokat lehet hozzáadni.
+A mutatott meta-állapot az űrlap beküldésével frissül.
+
+Alapból a Git Chord által mentett YAML formátumú adatfájl látszik,
+de a második fülön egy egyszerű grafikus gráfos nézet is elérhető.
+A YAML nézet szintaxiskiemeléssel jelenik meg, és a benne hivatkozott commit-azonosítók kattinthatók,
+az adott commit nyers nézetéhez visznek (új böngészőfülön).
+
+A tömörség kedvéért a felület a \textit{pillanatkép} terminológiát használja a mentett meta-állapotképre.
+
+Új pillanatkép készítése az aktuális állapotot mutató doboz alatti \textit{Új pillanatkép ezekkel az opciókkal} gombbal indítható.
+A gombra kattintva a fenti dobozok összecsukódnak (kézzel újra lehet őket nyitni),
+és alul megjelenik egy további egyszerű űrlapdoboz,
+ahol véglegesíthetjük a pillanatkép készítésének helyét az ág prefixének és nevének megadásával.
+Ezek az adatok természetesen már fel vannak töltve a konfigurációban megadott alapértelmezésekkel.
+A \textit{Mégse} gombbal a folyamat megszakítható, ekkor a dobozok is visszaállnak a nyitott, nézegetési állapotra.
+A \textit{Pillanatkép készítése} gombbal pedig elkészül a pillanatkép, majd a rendszer átirányít pillanatképek listájához.
+
+A \textit{Konfiguráció} oldal a tároló Git Chord-specifikus konfigurációját mutatja egy szerkeszthető táblázatban.
+A táblázatban látszik, mely értékek vannak felülírva a tárolóban az alapértelmezetthez képest.
+Egyes esetekben az értéket előre adott listából lehet kiválasztani,
+illetve lehtőség van a felülírás törlésére, azaz az alapértelmezére való visszaállításra is.
+
+A \textit{Pillanatképek} oldalon egy táblázatban listázódnak a korábban mentett pillanatképek.
+Egy-egy oszlopban megjenenik a commit azonosítója és megjegyzése, valamint a létrehozás ideje.
+Az utolsó oszlopban műveletgombok találhatók,
+melyekkel az adott elem részletesebben megtekinthető, illetve törölhető.
+A jobb felső részen látható plusz-ikon gombbal új pillanatkép készítése indítható
+az \textit{Aktuális állapot} oldalra átugorva.
+
+A pillanatképet részletező oldalon felül rövid összegzés látható,
+ezt a hivatkozott referenciák táblázata követi (például ágak, commitok).
+majd az állapotot reprezentáló doboz, itt is a YAML-t és a grafikus nézetet mutató fülekkel.
 
 \begin{figure}[h]
 \captionsetup{justification=justified, singlelinecheck=false}
@@ -1441,22 +1619,6 @@ TODO: IDE extensionök
 
 \cleardoublepage
 
-\chapter{Összegzés és alkalmazások}
-
-\section{Általános értékelés}
-
-TODO: általános értékelés
-
-\section{A Git Chord fő használati esetei}
-
-TODO: fő használati esetek
-
-\section{A Git Chord használata verziókezelő rendszerek oktatásában}
-
-TODO: használat az oktatásban
-
-\cleardoublepage
-
 \appendix
 
 \chapter{Teszteredmények}
@@ -1488,6 +1650,33 @@ TODO: tesztesetek a test könyvtár alapján
 \phantomsection
 \addcontentsline{toc}{chapter}{\lstcodelabel}
 \lstlistoflistings
+\cleardoublepage
+
+\chapter{Nyilatkozat a mesterséges intelligencia használatáról}
+
+A szakdolgozat tartalmi teljes tartalmi része,
+beleértve a főszövegen túl a táblázatokat, ábrákat és más elemeket,
+teljes mértékben önálló munka.
+
+ChatGPT, Codex, Gemini és lokális modellek kis mértékben felhasználásra kerültek
+az alábbi táblázatban összefoglalt feladatokra:
+
+\begin{center}
+\begin{tabular}{|l|l|} 
+ \hline
+ \multicolumn{1}{|c}{\textbf{Terület}} &
+ \multicolumn{1}{|c|}{\textbf{MI használat célja}} \\
+ \hline\hline
+
+Git Chord & Nem volt használva \\
+Git Chord GUI & A kézzel már elkészült IDE-kiegészítők kollaborációs feljavítása, az elterjedt gyakorlatok jobb beépítése. \\
+Szakdolgozat & Ellenőrzések, valamint táblák és ábrák beillesztésének igazítása. \\
+
+ \hline
+
+\end{tabular}
+\end{center}
+
 \cleardoublepage
 
 \end{document}
